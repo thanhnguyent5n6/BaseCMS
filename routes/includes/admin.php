@@ -16,8 +16,18 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::post('/store', 'Admin\CategoryController@store')->name('admin.categories.store');
         Route::get('/show/{id}', 'Admin\CategoryController@show')->name('admin.categories.show');
         Route::get('/edit/{id}', 'Admin\CategoryController@edit')->name('admin.categories.edit');
-        Route::get('/update', 'Admin\CategoryController@update')->name('admin.categories.update');
-        Route::get('/destroy/{id}', 'Admin\CategoryController@destroy')->name('admin.categories.destroy');
+        Route::post('/update', 'Admin\CategoryController@update')->name('admin.categories.update');
+        Route::post('/destroy', 'Admin\CategoryController@destroy')->name('admin.categories.destroy');
+    });
+
+    Route::group(['prefix' => 'products'], function() {
+        Route::get('/', 'Admin\ProductController@index')->name('admin.products.index');
+        Route::get('/create', 'Admin\ProductController@create')->name('admin.products.create');
+        Route::post('/store', 'Admin\ProductController@store')->name('admin.products.store');
+        Route::get('/show/{id}', 'Admin\ProductController@show')->name('admin.products.show');
+        Route::get('/edit/{id}', 'Admin\ProductController@edit')->name('admin.products.edit');
+        Route::post('/update', 'Admin\ProductController@update')->name('admin.products.update');
+        Route::post('/destroy', 'Admin\ProductController@destroy')->name('admin.products.destroy');
     });
 
 

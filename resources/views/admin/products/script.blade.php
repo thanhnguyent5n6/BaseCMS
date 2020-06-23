@@ -2,7 +2,7 @@
     'use strict';
     // Class definition
 
-    var CategoryDatatable = function() {
+    var ProductDatatable = function() {
         // Private functions
 
         // demo initializer
@@ -49,15 +49,27 @@
                         field: 'stt',
                         title: 'STT',
                     }, {
+                        field: 'code',
+                        title: 'Mã sản phẩm',
+                    }, {
                         field: 'name',
-                        title: 'Tên danh mục',
+                        title: 'Tên sản phẩm',
                     }, {
-                        field: 'icon',
-                        title: 'Icon',
-                    }, {
-                        field: 'priority',
-                        title: 'Độ ưu tiên',
-                    }, {
+                        field: 'description',
+                        title: 'Mô tả',
+                    },
+                    {
+                        field: 'unit_price',
+                        title: 'Giá gốc',
+                    },
+                    {
+                        field: 'sales',
+                        title: 'Khuyến mãi',
+                    },{
+                        field: 'unit',
+                        title: 'Đơn vị',
+                    },
+                    {
                         field: 'status',
                         title: 'Trạng thái',
                         // callback function support for column rendering
@@ -70,10 +82,6 @@
                         },
                     },
                     {
-                        field: 'parent',
-                        title: 'Danh mục cha',
-                    },
-                    {
                         field: 'Actions',
                         title: 'Actions',
                         sortable: false,
@@ -81,7 +89,7 @@
                         overflow: 'visible',
                         autoHide: false,
                         template: function(row) {
-                            let urlEdit = "{{ route('admin.categories.edit',['id' => 'txt_edit_id']) }}";
+                            let urlEdit = "{{ route('admin.products.edit',['id' => 'txt_edit_id']) }}";
                             var url = urlEdit.replace('txt_edit_id', row.id);
                             return `
 						<a href="`+url+`" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Cập nhật">
@@ -113,7 +121,7 @@
                 }
 
                 if(confirm('Bạn có chắc muốn xóa '+ids.length+' danh mục này?')) {
-                    let urlDelete = `{{ route('admin.categories.destroy') }}`;
+                    let urlDelete = `{{ route('admin.products.destroy') }}`;
                     $.ajax({
                         url: urlDelete,
                         type: "POST",
@@ -140,7 +148,7 @@
     }();
 
     jQuery(document).ready(function() {
-        CategoryDatatable.init();
+        ProductDatatable.init();
     });
 
 

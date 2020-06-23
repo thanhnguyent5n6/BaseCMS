@@ -11,7 +11,6 @@
     <meta name="author" content="Mosaddek">
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="{{ asset('backend/img/favicon.html') }}">
-
     <title>@yield('title')</title>
 
     <!-- Bootstrap core CSS -->
@@ -84,7 +83,13 @@
     <!--footer end-->
 </section>
 
-
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{{ asset('backend/js/jquery.js') }}"></script>
 <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>

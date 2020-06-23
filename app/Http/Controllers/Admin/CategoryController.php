@@ -23,18 +23,7 @@ class CategoryController extends BaseController
         $categories = $this->model->getAll();
         $parent_categories = $this->model->getItemParents()->keyBy('id');
 
-        $data_items = $categories->map(function($category, $key) use ($parent_categories) {
-            $data = new \stdClass();
-            $data->id = $category->id;
-            $data->stt = $key+1;
-            $data->name = @$category->name;
-            $data->icon = @$category->icon;
-            $data->priority = @$category->priority;
-            $data->status = @$category->is_active;
-            $data->parent = isset($parent_categories[$category->parent_id]) ? $parent_categories[$category->parent_id]->name : '';
-            $data->parent_id = @$category->parent_id;
-            return $data;
-        })->toJson();
+        $data_items = $this->getDataItems($categories, $parent_categories);
 
         return view('admin.categories.index', compact('data_items', 'parent_categories'));
     }
@@ -61,17 +50,10 @@ class CategoryController extends BaseController
                 'description.max' => 'Mô tả không quá 1000 ký tự',
             ]);
         $data = $request->all();
-        $parameters = $this->model->initParameters();
-        $parameters['code'] = $this->model->getCodeUnique("category");
-        $parameters['name'] = $data['name'] ?? '';
-        $parameters['parent_id'] = $data['parent_id'] ?? 0;
-        $parameters['parent_id'] = $data['parent_id'] ?? 0;
-        $parameters['icon'] = $data['icon'] ?? '';
-        $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
-        $parameters['priority'] = isset($data['priority']) ? $data['priority'] : 0;
-        $parameters['status'] = isset($data['status']) ? 1 : 0;
+        $parameters = $this->model->getParameters($data);
+        $parameters['code'] = $this->model->getCodeUnique("category_");
 
-        $data_item = $this->model->create($parameters);
+        $data_item = $this->model->createData($parameters);
         if (!empty($data_item)) {
             Session::flash('success', 'Thêm mới danh mục thành công');
             return redirect()->back();
@@ -88,20 +70,72 @@ class CategoryController extends BaseController
     {
         $id = $request->id ?? 0;
         $data_item = $this->model->getInfoById($id);
-        if(empty($data_item))
+        if (empty($data_item))
             return redirect()->back()->withErrors('Không tìm thấy danh mục');
         $is_update = true;
         $parent_categories = $this->model->getItemParents()->keyBy('id');
-        return view('admin.categories.form', compact('is_update', 'parent_categories','data_item'));
+        $priority = $data_item->priority ?? 0;
+        return view('admin.categories.form', compact('is_update', 'parent_categories', 'data_item', 'priority'));
     }
 
-    public function update()
+    public function update(Request $request)
     {
-
+        $data = $request->all();
+        $id = $data['id'] ?? 0;
+        $data_item = $this->model->getInfoById($id);
+        if (empty($data_item))
+            return redirect()->back()->withErrors('Không tìm thấy danh mục');
+        $this->validate($request,
+            [
+                'name' => 'required|max:255',
+                'icon' => 'max:100',
+                'description' => 'max:1000',
+            ],
+            [
+                'name.required' => 'Vui lòng nhập tên danh mục',
+                'name.max' => 'Tên danh mục không quá 255 ký tự',
+                'icon.max' => 'Icon không quá 50 ký tự',
+                'description.max' => 'Mô tả không quá 1000 ký tự',
+            ]);
+        $data = $request->all();
+        $parameters = $this->model->getParameters($data);
+        $data_item = $this->model->updateByID($id, $parameters);
+        if (!empty($data_item)) {
+            Session::flash('success', 'Cập nhật danh mục thành công');
+            return redirect()->back();
+        }
+        return redirect()->back()->withErrors('Cập nhật danh mục thất bại');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $data = $request->all();
+        $ids = $data['ids'] ?? [];
+        foreach($ids as $id) {
+            $this->model->softDelete($id);
+        }
+        return $this->Success('Xóa danh mục thành công');
+    }
 
+    /**
+     * @param $categories
+     * @param $parent_categories
+     * @return mixed
+     */
+    private function getDataItems($categories, $parent_categories)
+    {
+        $data_items = $categories->map(function ($category, $key) use ($parent_categories) {
+            $data = new \stdClass();
+            $data->id = $category->id;
+            $data->stt = $key + 1;
+            $data->name = @$category->name;
+            $data->icon = @$category->icon;
+            $data->priority = @$category->priority;
+            $data->status = @$category->status;
+            $data->parent = isset($parent_categories[$category->parent_id]) ? $parent_categories[$category->parent_id]->name : '';
+            $data->parent_id = @$category->parent_id;
+            return $data;
+        })->toJson();
+        return $data_items;
     }
 }

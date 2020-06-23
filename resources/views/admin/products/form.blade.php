@@ -1,6 +1,6 @@
 @extends('layouts.metronics.master')
 @section('page_title')
-    @if($is_update) Cập nhật danh mục sản phẩm @else Thêm mới danh mục sản phẩm @endif
+    @if($is_update) Cập nhật sản phẩm @else Thêm mới sản phẩm @endif
 
 @stop
 @section('bread_crumb')
@@ -9,7 +9,7 @@
         <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
         <span class="kt-subheader__breadcrumbs-separator"></span>
         <a href="{{ route('admin.categories.index') }}" class="kt-subheader__breadcrumbs-link">
-            Danh mục sản phẩm </a>
+            Sản phẩm </a>
         <span class="kt-subheader__breadcrumbs-separator"></span>
         <a href="javascript:;" class="kt-subheader__breadcrumbs-link">
             @if($is_update) Cập nhật @else Thêm mới @endif </a>
@@ -41,18 +41,34 @@
                     @endif
                     <div class="kt-portlet__body">
                         <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Tên danh mục</label>
+                            <label for="example-search-input" class="col-2 col-form-label">Tên sản phẩm:</label>
                             <div class="col-10">
                                 <input required class="form-control" type="text" value="{{ @$data_item->name }}" name="name">
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="example-url-input" class="col-2 col-form-label">Mô tả:</label>
+                            <div class="col-10">
+                                <textarea class="form-control" name="description">{!! @$data_item->description_display !!}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-url-input" class="col-2 col-form-label">Nội dung:</label>
+                            <div class="col-10">
+                                <textarea class="form-control" id="content" name="content">{!! @$data_item->content_display !!}</textarea>
+                                <script type="text/javascript">
+                                    CKEDITOR.replace('content');
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="example-email-input" class="col-2 col-form-label">Danh mục cha</label>
                             <div class="col-10">
                                 <select name="parent_id" class="form-control select2">
                                     <option value="0">-- Không chọn</option>
-                                    @if(isset($parent_categories) && count($parent_categories) > 0)
-                                        @foreach($parent_categories as $category)
+                                    @if(isset($categories) && count($categories) > 0)
+                                        @foreach($categories as $category)
                                             <option @if($is_update && isset($data_item->parent_id) && $data_item->parent_id == $category->id) selected @endif
                                                     value="{{ @$category->id }}">{{ @$category->name }}</option>
                                         @endforeach

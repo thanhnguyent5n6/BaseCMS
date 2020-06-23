@@ -1,32 +1,43 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
+use App\Models\BaseModel;
 use App\Traits\Code;
 
-class Category extends BaseModel
+class Product extends BaseModel
 {
     use Code;
 
-    protected $table = "categories";
+    protected $table = "products";
 
     protected $fillable = [
-        'parent_id',
+        'category_id',
+        'supplier_id',
         'code',
         'name',
         'icon',
         'description',
-        'image',
-        'priority',
+        'content',
+        'unit_price',
+        'sales',
+        'promotion_price',
+        'avatar',
+        'unit',
         'status',
         'is_deleted',
         'created_by',
         'updated_by',
     ];
 
-    public function product()
+    public function category()
     {
-        return $this->hasMany(Product::class, 'id_type', 'id')->where('is_deleted', NO_DELETED);
+    	return $this->belongsTo(Category::class,'category_id','id')->where('is_deleted', NO_DELETED);
+    }
+
+    public function bill_detail()
+    {
+    	return $this->hasMany('Appp\BillDetail','id_product','id');
     }
 
     public function getStatusDisplayAttribute()
@@ -45,14 +56,17 @@ class Category extends BaseModel
         return "";
     }
 
-    public function getItemParents()
+    public function getContentDisplayAttribute()
     {
-        return $this->where('parent_id', 0)->where('is_deleted', NO_DELETED)->get();
+        if(!empty($this->content)) {
+            return html_entity_decode($this->content);
+        }
+        return "";
     }
 
     public function initParameters()
     {
-        return array('status' => 0, 'priority' => 0);
+        return array('status' => 0);
     }
 
     public function getParameters($data)
@@ -67,5 +81,4 @@ class Category extends BaseModel
         $parameters['status'] = isset($data['status']) ? 1 : 0;
         return $parameters;
     }
-
 }

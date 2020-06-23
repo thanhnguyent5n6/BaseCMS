@@ -25,7 +25,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <title>@yield('page_title')</title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--begin::Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
@@ -94,6 +94,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Layout Skins -->
 
     <link rel="shortcut icon" href="{{ asset('/assets/media/logos/favicon.ico') }}" />
+    <script src="{{ asset('/backend/ckeditor/ckeditor.js') }}" type="text/javascript" ></script>
     @yield('page_css')
 </head>
 
@@ -761,6 +762,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{ asset('/assets/js/demo1/pages/dashboard.js') }}" type="text/javascript"></script>
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(document).ready(function() {
         $(".select2").select2();
     });

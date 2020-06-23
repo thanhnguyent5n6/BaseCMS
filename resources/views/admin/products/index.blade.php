@@ -1,14 +1,14 @@
 @extends('layouts.metronics.master')
 @section('page_title')
-    Danh mục sản phẩm
+    Quản lý sản phẩm
 @stop
 @section('bread_crumb')
     <span class="kt-subheader__separator kt-hidden"></span>
     <div class="kt-subheader__breadcrumbs">
         <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
         <span class="kt-subheader__breadcrumbs-separator"></span>
-        <a href="{{ route('admin.categories.index') }}" class="kt-subheader__breadcrumbs-link">
-            Danh mục sản phẩm </a>
+        <a href="{{ route('admin.products.index') }}" class="kt-subheader__breadcrumbs-link">
+            Quản lý sản phẩm </a>
     </div>
 @stop
 @section('page_css')
@@ -24,7 +24,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
                         <h3 class="kt-portlet__head-title">
-                            Quản lý danh mục sản phẩm
+                            Quản lý danh sách sản phẩm
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
@@ -33,7 +33,7 @@
                                 <i class="la la-trash"></i> Xóa
                             </a>
                             &nbsp;
-                            <a href="{{ route('admin.categories.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                            <a href="{{ route('admin.products.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                                 <i class="la la-plus"></i>
                                 Thêm mới
                             </a>
@@ -58,12 +58,12 @@
                                     <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
                                         <div class="kt-form__group kt-form__group--inline">
                                             <div class="kt-form__label">
-                                                <label>Danh mục cha:</label>
+                                                <label>Danh mục sản phẩm:</label>
                                             </div>
                                             <div class="kt-form__control">
                                                 <select class="form-control bootstrap-select" id="kt_form_parent_id">
                                                     <option value="">-- Tất cả</option>
-                                                    @foreach($parent_categories as $category)
+                                                    @foreach($categories as $category)
                                                         <option value="{!! @$category->name !!}">{!! @$category->name !!}</option>
                                                     @endforeach
                                                 </select>
@@ -90,5 +90,5 @@
 @stop
 
 @section('page_js')
-    @include('admin.categories.script')
+    @include('admin.products.script')
 @stop
