@@ -39,7 +39,8 @@ class ProductController extends BaseController
     {
         $is_update = false;
         $categories = $this->category->getAll()->keyBy('id');
-        return view('admin.products.form', compact('is_update', 'categories'));
+        $suppliers = [];
+        return view('admin.products.form', compact('is_update', 'categories','suppliers'));
     }
 
     public function store(Request $request)

@@ -20,6 +20,11 @@ class BaseModel extends Model
         return $this->where('id', $id)->where('is_deleted', NO_DELETED)->first();
     }
 
+    public function getFirstInfo($parameters)
+    {
+        return $this->where($parameters)->where('is_deleted', NO_DELETED)->first();
+    }
+
     public function softDelete($id)
     {
         return $this->where('id', $id)->update(['is_deleted' => DELETED]);

@@ -13,6 +13,10 @@
 
 Route::auth();
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 Route::get('/home', 'HomeController@index');
 
 include_once(base_path() . '/routes/includes/login.php');

@@ -39,34 +39,49 @@
                     @if($is_update)
                         <input type="hidden" name="id" value="{{ @$data_item->id }}">
                     @endif
+
                     <div class="kt-portlet__body">
+
                         <div class="form-group row">
                             <label for="example-search-input" class="col-2 col-form-label">Tên sản phẩm:</label>
                             <div class="col-10">
                                 <input required class="form-control" type="text" value="{{ @$data_item->name }}" name="name">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="example-number-input" class="col-2 col-form-label">Ảnh đại diện</label>
+                            <div class="col-10">
+                                <div class="input-group">
+                                   <span class="input-group-btn">
+                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary" style="color: white;">
+                                       <i class="fa fa-picture-o"></i> Chọn ảnh đại diện:
+                                     </a>
+                                   </span>
+                                    <input id="thumbnail" class="form-control" type="text" name="filepath">
+                                </div>
+                                <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="example-url-input" class="col-2 col-form-label">Mô tả:</label>
                             <div class="col-10">
                                 <textarea class="form-control" name="description">{!! @$data_item->description_display !!}</textarea>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="example-url-input" class="col-2 col-form-label">Nội dung:</label>
                             <div class="col-10">
                                 <textarea class="form-control" id="content" name="content">{!! @$data_item->content_display !!}</textarea>
-                                <script type="text/javascript">
-                                    CKEDITOR.replace('content');
-                                </script>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="example-email-input" class="col-2 col-form-label">Danh mục cha</label>
+                            <label for="example-email-input" class="col-2 col-form-label">Danh mục:</label>
                             <div class="col-10">
-                                <select name="parent_id" class="form-control select2">
-                                    <option value="0">-- Không chọn</option>
+                                <select name="category_id" class="form-control select2">
                                     @if(isset($categories) && count($categories) > 0)
                                         @foreach($categories as $category)
                                             <option @if($is_update && isset($data_item->parent_id) && $data_item->parent_id == $category->id) selected @endif
@@ -76,31 +91,40 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label for="example-url-input" class="col-2 col-form-label">Icon</label>
+                            <label for="example-email-input" class="col-2 col-form-label">Nhà cung cấp:</label>
                             <div class="col-10">
-                                <input class="form-control" type="text" value="{{ @$data_item->icon }}" name="icon">
+                                <select name="supplier_id" class="form-control select2">
+                                    <option value="0">-- Không chọn</option>
+                                </select>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label for="example-url-input" class="col-2 col-form-label">Mô tả</label>
-                            <div class="col-10">
-                                <textarea class="form-control" name="description">{!! @$data_item->description_display !!}</textarea>
+                            <label for="example-url-input" class="col-2 col-form-label">Giá niêm yết:</label>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input type="text" min="0" class="form-control validate-input-money" placeholder="Giá..." value="{{ @number_format(@$data_item->price) }}">
+                                    <input type="number" min="0" class="value-input-money" name="price" value="{{ @$data_item->price }}" hidden>
+                                    <label style="margin-left: 10px;" for="example-url-input" class="col-form-label">vnđ</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-number-input" class="col-2 col-form-label">Thứ tự hiển thị</label>
-                            <div class="col-10">
-                                <input min="0" required class="form-control" type="number" value="{{ isset($priority) ? $priority : 0 }}" name="priority">
+
+                            <label for="example-url-input" class="col-2 col-form-label">Khuyến mãi:</label>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input type="text" min="0" class="form-control validate-input-sales" placeholder="%..." value="{{ @number_format(@$data_item->price) }}">
+                                    <input type="number" min="0" max="100" class="value-input-sales" name="sales" value="{{ @$data_item->price }}" hidden>
+                                    <label style="margin-left: 10px;" for="example-url-input" class="col-form-label">%</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-number-input" class="col-2 col-form-label">Trạng thái</label>
-                            <div class="col-10">
-                                <label class="kt-checkbox kt-checkbox--success">
-                                    <input value="1" name="status" @if(isset($data_item) && $data_item->status == NO_ACTIVE) @else checked @endif type="checkbox">
-                                    <span></span>
-                                </label>
+
+                            <label for="example-url-input" class="col-2 col-form-label">Đơn vị:</label>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input placeholder="Nhập đơn vị..." class="form-control" type="text" value="{{ @$data_item->unit }}" name="unit">
+                                </div>
                             </div>
                         </div>
 
@@ -126,7 +150,29 @@
 @stop
 
 @section('page_js')
+    <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     <script>
+        Product = {
+            _inputValidateMoney: ".validate-input-money",
+            _inputValueMoney: ".value-input-money",
 
+            _inputValidateSales: ".validate-input-sales",
+            _inputValueSales: ".value-input-sales",
+
+            validateInputMoney: function () {
+                Validate.validate_number(Product._inputValidateMoney);
+                Validate.init_input_format_number($(Product._inputValidateMoney), $(Product._inputValueMoney));
+
+                Validate.validate_number(Product._inputValidateSales);
+                Validate.init_input_format_number($(Product._inputValidateSales), $(Product._inputValueSales));
+            },
+        }
+
+        initCkeditor('content');
+
+        $(document).ready(function() {
+            Product.validateInputMoney();
+            $('#lfm').filemanager('image');
+        });
     </script>
 @stop

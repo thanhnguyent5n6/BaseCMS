@@ -761,6 +761,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{ asset('/assets/js/demo1/pages/dashboard.js') }}" type="text/javascript"></script>
+@include('commons.common_js')
 <script>
     $.ajaxSetup({
         headers: {

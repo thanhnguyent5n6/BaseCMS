@@ -3,6 +3,7 @@
 namespace App\Models\Products;
 
 use App\Models\BaseModel;
+use App\Models\Category;
 use App\Traits\Code;
 
 class Product extends BaseModel
@@ -19,10 +20,10 @@ class Product extends BaseModel
         'icon',
         'description',
         'content',
-        'unit_price',
+        'price',
         'sales',
         'promotion_price',
-        'avatar',
+        'thumbnail',
         'unit',
         'status',
         'is_deleted',
