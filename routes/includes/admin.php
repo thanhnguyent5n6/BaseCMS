@@ -4,6 +4,10 @@ Route::get('admin', function(){
     return redirect()->route('admin.index');
 });
 
+Route::group(['prefix' => 'file'], function() {
+    Route::post('/upload','FileController@upload')->name('file.upload');
+});
+
 Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
     Route::group(['prefix' => 'users'], function() {

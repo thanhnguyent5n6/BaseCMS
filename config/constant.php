@@ -10,3 +10,10 @@ define('YES',1);
 define('NO',0);
 define('TXT_YES','Có');
 define('TXT_NO','Không');
+
+define('IMG_NEW',0);
+define('IMG_SAVED',1);
+define('IMG_DELETED',2);
+define('UPLOAD_PRODUCT_PATH','upload/products');
+
+define('PAGINATE_DEFAULT', 20);

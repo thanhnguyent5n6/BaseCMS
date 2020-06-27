@@ -15,8 +15,11 @@ class BaseModel extends Model
         return $this->create($parameters);
     }
 
-    public function getInfoById($id)
+    public function getInfoById($id, $relation = [])
     {
+        if(count($relation) > 0)
+            return $this->where('id', $id)->where('is_deleted', NO_DELETED)->with($relation)->first();
+
         return $this->where('id', $id)->where('is_deleted', NO_DELETED)->first();
     }
 
@@ -43,6 +46,9 @@ class BaseModel extends Model
     public function updateByID($id, array $options = [])
     {
         $options['updated_by'] = Auth::user()->id;
-        return $this->where('id', $id)->update($options);
+        $data = $this->where('id', $id)->update($options);
+        if(!empty($data))
+            return $this->getInfoById($id);
+        return false;
     }
 }

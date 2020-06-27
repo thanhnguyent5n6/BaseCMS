@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class CategoryController extends BaseController
 {
-    private $model;
-
     public function __construct()
     {
         $this->model = new Category();

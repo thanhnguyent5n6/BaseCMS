@@ -9,15 +9,16 @@ use App\Models\Category;
 use App\Models\Options\OptionItem;
 use App\Models\Options\OptionType;
 use App\Models\Products\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends BaseController
 {
-    private $model;
     private $category;
     private $option_type;
     private $option_item;
+    private $supplier;
 
     public function __construct()
     {
@@ -25,6 +26,7 @@ class ProductController extends BaseController
         $this->category = new Category();
         $this->option_type = new OptionType();
         $this->option_item = new OptionItem();
+        $this->supplier = new Supplier();
     }
 
     public function index()
@@ -39,7 +41,7 @@ class ProductController extends BaseController
     {
         $is_update = false;
         $categories = $this->category->getAll()->keyBy('id');
-        $suppliers = [];
+        $suppliers = $this->supplier->getAll();
         return view('admin.products.form', compact('is_update', 'categories','suppliers'));
     }
 
@@ -48,25 +50,25 @@ class ProductController extends BaseController
         $this->validate($request,
             [
                 'name' => 'required|max:255',
-                'icon' => 'max:100',
                 'description' => 'max:1000',
+                'price' => 'required|min:0',
             ],
             [
                 'name.required' => 'Vui lòng nhập tên danh mục',
                 'name.max' => 'Tên danh mục không quá 255 ký tự',
-                'icon.max' => 'Icon không quá 50 ký tự',
-                'description.max' => 'Mô tả không quá 1000 ký tự',
+                'price.required' => 'Bạn chưa nhập giá',
+                'price.min' => 'Giá sản phẩm lớn hơn 0đ',
             ]);
         $data = $request->all();
         $parameters = $this->model->getParameters($data);
-        $parameters['code'] = $this->model->getCodeUnique("product_");
+        $parameters['code'] = $this->model->getCodeUnique("product");
 
-        $data_item = $this->model->createData($parameters);
+        $data_item = $this->model->createProduct($parameters);
         if (!empty($data_item)) {
-            Session::flash('success', 'Thêm mới danh mục thành công');
+            Session::flash('success', 'Thêm mới sản phẩm thành công');
             return redirect()->back();
         }
-        return redirect()->back()->withErrors('Thêm mới danh mục thất bại');
+        return redirect()->back()->withErrors('Thêm mới sản phẩm thất bại');
     }
 
     public function show()
@@ -77,13 +79,14 @@ class ProductController extends BaseController
     public function edit(Request $request)
     {
         $id = $request->id ?? 0;
-        $data_item = $this->model->getInfoById($id);
+        $data_item = $this->model->getInfoById($id,['product_image.image']);
+
         if (empty($data_item))
-            return redirect()->back()->withErrors('Không tìm thấy danh mục');
+            return redirect()->back()->withErrors('Không tìm thấy sản phẩm');
         $is_update = true;
-        $parent_products = $this->model->getItemParents()->keyBy('id');
-        $priority = $data_item->priority ?? 0;
-        return view('admin.products.form', compact('is_update', 'parent_products', 'data_item', 'priority'));
+        $categories = $this->category->getAll()->keyBy('id');
+        $suppliers = $this->supplier->getAll();
+        return view('admin.products.form', compact('is_update', 'categories', 'data_item', 'suppliers'));
     }
 
     public function update(Request $request)
@@ -107,7 +110,7 @@ class ProductController extends BaseController
             ]);
         $data = $request->all();
         $parameters = $this->model->getParameters($data);
-        $data_item = $this->model->updateByID($id, $parameters);
+        $data_item = $this->model->updateProduct($id, $parameters);
         if (!empty($data_item)) {
             Session::flash('success', 'Cập nhật danh mục thành công');
             return redirect()->back();
