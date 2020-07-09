@@ -9,7 +9,9 @@ Route::group(['prefix' => 'file'], function() {
 });
 
 Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
+
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+
     Route::group(['prefix' => 'users'], function() {
         Route::get('/','Admin\UserController@index')->name('admin.user.index');
     });
@@ -32,6 +34,16 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::get('/edit/{id}', 'Admin\ProductController@edit')->name('admin.products.edit');
         Route::post('/update', 'Admin\ProductController@update')->name('admin.products.update');
         Route::post('/destroy', 'Admin\ProductController@destroy')->name('admin.products.destroy');
+    });
+
+    Route::group(['prefix' => 'posts'], function() {
+        Route::get('/', 'Admin\PostController@index')->name('admin.posts.index');
+        Route::get('/create', 'Admin\PostController@create')->name('admin.posts.create');
+        Route::post('/store', 'Admin\PostController@store')->name('admin.posts.store');
+        Route::get('/show/{id}', 'Admin\PostController@show')->name('admin.posts.show');
+        Route::get('/edit/{id}', 'Admin\PostController@edit')->name('admin.posts.edit');
+        Route::post('/update', 'Admin\PostController@update')->name('admin.posts.update');
+        Route::post('/destroy', 'Admin\PostController@destroy')->name('admin.posts.destroy');
     });
 
 

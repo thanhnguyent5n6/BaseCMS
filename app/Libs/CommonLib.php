@@ -4,6 +4,7 @@
 namespace App\Libs;
 
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class CommonLib
@@ -47,38 +48,6 @@ class CommonLib
         return false;
     }
 
-    public static function createSlug($model, $title, $id = 0)
-    {
-        // Normalize the title
-        $slug = $slug = Str::slug($title, '-');
-
-        // Get any that could possibly be related.
-        // This cuts the queries down by doing it once.
-        $allSlugs = self::getRelatedSlugs($model, $slug, $id);
-
-        // If we haven't used it before then we are all good.
-        if (! $allSlugs->contains('slug', $slug)){
-            return $slug;
-        }
-
-        // Just append numbers like a savage until we find not used.
-        for ($i = 1; $i <= 10; $i++) {
-            $newSlug = $slug.'-'.$i;
-            if (! $allSlugs->contains('slug', $newSlug)) {
-                return $newSlug;
-            }
-        }
-
-        throw new \Exception('Can not create a unique slug');
-    }
-
-    private static function getRelatedSlugs($model, $slug, $id = 0)
-    {
-        return $model::select('slug')->where('slug', 'like', $slug.'%')
-            ->where('id', '<>', $id)
-            ->get();
-    }
-
     public static function getFileAttachDetach($image_ids, $old_image_ids)
     {
         $img_deletes = [];
@@ -93,5 +62,16 @@ class CommonLib
                 unset($image_ids[$key]);
         }
         return array($image_ids, $img_deletes);
+    }
+
+    /**
+     * Display date with format
+     * @param $date_input
+     * @param string $format_dat
+     * @return string
+     */
+    public static function getDisplayDate($date_input, $format_dat = DISPLAY_DATE_FORMAT)
+    {
+        return empty($date_input) ? "" : Carbon::parse($date_input)->format($format_dat);
     }
 }

@@ -8,11 +8,13 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\ProductImage;
 use App\Traits\Code;
+use App\Traits\Slug;
 use Illuminate\Support\Facades\DB;
 
 class Product extends BaseModel
 {
     use Code;
+    use Slug;
 
     protected $table = "products";
 
@@ -20,6 +22,7 @@ class Product extends BaseModel
         'category_id',
         'supplier_id',
         'code',
+        'slug',
         'name',
         'icon',
         'description',
@@ -88,6 +91,7 @@ class Product extends BaseModel
         $parameters = $this->initParameters();
         $parameters['category_id'] = $data['category_id'] ?? 0;
         $parameters['supplier_id'] = $data['supplier_id'] ?? 0;
+        $parameters['slug'] = $this->createSlug($data['name']);
         $parameters['name'] = $data['name'] ?? '';
         $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
         $parameters['content'] = isset($data['content']) ? html_entity_decode($data['content']) : '';
@@ -112,8 +116,10 @@ class Product extends BaseModel
         DB::beginTransaction();
         try {
             $result = $this->createData($parameters);
-            if(count($image_ids) > 0)
+            if(count($image_ids) > 0) {
                 $result->images()->attach($image_ids);
+                $image->uploaded($image_ids);
+            }
             foreach($image_ids as $img_id) {
                 $image->updateByID($img_id, ['status' => IMG_SAVED]);
             }
@@ -143,6 +149,7 @@ class Product extends BaseModel
 
             $result->images()->attach($image_ids);
             $result->images()->detach($img_deletes);
+            $image->uploaded($image_ids);
             foreach($image_ids as $img_id) {
                 $image->updateByID($img_id, ['status' => IMG_SAVED]);
             }

@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Libs\CommonLib;
+use App\Models\Products\Product;
 use App\Traits\Code;
+use App\Traits\Slug;
 
 class Category extends BaseModel
 {
     use Code;
+    use Slug;
 
     protected $table = "categories";
 
@@ -15,6 +19,7 @@ class Category extends BaseModel
         'code',
         'name',
         'icon',
+        'slug',
         'description',
         'image',
         'priority',
@@ -24,7 +29,7 @@ class Category extends BaseModel
         'updated_by',
     ];
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class, 'id_type', 'id')->where('is_deleted', NO_DELETED);
     }
@@ -62,10 +67,36 @@ class Category extends BaseModel
         $parameters['parent_id'] = $data['parent_id'] ?? 0;
         $parameters['parent_id'] = $data['parent_id'] ?? 0;
         $parameters['icon'] = $data['icon'] ?? '';
+        $parameters['slug'] = $slug = $this->createSlug($parameters['name']);;
         $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
         $parameters['priority'] = isset($data['priority']) ? $data['priority'] : 0;
         $parameters['status'] = isset($data['status']) ? 1 : 0;
         return $parameters;
+    }
+
+    public function getCategoryByLevel()
+    {
+        $categories = $this->getData(['is_active' => ACTIVE])->toArray();
+        $data_items = $this->categoryByLevel($categories);
+        return $data_items;
+    }
+
+    private function categoryByLevel($data_items, $parent_id = 0, $level = 0)
+    {
+        $result = [];
+        foreach($data_items as $key => $data_item) {
+            if($parent_id == $data_item['parent_id']) {
+                $result[$key]['id'] = $data_item['id'];
+                $result[$key]['parent_id'] = $data_item['parent_id'];
+                $result[$key]['code'] = $data_item['code'];
+                $result[$key]['name'] = $data_item['name'];
+                $result[$key]['icon'] = $data_item['icon'];
+                $result[$key]['level'] = $level;
+                unset($data_items[$key]);
+                $result[$key]['child'] = $this->categoryByLevel($data_items, $data_item['id'], $level+1);
+            }
+        }
+        return $result;
     }
 
 }

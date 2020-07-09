@@ -17,3 +17,16 @@ define('IMG_DELETED',2);
 define('UPLOAD_PRODUCT_PATH','upload/products');
 
 define('PAGINATE_DEFAULT', 20);
+
+define('DISPLAY_DATE_FORMAT', 'd/m/Y'); //Format hien thi ngay thang nam
+define('DISPLAY_DATETIME_FORMAT', 'H﻿﻿ d/m/Y'); //Format hien thi ngay thang nam gio phut giay
+define('DISPLAY_SHORT_DATETIME_FORMAT', 'H d/m/Y'); //Format hien thi ngay thang nam gio phut giay
+define('DISPLAY_TIME_FORMAT', 'H:i');//Format hien thi gio phut
+define('DISPLAY_TIME_SECOND_FORMAT', 'H:i:s'); //Format hien thi gio phut giay
+define('DISPLAY_DATETIME_FORMAT_2', 'd/m/Y H:i:s'); //Format hien thi ngay thang nam gio phut giay
+
+define('DISPLAY_JS_DATE_FORMAT', 'dd/mm/yyyy'); //Format dung trong datepicker javascript
+define('DISPLAY_JS_DATETIME_FORMAT', 'H﻿﻿ dd/mm/yyyy');//Format dung trong datetimepicker javascript
+define('DISPLAY_SHORT_TIME_FORMAT', 'd/m/Y H:i');
+define('DISPLAY_JS_TIME_FORMAT', 'H:i');//Format dung trong timepicker javascript
+define('DISPLAY_JS_TIME_SECOND_FORMAT', 'H:i:s');//Format dung trong timepicker javascript

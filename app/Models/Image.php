@@ -5,10 +5,12 @@ namespace App\Models;
 
 
 use App\Traits\Code;
+use App\Traits\Slug;
 
 class Image extends BaseModel
 {
     use Code;
+    use Slug;
 
     protected $table = "images";
 
@@ -22,4 +24,16 @@ class Image extends BaseModel
         'created_by',
         'updated_by',
     ];
+
+    public function uploaded($img_ids = [])
+    {
+        try {
+            foreach ($img_ids as $img_id) {
+                $this->updateByID($img_id, ['status' => IMG_SAVED]);
+            }
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }

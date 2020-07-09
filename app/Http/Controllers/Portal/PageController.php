@@ -1,56 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Portal;
 
-
-
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\BasePortalController;
 use App\Libs\Apriori;
 use App\Libs\ProductSuggestion;
+use App\Models\Category;
+use App\Models\Products\Product;
 use App\Slide;
-use App\Product;
-use App\ProductType;
-use App\Cart;
-use Session;
-use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Requests;
-use Hash;
-use Auth;
-use DB;
-class PageController extends Controller
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth;
+use Illuminate\Support\Facades\DB;
+
+class PageController extends BasePortalController
 {
-    public function getIndex()
+    private $product;
+    private $slide;
+    public function __construct()
     {
+        parent::__construct();
+        $this->product = new Product();
+        $this->slide = new Slide;
+    }
 
-        $apriori_lib = new Apriori(40, 2);
-
-    	$slide = Slide::all();
-    	$new_product = Product::where('new','=','1')->paginate(8);
-    	$sp_km = Product::where('promotion_price','<>','0')->paginate(8);
-
-        $data_suggestion = $apriori_lib->getProductSuggestion();
-
-        if(count($data_suggestion) > 0) {
-            $new_product_1 = $new_product;
-            $sp_km_1 = $sp_km;
-            $new_product = $data_suggestion;
-            $sp_km = $data_suggestion;
-            $new_product_id = $new_product->pluck('id')->toArray();
-            $sp_km_id = $sp_km->pluck('id')->toArray();
-
-            foreach($new_product_1 as $product) {
-                if(!in_array($product->id, $new_product_id)) {
-                    $new_product->push($product);
-                }
-            }
-            foreach($sp_km_1 as $product) {
-                if(!in_array($product->id, $sp_km_id)) {
-                    $sp_km->push($product);
-                }
-            }
-        }
-
-    	return view('page.trangchu',compact('slide','new_product','sp_km'));
+    public function index()
+    {
+    	$slides = $this->slide->getAll();
+    	$products = $this->product->getAll();
+    	$products = $products->groupBy('category_id');
+    	return view('page.index',compact('slides','products'));
     }
 
     public function getProductType($type)
@@ -97,8 +78,8 @@ class PageController extends Controller
     	$oldCart = Session('cart')?Session::get('cart'):null;
     	$cart =  new Cart($oldCart);
     	$cart->add($product,$id);
-    	$req->session()->put('cart',$cart);	
-    	return redirect()->back(); 
+    	$req->session()->put('cart',$cart);
+    	return redirect()->back();
     }
     public function postAddToCart(Request $req,$id)
     {
@@ -110,8 +91,8 @@ class PageController extends Controller
         {
            $cart->add($product,$id);
         }
-        $req->session()->put('cart',$cart); 
-        return redirect()->back(); 
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
     }
     public function getDelItemCart($id)
     {

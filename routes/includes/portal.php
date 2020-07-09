@@ -1,4 +1,12 @@
 <?php
+
+Route::get('/', function(){
+    // di chuyển đến route admin/user
+    return redirect()->route('portal.index');
+});
+
+Route::get('/index','Portal\PageController@index')->name('portal.index');
+
 /*Route::get('/', function () {
     return view('index');
 });

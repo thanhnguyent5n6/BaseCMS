@@ -33,7 +33,7 @@ class FileController extends BaseController
         try {
             $file_name = $file->getClientOriginalName();
             $base_name = explode('.',$file_name)[0];
-            $slug = CommonLib::createSlug($this->model, $base_name);
+            $slug = $this->model->createSlug($base_name);
             $file_name_save = $slug."-".Carbon::now()->timestamp;
         } catch (\Exception $exception) {
             $file_name = "";

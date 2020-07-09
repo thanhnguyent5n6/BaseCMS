@@ -1,0 +1,52 @@
+/*== Owl Control ==*/
+    .owl-theme .owl-controls .owl-buttons div .fa {
+        color: #bbb;
+        line-height: 23px;
+        transition: all ease .5s;
+    }
+    .owl-theme .owl-controls .owl-buttons div:hover .fa{
+        color:#eda843;
+    }
+    .owl-theme .owl-controls .owl-buttons div:hover{
+        border-color: #eda843;
+    }
+    .owl-theme .owl-controls .owl-buttons div {
+        height: 28px;
+        width: 45px;
+        right: 2px;
+        left: auto;
+        margin-top: -49px;
+        position: absolute;
+        top: 0;
+        text-indent: -9999px;
+        z-index: 2;
+        background: url(../imgs/abc.png) no-repeat 145% 0;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        opacity: 1;
+    }
+    .owl-theme .owl-controls .owl-buttons div:hover{
+        background-position: 145% 100%;
+    }
+    .owl-theme .owl-controls .owl-buttons .owl-prev:hover{
+        background-position: 13px 100%;
+    } 
+    .owl-theme .owl-controls .owl-buttons .owl-prev {
+        right: 52px;
+        background-position: 13px 0;
+        width: 50px;
+    }
+    .owl-item .item {
+        width: inherit !important;
+    }
+    .owl-theme .owl-controls .owl-page span {
+        background: none;
+        margin: 5px;
+        opacity: 1;
+        border: 2px solid #d1d1d1;
+    }
+    .owl-theme .owl-controls .owl-page.active span{
+        background:#eda843;
+        border:2px solid #eda843
+    }
+/*== End Owl Control ==*/     

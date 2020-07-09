@@ -17,8 +17,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::get('/home', 'HomeController@index');
-
 include_once(base_path() . '/routes/includes/login.php');
 include_once(base_path() . '/routes/includes/admin.php');
 include_once(base_path() . '/routes/includes/portal.php');

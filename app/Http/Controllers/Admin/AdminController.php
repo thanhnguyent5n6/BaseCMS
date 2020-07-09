@@ -21,7 +21,7 @@ class AdminController extends BaseController
     public function index()
     {
         $user = User::all();
-        $sale = Product::where('promotion_price','<>','0')->get();
+        $sale = Product::where('price','<>','0')->get();
         $order = Bill::all();
         $total = BillDetail::all();
         $tong = 0;

@@ -3,6 +3,8 @@
 
 namespace App\Models;
 
+use App\Libs\CommonLib;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,5 +52,21 @@ class BaseModel extends Model
         if(!empty($data))
             return $this->getInfoById($id);
         return false;
+    }
+
+    public function created_by_info(){
+        return $this->belongsTo(User::class,'created_by')->where('is_deleted',NO_DELETED);
+    }
+
+    public function updated_by_info(){
+        return $this->belongsTo(User::class,'updated_by')->where('is_deleted',NO_DELETED);
+    }
+
+    public function getCreatedAtDisplayAttribute(){
+        return CommonLib::getDisplayDate($this->created_at,DISPLAY_DATETIME_FORMAT);
+    }
+
+    public function getUpdatedAtDisplayAttribute(){
+        return CommonLib::getDisplayDate($this->updated_at,DISPLAY_DATETIME_FORMAT);
     }
 }
