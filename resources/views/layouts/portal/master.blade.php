@@ -314,19 +314,19 @@
                             <h4 class="v2_bnc_footer_title"><a href="">Chính sách chung</a></h4>
                             <ul class="v2_bnc_footer_links">
                                 <li>
-                                    <a href="/huong-dan-doi-tra-hang"><i class="fa fa-angle-right"></i> Hướng dẫn đổi
+                                    <a href="javascript:;"><i class="fa fa-angle-right"></i> Hướng dẫn đổi
                                         trả hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/huong-dan-thanh-toan"><i class="fa fa-angle-right"></i> Hướng dẫn thanh
+                                    <a href="javascript:;"><i class="fa fa-angle-right"></i> Hướng dẫn thanh
                                         toán</a>
                                 </li>
                                 <li>
-                                    <a href="/huong-dan-mua-hang"><i class="fa fa-angle-right"></i> Hướng dẫn mua
+                                    <a href="javascript:;"><i class="fa fa-angle-right"></i> Hướng dẫn mua
                                         hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/chinh-sach-bao-hanh"><i class="fa fa-angle-right"></i> Chính sách bảo hành</a>
+                                    <a href="javascript:;"><i class="fa fa-angle-right"></i> Chính sách bảo hành</a>
                                 </li>
                             </ul>
                         </div>
@@ -337,16 +337,16 @@
                             </h4>
                             <ul class="v2_bnc_footer_links">
                                 <li>
-                                    <a href="/huong-dan-doi-tra-hang">Hướng dẫn đổi trả hàng</a>
+                                    <a href="javascript:;">Hướng dẫn đổi trả hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/huong-dan-thanh-toan">Hướng dẫn thanh toán</a>
+                                    <a href="javascript:;">Hướng dẫn thanh toán</a>
                                 </li>
                                 <li>
-                                    <a href="/huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+                                    <a href="javascript:;">Hướng dẫn mua hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/chinh-sach-bao-hanh">Chính sách bảo hành</a>
+                                    <a href="javascript:;">Chính sách bảo hành</a>
                                 </li>
                             </ul>
                         </div>

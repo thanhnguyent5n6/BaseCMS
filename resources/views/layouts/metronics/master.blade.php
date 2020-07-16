@@ -246,6 +246,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--end::Svg Icon-->
 			</span>
 </div>
+<div class="modal fade" id="div_modal_box" tabindex="-1" role="dialog" aria-labelledby="div_modal_box" aria-hidden="true">
+</div>
 <!--end::Scrolltop-->
 <script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
 <!--begin::Global Config(global config for global JS scripts)-->

@@ -81,6 +81,9 @@ class CheckoutController extends BasePortalController
                 $bill_detail->quantity = $value['qty'];
                 $bill_detail->unit_price = ($value['price'] / $value['qty']);
                 $bill_detail->save();
+
+                $product = $this->product->getInfoById($value['item']->id);
+                $this->product->updateByID($product->id,['selling' => $product->selling+1]);
             }
             Session::forget('cart');
             DB::commit();

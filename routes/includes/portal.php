@@ -9,7 +9,12 @@ Route::get('/index','Portal\PageController@index')->name('portal.index');
 Route::get('add-to-cart/{id}','Portal\PageController@postAddToCart')->name('portal.add_to_cart');
 
 Route::get('product/{slug}','Portal\ProductController@detail')->name('portal.product.detail');
+
 Route::get('category/{slug}','Portal\PageController@loadByCategory')->name('portal.load_by_category');
+Route::post('load-product-in-category','Portal\PageController@loadProductByCategory')->name('portal.load_product_by_category');
+
+
+
 Route::post('/load-cart','Portal\PageController@loadCart')->name('portal.load_cart');
 Route::post('/remove-cart-item','Portal\PageController@removeCartItem')->name('portal.remove_cart_item');
 

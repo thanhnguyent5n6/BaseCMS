@@ -74,4 +74,20 @@ class CommonLib
     {
         return empty($date_input) ? "" : Carbon::parse($date_input)->format($format_dat);
     }
+
+    public static function billStatus()
+    {
+        return array(
+            BILL_NEW => 'Mới tạo',
+            BILL_WAITING => 'Đang xử lý',
+            BILL_SHIPPED => 'Đã giao hàng',
+            BILL_RETURN => 'Trả lại',
+        );
+    }
+
+    public static function getBillStatus($status_index)
+    {
+        $status = self::billStatus();
+        return $status[$status_index];
+    }
 }

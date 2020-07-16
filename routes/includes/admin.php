@@ -46,6 +46,13 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::post('/destroy', 'Admin\PostController@destroy')->name('admin.posts.destroy');
     });
 
+    Route::group(['prefix' => 'bills'], function() {
+        Route::get('/', 'Admin\BillController@index')->name('admin.bill.index');
+        Route::get('/detail/{id}', 'Admin\BillController@detail')->name('admin.bill.detail');
+        Route::post('/change-status', 'Admin\BillController@changeStatus')->name('admin.bill.change_status');
+        Route::post('/destroy', 'Admin\BillController@destroy')->name('admin.bill.destroy');
+    });
+
 
     Route::post('register', 'AdminAuth\AuthController@register');
 

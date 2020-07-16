@@ -17,12 +17,15 @@ class BaseModel extends Model
         return $this->create($parameters);
     }
 
-    public function getInfoById($id, $relation = [])
+    public function getInfoById($id, $relations = [])
     {
-        if(count($relation) > 0)
-            return $this->where('id', $id)->where('is_deleted', NO_DELETED)->with($relation)->first();
+        $query = $this->where('id', $id)->where('is_deleted', NO_DELETED);
+        if(count($relations) > 0)
+            foreach($relations as $relation) {
+                $query = $query->with($relation);
+            }
 
-        return $this->where('id', $id)->where('is_deleted', NO_DELETED)->first();
+        return $query->first();
     }
 
     public function getFirstInfo($parameters)
@@ -35,14 +38,18 @@ class BaseModel extends Model
         return $this->where('id', $id)->update(['is_deleted' => DELETED]);
     }
 
-    public function getData()
+    public function getData($relations = [])
     {
-        return $this->where('is_deleted', NO_DELETED)->get();
+        $query = $this->where('is_deleted', NO_DELETED);
+        foreach($relations as $relation) {
+            $query = $query->with($relation);
+        }
+        return $query->get();
     }
 
-    public function getAll()
+    public function getAll($relations = [])
     {
-        return $this->getData();
+        return $this->getData($relations);
     }
 
     public function updateByID($id, array $options = [])

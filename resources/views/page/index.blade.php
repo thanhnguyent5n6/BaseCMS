@@ -96,12 +96,12 @@
                                             <div class="v2_bnc_home_catepr_left_inner">
                                                 <div class="v2_bnc_home_catepr_title">
                                                     <h2 class="v2-home-catepr-title-inner"><a
-                                                            href="/may-tinh-cu">{!! @$category['name'] !!}</a></h2>
+                                                            href="{{ route('portal.load_by_category', ['slug' => @$category['slug']]) }}">{!! @$category['name'] !!}</a></h2>
                                                     @if(isset($category['child']) && count($category['child']) > 0)
                                                         @foreach($category['child'] as $category_child)
                                                             <ul class="v2_bnc_home_catepr_tabul nav-tabs">
                                                                 <li>
-                                                                    <a href="/may-tinh-cu-van-phong" data-ajax="1"
+                                                                    <a href="{{ route('portal.load_by_category', ['slug' => @$category_child['slug']]) }}" data-ajax="1"
                                                                        data-url="{{ route('portal.load_by_category',['slug' => @$category_child['slug']]) }}"
                                                                        data-id="292821" data-block="292820"
                                                                        class="active">{!! @$category_child['name'] !!}</a>

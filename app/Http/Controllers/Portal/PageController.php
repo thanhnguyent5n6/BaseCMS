@@ -42,17 +42,54 @@ class PageController extends BasePortalController
 
     public function loadByCategory($slug)
     {
-        $category = $this->category->getFirstInfo(['slug' => $slug]);
+        $category_info = $this->category->getFirstInfo(['slug' => $slug]);
+        $product_news = $this->product->getProductNews();
+        return view('page.includes.category', compact('category_info','product_news'));
+    }
+
+    public function loadProductByCategory(Request $request)
+    {
+        $category_id = $request->category_id ?? 0;
+        $sort_filter = $request->sort_filter ?? 0;
+        $txt_search = $request->txt_search ?? 0;
+        $from_price = $request->from_price ?? 0;
+        $to_price = $request->to_price ?? 0;
+
+        $category = $this->category->getInfoById($category_id);
         $category_ids = [$category->id];
-        $sub_categories = [];
         if($category->parent_id == 0) {
             $sub_categories = $this->category->getChilds($category->id);
             if(count($sub_categories) > 0)
                 $category_ids = array_merge($category_ids, $sub_categories->pluck('id')->toArray());
         }
 
-        $products = $this->product->getProductByCategoryIds($category_ids);
-        return view('page.includes.category', compact('category'));
+        $products = $this->product->getProductByCategoryIds($category_ids, $txt_search, $from_price, $to_price);
+        switch ($sort_filter) {
+            case "early":
+                $products = $products->sortBy('created_at');
+                break;
+            case "best_selling":
+                $products = $products->sortByDesc('selling');
+                break;
+            case "view":
+                $products = $products->sortByDesc('views');
+                break;
+            case "hight_to_low":
+                $products = $products->sortByDesc('price');
+                break;
+            case "low_to_hight":
+                $products = $products->sortBy('price');
+                break;
+            case "a_z":
+                $products = $products->sortBy('name');
+                break;
+            case "z_a":
+                $products = $products->sortByDesc('name');
+                break;
+            default:
+                $products = $products->sortByDesc('created_at');
+        }
+        return view('page.includes.product_in_category', compact('products'));
     }
 
     public function getAbout()

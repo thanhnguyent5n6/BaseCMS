@@ -97,12 +97,6 @@
             return '{' + json + '}'; //Return associative JSON
         }
         var Product = function() {
-            var ajaxSearchProduct = function() {
-                $(document).on('click', '.BNC-search-product', function(event) {
-                    event.preventDefault();
-                    $("#product-search").submit();
-                });
-            }
             var ajaxTab = function() {
                 $('.product-tab').click(function() {
                     var type = $(this).attr('data-type');
@@ -167,32 +161,7 @@
                 //         });
                 //     });
                 // }
-            var filterProduct = function() {
-                    $('#sort_filter').change(function() {
-                        var sort = $(this).val();
-                        var params = $('#params').val();
-                        var url_ajax = $('body').data('home_url') + '/product-ajaxProduct-ajaxFilter' + $('body').data('extension');
-                        var data = {
-                            'sort': sort,
-                            'params': params
-                        };
-                        $.post(url_ajax, data, function(response) {
-                            location.href = response;
-                        });
-                    });
-                    $('#limit_filter').change(function() {
-                        var limit = $(this).val();
-                        var params = $('#params').val();
-                        var url_ajax = $('body').data('home_url') + '/product-ajaxProduct-ajaxFilter' + $('body').data('extension');
-                        var data = {
-                            'limit': limit,
-                            'params': params
-                        };
-                        $.post(url_ajax, data, function(response) {
-                            location.href = response;
-                        });
-                    });
-                }
+
                 // cart
             var selectShop = function() {
                 // case with size
@@ -722,7 +691,6 @@
                     ajaxTab();
                     ajaxCategory();
                     //ajaxCategoryTab();
-                    filterProduct(); // page product
                     selectShop(); // cart
                     miniCart(); // cart mini
                     paymentCart();
@@ -730,7 +698,6 @@
                     select_size();
                     sizeProduct();
                     //popoper();
-                    ajaxSearchProduct();
                     handleAjaxShowMoreItemCategory();
                     handleAuction();
                     paymentCart2();

@@ -33,6 +33,7 @@ class Product extends BaseModel
         'unit',
         'status',
         'warranty_policy',
+        'selling',
         'views',
         'is_deleted',
         'created_by',
@@ -170,8 +171,20 @@ class Product extends BaseModel
         return $result;
     }
 
-    public function getProductByCategoryIds($category_ids = [])
+    public function getProductByCategoryIds($category_ids = [], $txt_search = "", $from_price = 0, $to_price = 0)
     {
-        return $this->whereIn('category_id', $category_ids)->get();
+        $query = $this->whereIn('category_id', $category_ids)->where('is_deleted', NO_DELETED)->where('status', ACTIVE);
+        if(isset($txt_search) && !empty($txt_search))
+            $query = $query->where('name','like',"%".$txt_search."%");
+        if(!empty($from_price) && !empty($to_price) && $from_price < $to_price)
+            $query = $query->whereBetween('price', [$from_price, $to_price]);
+        return $query->get();
+    }
+
+    public function getProductNews()
+    {
+        return $this->where('is_deleted', NO_DELETED)->where('status', ACTIVE)
+            ->orderBy('id', 'desc')
+            ->limit(3)->get();
     }
 }
