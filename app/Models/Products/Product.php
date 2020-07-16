@@ -32,6 +32,8 @@ class Product extends BaseModel
         'thumbnail',
         'unit',
         'status',
+        'warranty_policy',
+        'views',
         'is_deleted',
         'created_by',
         'updated_by',
@@ -79,6 +81,14 @@ class Product extends BaseModel
             return html_entity_decode($this->content);
         }
         return "";
+    }
+
+    public function getIsNewDisplayAttribute()
+    {
+        if($this->is_new ==  0) {
+            return 'Hàng cũ';
+        }
+        return 'Hàng mới';
     }
 
     public function initParameters()
@@ -158,5 +168,10 @@ class Product extends BaseModel
             DB::rollBack();
         }
         return $result;
+    }
+
+    public function getProductByCategoryIds($category_ids = [])
+    {
+        return $this->whereIn('category_id', $category_ids)->get();
     }
 }

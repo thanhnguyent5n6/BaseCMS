@@ -55,6 +55,11 @@ class Category extends BaseModel
         return $this->where('parent_id', 0)->where('is_deleted', NO_DELETED)->get();
     }
 
+    public function getChilds($category_id)
+    {
+        return $this->where('parent_id', $category_id)->where('is_deleted', NO_DELETED)->get();
+    }
+
     public function initParameters()
     {
         return array('status' => 0, 'priority' => 0);
@@ -90,6 +95,7 @@ class Category extends BaseModel
                 $result[$key]['parent_id'] = $data_item['parent_id'];
                 $result[$key]['code'] = $data_item['code'];
                 $result[$key]['name'] = $data_item['name'];
+                $result[$key]['slug'] = $data_item['slug'];
                 $result[$key]['icon'] = $data_item['icon'];
                 $result[$key]['level'] = $level;
                 unset($data_items[$key]);

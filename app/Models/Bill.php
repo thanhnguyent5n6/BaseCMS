@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Code;
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class Bill extends BaseModel
 {
-    //
+    use Code;
+
     protected $table = "bills";
     public function bill_detail()
     {

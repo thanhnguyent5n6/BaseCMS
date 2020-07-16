@@ -63,10 +63,10 @@ class BaseModel extends Model
     }
 
     public function getCreatedAtDisplayAttribute(){
-        return CommonLib::getDisplayDate($this->created_at,DISPLAY_DATETIME_FORMAT);
+        return CommonLib::getDisplayDate($this->created_at,DISPLAY_DATE_FORMAT);
     }
 
     public function getUpdatedAtDisplayAttribute(){
-        return CommonLib::getDisplayDate($this->updated_at,DISPLAY_DATETIME_FORMAT);
+        return CommonLib::getDisplayDate($this->updated_at,DISPLAY_DATE_FORMAT);
     }
 }

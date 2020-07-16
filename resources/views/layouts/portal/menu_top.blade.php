@@ -32,13 +32,13 @@
                                 <ul class="v2_menu_top_sub">
                                     @foreach($categories as $category)
                                         <li class="parent">
-                                            <a href="/game-net-sever-cu" title="{{ @$category['name'] }}">{{ @$category['name'] }}</a>
+                                            <a href="{{ route('portal.load_by_category', ['slug' => @$category['slug']]) }}" title="{{ @$category['name'] }}">{{ @$category['name'] }}</a>
 
                                             @if(isset($category['child']) && count($category['child']) > 0)
                                                 <ul class="v2_menu_top_sub_2">
                                                     @foreach($category['child'] as $category_child)
                                                         <li>
-                                                            <a href="/may-tinh-cu-van-phong">{{ @$category_child['name'] }}</a>
+                                                            <a href="{{ route('portal.load_by_category', ['slug' => @$category_child['slug']]) }}">{{ @$category_child['name'] }}</a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

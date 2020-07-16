@@ -1,4 +1,7 @@
 @extends('layouts.portal.master')
+@section('page_title')
+    {{ @$tenant_info->name }}
+@endsection
 @section('page_content')
     <!--Like Product-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/portal/likeproduct.css') }}"/>
@@ -20,7 +23,7 @@
                             <ul class="v2_bnc_block_category_menu_block">
                                 @foreach($categories as $category)
                                     <li>
-                                        <a href="/may-tinh-cu" title="{{ @$category['name'] }}">
+                                        <a href="{{ route('portal.load_by_category', ['slug' => @$category['slug']]) }}" title="{{ @$category['name'] }}">
                                             {{--<img src="https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/product/2017/09/13/09/08/1505293500_menu-bo-may-tinh-ban1.png?v=4"
                                                  class="img-responsive v2_bnc_bg_cate" alt="MÁY TÍNH game - văn phòng CŨ"/>--}}
                                             {!! @$category['icon'] !!}
@@ -30,7 +33,7 @@
                                             <ul>
                                                 @foreach($category['child'] as $category_child)
                                                     <li class="col-md-4">
-                                                        <a href="/may-tinh-cu-van-phong"
+                                                        <a href="{{ route('portal.load_by_category', ['slug' => @$category_child['slug']]) }}"
                                                            title="{{ @$category_child['name'] }}">
                                                             <span>{{ @$category_child['name'] }}</span>
                                                         </a>
@@ -99,7 +102,7 @@
                                                             <ul class="v2_bnc_home_catepr_tabul nav-tabs">
                                                                 <li>
                                                                     <a href="/may-tinh-cu-van-phong" data-ajax="1"
-                                                                       data-url="https://giahung.vn/may-tinh-cu-van-phong"
+                                                                       data-url="{{ route('portal.load_by_category',['slug' => @$category_child['slug']]) }}"
                                                                        data-id="292821" data-block="292820"
                                                                        class="active">{!! @$category_child['name'] !!}</a>
                                                                 </li>
@@ -118,76 +121,16 @@
                                                     <div class="v2_bnc_home_catepr_showul" id="product-content-292820">
                                                         @if(isset($products[$category['id']]) && count($products[$category['id']]) > 0)
                                                             @foreach($products[$category['id']] as $product)
-                                                                <div class="col-md-3 col-sm-6 col-xs-6"
-                                                                     id="like-product-item-1844664">
-                                                                    <div class="v2_bnc_pr_item">
-
-                                                                        <figure class="v2_bnc_pr_item_img">
-                                                                            <a href="#"
-                                                                               title="{!! @$product->name !!}">
-                                                                                <img
-                                                                                    alt="Main B85, I5 4570, Ram 8G, VGA GTX 1050TI-4G"
-                                                                                    id="f-pr-image-zoom-id-tab-home-18446641"
-                                                                                    src="{{ @$product->thumbnail }}"
-                                                                                    class="tooltipItem BNC-image-add-cart-1844664 img-responsive"
-                                                                                    data-tooltip-content="#tooltip_content_{{ @$product->id }}"/>
-
-                                                                                <div class="tooltip_templates"
-                                                                                     style="display: none;">
-                                                                                    <div
-                                                                                        id="tooltip_content_{{ @$product->id }}">
-                                                                                        <div
-                                                                                            class="tooltip_main_content">
-                                                                                            <h3>{!! @$product->name !!}</h3>
-                                                                                            <div
-                                                                                                class="v2_bnc_pr_item_price_main">
-                                                                                                <p class="v2_bnc_pr_item_price">
-                                                                                                    {{ @number_format(@$product->price) }}
-                                                                                                    đ</p>
-                                                                                            </div>
-                                                                                            <div></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </figure>
-
-                                                                        <div class="v2_bnc_pr_item_boxdetails">
-                                                                            <!-- Products Name -->
-                                                                            <h3 class="v2_bnc_pr_item_name"><a
-                                                                                    href="#"
-                                                                                    title="{!! @$product->name !!}">
-                                                                                    {!! @$product->name !!}
-                                                                                </a></h3>
-                                                                            <!-- End Products Name -->
-
-                                                                            <!-- Price -->
-                                                                            <div class="v2_bnc_pr_item_price_main">
-                                                                                <p class="v2_bnc_pr_item_price">
-                                                                                    {{ @number_format(@$product->price) }} đ</p>
-                                                                            </div>
-                                                                            <!-- End Price -->
-
-                                                                            <!-- Buy -->
-                                                                            <div class="v2_bnc_pr_item_buy">
-                                                                                <a href="javascript:void(0)"
-                                                                                   title="Đặt Mua"
-                                                                                   class="BNC-add-cart v2_bnc_pr_item_action_buy"
-                                                                                   data-price-float="{{ @$product->price }}"
-                                                                                   data-name="{!! @$product->name !!}"
-                                                                                   data-type="tab-home"
-                                                                                   data-price="Array"
-                                                                                   data-product="1844664"
-                                                                                   data-quantity="1"
-                                                                                   data-total-quantity="100"><i
-                                                                                        class="icon-basket icons"></i>
-                                                                                    Thêm vào giỏ hàng</a>
-
-                                                                            </div>
-                                                                            <!-- End Buy -->
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                @include('page.includes.product')
+                                                            @endforeach
+                                                        @endif
+                                                        @if(isset($category['child']) && count($category['child']) > 0)
+                                                            @foreach($category['child'] as $category_child)
+                                                                @if(isset($products[$category_child['id']]) && count($products[$category_child['id']]) > 0)
+                                                                    @foreach($products[$category_child['id']] as $product)
+                                                                        @include('page.includes.product')
+                                                                    @endforeach
+                                                                @endif
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -210,7 +153,7 @@
                         <!-- End Products Categories -->
                         <div class="clearfix"></div>
                         <!-- Slide Products Brand -->
-                        <section class="v2_bnc_products_brands">
+                        {{--<section class="v2_bnc_products_brands">
                             <div class="row">
                                 <div class="owl-carousel-brands">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -292,7 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section>--}}
                         <!-- End Slide Products Brand -->
                         <div class="clearfix"></div>
 

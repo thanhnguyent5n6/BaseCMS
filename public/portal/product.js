@@ -1,4 +1,4 @@
-        
+
         if ($('#BNC-slider-price').length) {
             $('#BNC-slider-price').noUiSlider({
                 start: [100, 5000],
@@ -523,7 +523,7 @@
                     // console.log(href);
                     return false;
                 });
-                
+
             }
             var paymentCart3 = function() {
                 $('body').on('click', '#payment3', function(event) {
@@ -550,7 +550,7 @@
                     } else {
                         price_pro = 'key' + price_pro;
                     }
-                    
+
                     if (idShop != "") {
                         var url_ajax = $('body').data('home_url') + '/product-ajaxCart-ajaxAddCart' + $('body').data('extension');
                         var data = {
@@ -579,7 +579,7 @@
                     }
 
                 });
-                
+
             }
             var more_shop = function() {
                 $('body').on('click', '#more-shop', function() {

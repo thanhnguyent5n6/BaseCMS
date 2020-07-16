@@ -5,7 +5,7 @@
     <!--<base s_name="maytinhgiahung" idw="8186" href="E:/xampp/htdocs/giahung_html" extention=".html" />-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ @$tenant_info->name }}</title>
+    <title>@yield('page_title')</title>
     <meta name="description"
           content="Chuyên cung cấp, phân phối - bán buôn - bán lẻ các loại loa, micc, thu âm">
     <meta name="keywords"
@@ -15,6 +15,7 @@
     <meta property="og:description"
           content="Chuyên cung cấp, phân phối - bán buôn - bán lẻ các loại loa, micc, thu âm"/>
     <meta property="og:site_name" content="MINH THÀNH AUDIO"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
@@ -58,14 +59,14 @@
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/5ea1be6f69e9320caac6a7dd/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5f0f2d8e67771f3813c11a76/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
     <!--End of Tawk.to Script-->
@@ -129,6 +130,7 @@
     <script type="text/javascript" src="{{ asset('portal/modernizr.custom.97074.js') }}"></script>
     <script type="text/javascript" src="{{ asset('portal/jquery.hoverdir.js') }}"></script>
     <!-- End JS -->
+    @yield('page_css')
 
     <script>
         new WOW().init();
@@ -145,24 +147,7 @@
 
 <body>
 <div id="fb-root"></div>
-<script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, "script", "facebook-jssdk"));</script>
-
-<script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=1494068174211203&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0" nonce="ANEHeNPX"></script>
 
 <!-- Include popup so sanh -->
 <!-- So sánh sánh sản phẩm -->
@@ -207,7 +192,9 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <!-- Cart -->
-                    @include('layouts.portal.cart')
+                    <div id="box-cart">
+{{--                        @include('layouts.portal.cart')--}}
+                    </div>
                     <!-- End Cart -->
 
                     <!-- Login and Register -->
@@ -262,11 +249,11 @@
 </style>
 <!-- End Header -->
 <!-- Content -->
-<section class="v2_bnc_content_main">
+
     @yield('page_content')
     <!-- Popup Adv Home Loadpage-->
     <!-- End Popup Adv Home Loadpage -->
-</section>
+
 <!-- End Content -->
 <script>
     // Get the modal Adv Popup Home
@@ -278,9 +265,9 @@
     // When the user clicks the button, open the modal
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    /*span.onclick = function () {
         modal.style.display = "none";
-    }
+    }*/
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -305,17 +292,15 @@
                 <div class="v2_bnc_footer_info_company">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-top-20"><span
-                                style="color:rgb(255, 255, 255);"><span style="font-size:16px"><strong>Trung tâm tin học & ứng dụng công nghệ Gia Hưng​</strong></span><br/>
+                                style="color:rgb(255, 255, 255);"><span style="font-size:16px"><strong>{{ @$tenant_info->name }}</strong></span><br/>
 <br/>
-  Địa chỉ: số 21 - Vũ Tông Phan - Khương Trung - Thanh Xuân - Hà Nội<br/>
-  Điện thoại: 0463.275.789<br/>
-  Hotline: 0983.966.621 - 0984 538 855</span><br/>
-                            <span style="color:rgb(255, 255, 255)">  Email: giahung.pcvn@gmail.com</span></div>
+  {{ @$tenant_info->address }}<br/>
+  Điện thoại: {{ @$tenant_info->phone }}<br/>
+  Hotline: {{ @$tenant_info->hotline_1 }} - {{ @$tenant_info->hotline_2 }}</span><br/>
+                            <span style="color:rgb(255, 255, 255)">  Email: {{ @$tenant_info->email }}</span></div>
 
-                        <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
-                            <iframe frameborder="0" height="180" scrolling="no"
-                                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaytinhcugiahung&tabs=timeline&width=260&height=180&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                                    style="border:none;overflow:hidden" width="100%"></iframe>
+                        <div style="height: 230px; overflow: hidden;" class="col-lg-6 col-md-6 hidden-sm hidden-xs">
+                            <div class="fb-page" data-href="https://www.facebook.com/minhthanhaudiohanoi/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/minhthanhaudiohanoi/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/minhthanhaudiohanoi/">Minh Thành Audio</a></blockquote></div>
                         </div>
                     </div>
                 </div>
@@ -369,7 +354,7 @@
                 </div>
                 <!-- End Footer Right -->
             </div>
-            <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+            {{--<div class="hidden-xs hidden-sm col-md-3 col-lg-3">
                 <div class="v2_bnc_block_analytics">
                     <div class="v2_bnc_block_title"><span>Thống kê</span></div>
                     <div class="v2_bnc_block_body">
@@ -387,7 +372,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>--}}
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="v2_bnc_footer_bottom">
                     <small class='copyright hide '></small>
@@ -440,10 +425,17 @@
 <!-- Camera SlideShow -->
 <script type='text/javascript' src="{{ asset('portal/jquery.easing.1.3.js') }}"></script>
 <script type='text/javascript' src="{{ asset('portal/camera.min.js') }}"></script>
+@yield('page_script')
 <!-- End Camera SlideShow -->
 <!-- End Include JS -->
-<script type='text/javascript' src='https://analytics.webbnc.vn/modules/js/analytics_include.min.js'></script>
+
 <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     function BNCcallback(data) {
         console.log(data);
     }
@@ -467,6 +459,7 @@
 
     gtag("config", "UA-124328798-1");
 </script>
+@include('page.includes.page_script')
 </body>
 </html>
 

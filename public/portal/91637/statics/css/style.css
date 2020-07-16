@@ -5,10 +5,7 @@
     a,img{
         color:#000;
     }
-    @font-face {
-        font-family:'font-main';
-        src:url(../fonts/VNF-Futura-Regular.ttf);
-    }
+
     ::-webkit-scrollbar-track{
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         background-color: #F5F5F5;
@@ -289,7 +286,7 @@
         color: #fff;
     }
 /*===== End Header =====*/
-    
+
 /*===== Language =====*/
     .v2_bnc_language {
         display: inline-block;
@@ -1180,7 +1177,7 @@
         filter: grayscale(0);
         -webkit-filter: grayscale(0);
         -o-filter: grayscale(0);
-    } 
+    }
     .v2_bnc_news_list li .v2_bnc_news_list_details {
         overflow: hidden;
         padding-bottom: 3px;
@@ -1366,7 +1363,7 @@
         margin: 0 0 20px 0;
     }
     #form_contact .btn-primary:hover{
-       background: #00AEEF !important; 
+       background: #00AEEF !important;
     }
 /*====== End Contact ======*/
 
@@ -1788,7 +1785,7 @@
     .v2-login .text-danger, .v2-login .text-danger:hover{
         color: #000;
     }
-/*== End Login ==*/    
+/*== End Login ==*/
 
 /*=== Scroll To Top ===*/
     .v2_bnc_scrolltop {
@@ -2118,7 +2115,7 @@
         border-color: #bb3239;
     }
 
-/*=== End FeedBack Home ===*/ 
+/*=== End FeedBack Home ===*/
 
 /*=== Products Brands Slideshow ===*/
     .v2_bnc_brands_img img, .brimg img {
@@ -2373,7 +2370,7 @@
     .f-product-viewid.viewlist.row,.f-product-viewid.f-product.row {
         margin: 0;
     }
-/*=== End Products View List ===*/  
+/*=== End Products View List ===*/
 
 /*=== Product Item ===*/
     .v2_bnc_pr_item_name a {
