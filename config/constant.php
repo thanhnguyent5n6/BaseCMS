@@ -10,6 +10,7 @@ define('YES',1);
 define('NO',0);
 define('TXT_YES','Có');
 define('TXT_NO','Không');
+
 define('BILL_NEW',1);
 define('BILL_WAITING',2);
 define('BILL_SHIPPED',3);

@@ -41,8 +41,10 @@ class BaseModel extends Model
     public function getData($relations = [])
     {
         $query = $this->where('is_deleted', NO_DELETED);
-        foreach($relations as $relation) {
-            $query = $query->with($relation);
+        if(count($relations) > 0) {
+            foreach($relations as $relation) {
+                $query = $query->with($relation);
+            }
         }
         return $query->get();
     }

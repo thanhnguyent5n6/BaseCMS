@@ -148,6 +148,36 @@
                 }
             });
 
+            $(".change-status").on('click', function(){
+                let status = $(this).attr('data-value');
+                let row_selected = datatable.getSelectedRecords();
+                let ids = [];
+
+                $.each(row_selected, function (key, item) {
+                    ids.push($(item).find('input').val());
+                });
+
+                if (ids.length == 0) {
+                    alert("Bạn chưa chọn hóa đơn!");
+                    return false;
+                }
+
+                if (confirm('Bạn có chắc muốn cập nhật trạng thái của ' + ids.length + ' hóa đơn này?')) {
+                    let urlDelete = `{{ route('admin.bill.change_status') }}`;
+                    $.ajax({
+                        url: urlDelete,
+                        type: "POST",
+                        data: {ids: ids, status: status},
+                        success: function (result) {
+                            location.reload();
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(thrownError);
+                        }
+                    });
+                }
+            });
+
         };
 
         return {

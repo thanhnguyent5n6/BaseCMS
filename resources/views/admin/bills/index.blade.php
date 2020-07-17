@@ -19,14 +19,60 @@
                 <h3 class="card-label">Quản lý đơn hàng</h3>
             </div>
             <div class="card-toolbar">
-                <a style="margin-right: 5px;" id="btn_delete_record" href="javascript:;" class="btn btn-danger btn-icon-sm">
+                <div class="card-toolbar">
+                    <div class="dropdown dropdown-inline">
+                        <a href="javascript:;" class="btn btn-light-primary btn-sm font-weight-bolder dropdown-toggle"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cập nhật trạng thái đơn hàng</a>
+                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                            <!--begin::Navigation-->
+                            <ul class="navi navi-hover">
+                                <li data-value="{{ BILL_NEW }}" class="navi-item change-status">
+                                    <a href="#" class="navi-link">
+                                        <span class="navi-icon">
+                                            <i class="flaticon2-shopping-cart-1"></i>
+                                        </span>
+                                        <span class="navi-text">Đơn mới</span>
+                                    </a>
+                                </li>
+                                <li data-value="{{ BILL_WAITING }}" class="navi-item change-status">
+                                    <a href="#" class="navi-link">
+                                        <span class="navi-icon">
+                                            <i class="flaticon2-writing"></i>
+                                        </span>
+                                        <span class="navi-text">Đang xử lý</span>
+                                    </a>
+                                </li>
+                                <li data-value="{{ BILL_SHIPPED }}" class="navi-item change-status">
+                                    <a href="#" class="navi-link">
+                                        <span class="navi-icon">
+                                            <i class="flaticon2-rocket-1"></i>
+                                        </span>
+                                        <span class="navi-text">Đã giao hàng</span>
+                                    </a>
+                                </li>
+                                <li data-value="{{ BILL_RETURN }}" class="navi-item change-status">
+                                    <a href="#" class="navi-link">
+                                        <span class="navi-icon">
+                                            <i class="fas fa-ban"></i>
+                                        </span>
+                                        <span class="navi-text">Trả lại</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--end::Navigation-->
+                        </div>
+                    </div>
+                </div>
+                <a style="margin-right: 5px; margin-left: 5px;" id="btn_delete_record" href="javascript:;"
+                   class="btn btn-danger btn-icon-sm">
                     <i class="la la-trash"></i> Xóa
                 </a>
                 <!--begin::Button-->
-                {{--<a href="{{ route('admin.categories.create') }}" class="btn btn-primary font-weight-bolder">
-                    <i class="fa fa-plus"></i>
-                    </span>Thêm mới</a>--}}
-                <!--end::Button-->
+            {{--<a href="{{ route('admin.categories.create') }}" class="btn btn-primary font-weight-bolder">
+                <i class="fa fa-plus"></i>
+                </span>Thêm mới</a>--}}
+            <!--end::Button-->
             </div>
         </div>
         <div class="card-body">
@@ -38,7 +84,8 @@
                         <div class="row align-items-center">
                             <div class="col-md-4 my-2 my-md-0">
                                 <div class="input-icon">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm..." id="kt_datatable_search_query" />
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                           id="kt_datatable_search_query"/>
                                     <span>
                                         <i class="flaticon2-search-1 text-muted"></i>
                                     </span>
@@ -62,12 +109,26 @@
             <!--end::Search Form-->
             <!--end: Search Form-->
             <!--begin: Datatable-->
-            <div class="kt-datatable" id="local_data"></div>
+            <div id="data-items"></div>
             <!--end: Datatable-->
         </div>
     </div>
 @stop
 
 @section('page_js')
-    @include('admin.bills.script')
+    <script>
+        function load() {
+            $.ajax({
+                type: "POST",
+                url: '{{ route('admin.bill.load') }}',
+                success: function (data) {
+                    $("#data-items").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            load();
+        });
+    </script>
 @stop

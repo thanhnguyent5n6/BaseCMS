@@ -81,7 +81,7 @@ class Category extends BaseModel
 
     public function getCategoryByLevel()
     {
-        $categories = $this->getData(['is_active' => ACTIVE])->toArray();
+        $categories = $this->getData()->toArray();
         $data_items = $this->categoryByLevel($categories);
         return $data_items;
     }

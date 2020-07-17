@@ -48,6 +48,7 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
 
     Route::group(['prefix' => 'bills'], function() {
         Route::get('/', 'Admin\BillController@index')->name('admin.bill.index');
+        Route::post('/load', 'Admin\BillController@load')->name('admin.bill.load');
         Route::get('/detail/{id}', 'Admin\BillController@detail')->name('admin.bill.detail');
         Route::post('/change-status', 'Admin\BillController@changeStatus')->name('admin.bill.change_status');
         Route::post('/destroy', 'Admin\BillController@destroy')->name('admin.bill.destroy');

@@ -18,9 +18,16 @@ class BillController extends BaseController
 
     public function index()
     {
+        /*$data_items = $this->model->getAll(['customer','bill_details']);
+        $data_items = $this->getDataItems($data_items);*/
+        return view('admin.bills.index', compact('data_items'));
+    }
+
+    public function load()
+    {
         $data_items = $this->model->getAll(['customer','bill_details']);
         $data_items = $this->getDataItems($data_items);
-        return view('admin.bills.index', compact('data_items'));
+        return view('admin.bills.datatable', compact('data_items'));
     }
 
     public function detail($id)
