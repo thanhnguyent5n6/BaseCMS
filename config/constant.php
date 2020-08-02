@@ -24,7 +24,7 @@ define('UPLOAD_PRODUCT_PATH','upload/products');
 define('PAGINATE_DEFAULT', 20);
 
 define('DISPLAY_DATE_FORMAT', 'd/m/Y'); //Format hien thi ngay thang nam
-define('DISPLAY_DATETIME_FORMAT', 'H﻿﻿ d/m/Y'); //Format hien thi ngay thang nam gio phut giay
+define('DISPLAY_DATETIME_FORMAT', 'H:i:s d/m/Y'); //Format hien thi ngay thang nam gio phut giay
 define('DISPLAY_SHORT_DATETIME_FORMAT', 'H d/m/Y'); //Format hien thi ngay thang nam gio phut giay
 define('DISPLAY_TIME_FORMAT', 'H:i');//Format hien thi gio phut
 define('DISPLAY_TIME_SECOND_FORMAT', 'H:i:s'); //Format hien thi gio phut giay

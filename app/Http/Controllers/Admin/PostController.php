@@ -26,30 +26,26 @@ class PostController extends BaseController
     public function create()
     {
         $is_update = false;
-        $categories = $this->category->getAll()->keyBy('id');
-        $suppliers = $this->supplier->getAll();
-        return view('admin.posts.form', compact('is_update', 'categories','suppliers'));
+        return view('admin.posts.form', compact('is_update'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request,
             [
-                'name' => 'required|max:255',
-                'description' => 'max:1000',
-                'price' => 'required|min:0',
+                'title' => 'required|max:255',
+                'content' => 'required',
             ],
             [
-                'name.required' => 'Vui lòng nhập tên danh mục',
-                'name.max' => 'Tên danh mục không quá 255 ký tự',
-                'price.required' => 'Bạn chưa nhập giá',
-                'price.min' => 'Giá sản phẩm lớn hơn 0đ',
+                'title.required' => 'Vui lòng nhập tiêu đề',
+                'title.max' => 'Tiêu đề không quá 255 ký tự',
+                'content.required' => 'Bạn chưa nội dung bài viết',
             ]);
         $data = $request->all();
         $parameters = $this->model->getParameters($data);
         $parameters['code'] = $this->model->getCodeUnique("post");
 
-        $data_item = $this->model->createPost($parameters);
+        $data_item = $this->model->createData($parameters);
         if (!empty($data_item)) {
             Session::flash('success', 'Thêm mới sản phẩm thành công');
             return redirect()->back();
@@ -65,14 +61,12 @@ class PostController extends BaseController
     public function edit(Request $request)
     {
         $id = $request->id ?? 0;
-        $data_item = $this->model->getInfoById($id,['post_image.image']);
+        $data_item = $this->model->getInfoById($id);
 
         if (empty($data_item))
-            return redirect()->back()->withErrors('Không tìm thấy sản phẩm');
+            return redirect()->back()->withErrors('Không tìm thấy bài viết');
         $is_update = true;
-        $categories = $this->category->getAll()->keyBy('id');
-        $suppliers = $this->supplier->getAll();
-        return view('admin.posts.form', compact('is_update', 'categories', 'data_item', 'suppliers'));
+        return view('admin.posts.form', compact('is_update', 'data_item'));
     }
 
     public function update(Request $request)
@@ -81,27 +75,25 @@ class PostController extends BaseController
         $id = $data['id'] ?? 0;
         $data_item = $this->model->getInfoById($id);
         if (empty($data_item))
-            return redirect()->back()->withErrors('Không tìm thấy danh mục');
+            return redirect()->back()->withErrors('Không tìm thấy bài viết');
         $this->validate($request,
             [
-                'name' => 'required|max:255',
-                'icon' => 'max:100',
-                'description' => 'max:1000',
+                'title' => 'required|max:255',
+                'content' => 'required',
             ],
             [
-                'name.required' => 'Vui lòng nhập tên danh mục',
-                'name.max' => 'Tên danh mục không quá 255 ký tự',
-                'icon.max' => 'Icon không quá 50 ký tự',
-                'description.max' => 'Mô tả không quá 1000 ký tự',
+                'title.required' => 'Vui lòng nhập tiêu đề',
+                'title.max' => 'Tiêu đề không quá 255 ký tự',
+                'content.required' => 'Bạn chưa nội dung bài viết',
             ]);
         $data = $request->all();
         $parameters = $this->model->getParameters($data);
-        $data_item = $this->model->updatePost($id, $parameters);
+        $data_item = $this->model->updateByID($id, $parameters);
         if (!empty($data_item)) {
-            Session::flash('success', 'Cập nhật danh mục thành công');
+            Session::flash('success', 'Cập nhật bài viết thành công');
             return redirect()->back();
         }
-        return redirect()->back()->withErrors('Cập nhật danh mục thất bại');
+        return redirect()->back()->withErrors('Cập nhật bài viết thất bại');
     }
 
     public function destroy(Request $request)
@@ -111,7 +103,7 @@ class PostController extends BaseController
         foreach($ids as $id) {
             $this->model->softDelete($id);
         }
-        return $this->Success('Xóa danh mục thành công');
+        return $this->Success('Xóa bài viết thành công');
     }
 
     /**

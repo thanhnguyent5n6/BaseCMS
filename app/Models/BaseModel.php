@@ -54,6 +54,22 @@ class BaseModel extends Model
         return $this->getData($relations);
     }
 
+    public function getDataItems($parameters = [], $relations = [])
+    {
+        $query = $this->where('is_deleted', NO_DELETED);
+        if(count($parameters) > 0) {
+            foreach($parameters as $field => $parameter) {
+                $query = $query->where($field, '=' ,$parameter);
+            }
+        }
+        if(count($relations) > 0) {
+            foreach($relations as $relation) {
+                $query = $query->with($relation);
+            }
+        }
+        return $query->get();
+    }
+
     public function updateByID($id, array $options = [])
     {
         $options['updated_by'] = Auth::user()->id;

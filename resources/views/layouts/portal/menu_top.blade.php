@@ -45,7 +45,7 @@
                                 </ul>
                             </li>
                             <li class="">
-                                <a class="v2_menu_first_link" href="/goc-tu-van">
+                                <a class="v2_menu_first_link" href="{{ route('portal.post') }}">
                                     Góc Tư Vấn</a>
                             </li>
                             <li class="">

@@ -14,7 +14,7 @@
 		margin: 0 -5px;
 	}
 }
-@media only screen and (max-width:1024px){ 
+@media only screen and (max-width:1024px){
 .zoomContainer{display:none;}
      .zoomWrapper{position:relative;width:100%;margin:auto;display:block}
      .zoomWrapper:after{content:'';width:100%;height:100%;z-index:100;position:absolute;top:0;left:0;}
@@ -49,7 +49,7 @@
 		font-size: 12px;
 	}
 }
-/*=== DĂƒÂ nh cho mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc ===*/ 
+/*=== DĂƒÂ nh cho mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc ===*/
 @media only screen and (max-width:992px){
 	#logo img{
 		margin: auto;
@@ -143,7 +143,7 @@
     .pushmenu, body {
 		-webkit-transition: all 0.3s ease;
 		-moz-transition: all 0.3s ease;
-		transition: all 0.3s ease;  
+		transition: all 0.3s ease;
     }
     #nav_list {
 		cursor: pointer;
@@ -333,7 +333,7 @@
 		position: static!important;
 	}
 }
-/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ,mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc===*/ 
+/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ,mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc===*/
 @media only screen and (max-width:767px){
 	#search-box{position:relative;width:100%;background: #005baa;padding: 5px;right: auto;margin-bottom: 10px;}
 	#search-box .search-area .search-field{width:100%;}
@@ -403,7 +403,7 @@
 		font-size: 14px;
 	}
 }
-/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ,mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc ===*/ 
+/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ,mĂƒÂ¡y tĂƒÂ­nh bĂ¡ÂºÂ£ng chiĂ¡Â»Âu dĂ¡Â»Âc ===*/
 @media only screen and (max-width:640px){
 	.lof_camera_title{
 		font-size: 19px;
@@ -417,7 +417,7 @@
 		letter-spacing: 1px;
 	}
 }
-/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ===*/ 
+/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu ngang ===*/
 @media only screen and (max-width: 480px){
 	.v2_bnc_cart_main .f-miniCart-miniv2{
 		right: 40px!important;
@@ -486,8 +486,8 @@
 		padding-top: 0;
 	}
 }
-/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu dĂ¡Â»Âc ===*/ 
-@media only screen and (max-width: 420px) and (min-width: 320px){ 
+/*=== DĂƒÂ nh cho Ă„â€˜iĂ¡Â»â€¡n thoĂ¡ÂºÂ¡i chiĂ¡Â»Âu dĂ¡Â»Âc ===*/
+@media only screen and (max-width: 420px) and (min-width: 320px){
 	.subscribe_email_input {
 	    width: 220px;
 	}

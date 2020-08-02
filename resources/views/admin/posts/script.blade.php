@@ -55,9 +55,6 @@
                     }, {
                         field: 'title',
                         title: 'Tiêu đề bài viết',
-                    }, {
-                        field: 'content',
-                        title: 'Nội dung',
                     },
                     {
                         field: 'status',
@@ -116,7 +113,7 @@
                     return false;
                 }
 
-                if(confirm('Bạn có chắc muốn xóa '+ids.length+' danh mục này?')) {
+                if(confirm('Bạn có chắc muốn xóa '+ids.length+' bài viết này?')) {
                     let urlDelete = `{{ route('admin.posts.destroy') }}`;
                     $.ajax({
                         url: urlDelete,

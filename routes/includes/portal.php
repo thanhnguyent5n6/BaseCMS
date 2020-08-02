@@ -24,6 +24,12 @@ Route::post('post-checkout','Portal\CheckoutController@postCheckout')->name('por
 Route::get('/introduce','Portal\PageController@introduce')->name('portal.introduce');
 Route::get('/contact','Portal\PageController@contact')->name('portal.contact');
 
+Route::group(['prefix' => 'post'], function() {
+    Route::get('/','Portal\PostController@index')->name('portal.post');
+    Route::post('/load','Portal\PostController@load')->name('portal.post.load');
+    Route::get('/{slug}','Portal\PostController@detail')->name('portal.post.detail');
+});
+
 /*Route::get('/', function () {
     return view('index');
 });
