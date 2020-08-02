@@ -148,8 +148,8 @@
                                 HomeProductCategory.init();
                             });
                         </script>
-                        <script type="text/javascript"
-                                src="https://giahung.vn/modules/product/themes/resource/js/productrater.js"></script>
+                        {{--<script type="text/javascript"
+                                src="https://giahung.vn/modules/product/themes/resource/js/productrater.js"></script>--}}
                         <!-- End Products Categories -->
                         <div class="clearfix"></div>
                         <!-- Slide Products Brand -->

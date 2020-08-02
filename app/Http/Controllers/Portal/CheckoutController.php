@@ -4,12 +4,11 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\BasePortalController;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckOutRequest;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Customer;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -29,30 +28,8 @@ class CheckoutController extends BasePortalController
         return view('page.includes.checkout');
     }
 
-    public function postCheckout(Request $request)
+    public function postCheckout(CheckoutRequest $request)
     {
-        $this->validate($request,
-            [
-                'name' => 'required|max:255',
-                'email' => 'required|email|max:100',
-                'phone' => 'required|max:15|min:9',
-                'address' => 'required|max:255',
-                'comment' => 'max:500',
-            ],
-            [
-                'name.required' => 'Vui lòng nhập tên của ban',
-                'name.max' => 'Tên không quá 255 ký tự',
-                'email.required' => 'Vui lòng nhập email',
-                'email.email' => 'Email không đúng định dạng',
-                'email.max' => 'Email không quá 100 ký tự',
-                'phone.required' => 'Vui lòng nhập SDT',
-
-                'phone.max' => 'SDT tối đa 15 số',
-                'phone.min' => 'SDT tối thiểu 9 số',
-                'address.max' => 'Địa chỉ tối đa 255 ký tự',
-                'comment.max' => 'Ghi chú tối đa 500 ký tự',
-            ]);
-
         DB::beginTransaction();
         try {
             $cart = Session::get('cart');
@@ -87,14 +64,13 @@ class CheckoutController extends BasePortalController
             }
             Session::forget('cart');
             DB::commit();
-            Session::flash('success', 'Cập nhật danh mục thành công');
-            return redirect()->back();
         } catch (\Exception $exception) {
             DB::rollBack();
             return redirect()->back()->withErrors('Tạo hóa đơn thất bại');
         }
 
-        return redirect()->back()->withErrors('Đã có lỗi xảy ra');
+        Session::flash('success', 'Tạo hóa đơn thành công');
+        return redirect()->back();
     }
 
     private function getCode() {

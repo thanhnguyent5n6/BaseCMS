@@ -11,15 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f5ebd2a-a25a-4a32-8527-bac7ebb83eea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/bills/datatable.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/settings/introduce/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/settings/introduce/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/includes/contact.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/includes/introduce.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BillController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bills/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bills/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bills/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bills/script.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/checkout/alepay.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/checkout/alepay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/checkout/oncepage_dk.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/checkout/oncepage_dk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/metronics/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/metronics/includes/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/includes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/includes/portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/portal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,24 +152,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/settings/introduce" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin" />
+      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers\Admin" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\portal" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\layouts\metronic_7" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\includes" />
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page" />
       <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers" />
       <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Products" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Models" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin" />
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\portal" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers\Admin" />
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\layouts\metronic_7" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Providers" />
     </key>
   </component>
   <component name="RunManager">
@@ -199,7 +210,9 @@
       <workItem from="1594825058769" duration="124000" />
       <workItem from="1594825452618" duration="9639000" />
       <workItem from="1594912498356" duration="12184000" />
-      <workItem from="1594990326773" duration="3447000" />
+      <workItem from="1594990326773" duration="6081000" />
+      <workItem from="1595002706343" duration="4869000" />
+      <workItem from="1596340100059" duration="10369000" />
     </task>
     <servers />
   </component>
@@ -219,10 +232,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594922417467">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596349713389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594922417467" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596349713389" />
     <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1593275604161">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -231,10 +244,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594919608796" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1594992651610">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1596355232483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594992651610" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596355232483" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1594543659392">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -243,21 +256,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1593535423610" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1594921154290">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1596352926511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1594921154290" />
-    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1594992864011">
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1596352926511" />
+    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1596352869175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594992864011" />
+    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596352869175" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1594916864768">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594916864768" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594992859027">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596355298671">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594992859027" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596355298671" />
   </component>
 </project>

@@ -16,18 +16,15 @@
                         <ul class="v2_menu_top_ul nxtActiveMenu">
                             {{--                                <li class="active">--}}
                             <li>
-                                <a class="v2_menu_first_link" href="">
+                                <a class="v2_menu_first_link" href="{{ route('portal.index') }}">
                                     Trang chủ</a>
                             </li>
                             <li class="">
-                                <a class="v2_menu_first_link" href="/trang-gioi-thieu.html">
-                                    <img src="https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/menu/2018/01/01/03/00/1514818420_img_3594.jpg.jpg_resize15x15.jpg"
-                                         onerror="this.onerror=null;this.src='http://upload2.webbnc.vn/view.php?image=uploadv2/web/81/8186/menu/2018/01/01/03/00/1514818420_img_3594.jpg.jpg&mode=resize&size=15x15'"
-                                         alt="" class="hidden img-responsive"/>
+                                <a class="v2_menu_first_link" href="{{ route('portal.introduce') }}">
                                     Giới thiệu</a>
                             </li>
                             <li class="parent" class="">
-                                <a class="v2_menu_first_link" href="/product.html">
+                                <a class="v2_menu_first_link" href="javascript:;">
                                     Sản phẩm</a>
                                 <ul class="v2_menu_top_sub">
                                     @foreach($categories as $category)
@@ -48,19 +45,11 @@
                                 </ul>
                             </li>
                             <li class="">
-                                <a class="v2_menu_first_link" href="/dich-vu">
-                                    Dịch Vụ</a>
-                            </li>
-                            <li class="">
                                 <a class="v2_menu_first_link" href="/goc-tu-van">
                                     Góc Tư Vấn</a>
                             </li>
                             <li class="">
-                                <a class="v2_menu_first_link" href="album-anh">
-                                    Album Ảnh</a>
-                            </li>
-                            <li class="">
-                                <a class="v2_menu_first_link" href="/trang-lien-he.html">
+                                <a class="v2_menu_first_link" href="{{ route('portal.contact') }}">
                                     Liên hệ</a>
                             </li>
                             <li>

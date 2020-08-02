@@ -9,7 +9,7 @@
           href="{{ asset('portal/checkout/jquery.fancybox.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('portal/checkout/toastr.css') }}">
     <link rel="stylesheet" type="text/css"
-          href="https://giahung.vn/modules/payment/themes/oncepage/plugins/font-awesome-4.4.0/css/font-awesome.min.css">
+          href="{{ asset('portal/plugins/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css"
           href="{{ asset('portal/checkout/_all.css') }}">
     <link rel="stylesheet" type="text/css"
@@ -573,18 +573,10 @@
                     </div>
                 @endif
                 @if(Session::has('success'))
-                    <div class="alert alert-custom alert-outline-success fade show mb-5" role="alert">
-                        <div class="alert-icon">
-                            <i class="flaticon-warning"></i>
-                        </div>
-                        <div class="alert-text">{{ Session::get('success') }}</div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true">
-                                                                <i class="ki ki-close"></i>
-                                                            </span>
-                            </button>
-                        </div>
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{{ Session::get('success') }}</li>
+                        </ul>
                     </div>
                 @endif
                 <form id="onePageSubmit" name="onePageSubmit" method="POST"
@@ -609,7 +601,7 @@
                                                                                                    value=""></div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="input-icon right"><i class="glyphicon "></i><input type="text" required
+                                    <div class="input-icon right"><i class="glyphicon "></i><input type="text" required minlength="8"
                                                                                                    name="phone"
                                                                                                    class="form-control"
                                                                                                    placeholder="Số điện thoại"
@@ -878,15 +870,15 @@
 <script src="{{ asset('portal/checkout/jquery.min.js') }}"></script>
 <script src="{{ asset('portal/checkout/bootstrap.min.js') }}"></script>
 <script src="{{ asset('portal/checkout/toastr.js') }}"></script>
-<script src="https://giahung.vn/modules/payment/themes/oncepage/"{{ asset('portal/checkout/oncepage_dk.js') }}></script>
-<script src="https://giahung.vn/modules/payment/themes/oncepage/"{{ asset('portal/checkout/alepay.js') }}></script>
+{{--<script src="{{ asset('portal/checkout/oncepage_dk.js') }}"></script>--}}
+{{--<script src="{{ asset('portal/checkout/alepay.js') }}"></script>--}}
 <script src="{{ asset('portal/checkout/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('portal/checkout/jquery.validate.js') }}"></script>
 <script type="text/javascript"
         src="{{ asset('portal/checkout/loading-overlay.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('portal/checkout/jquery.fancybox.js') }}"></script>
-<script type="text/javascript"
-        src="{{ asset('portal/checkout/icheck.min.js') }}"></script>
+{{--<script type="text/javascript"--}}
+{{--        src="{{ asset('portal/checkout/icheck.min.js') }}"></script>--}}
 <script type="text/javascript">
     function BNCcallback(data) {
         console.log(data);

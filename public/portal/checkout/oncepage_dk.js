@@ -48,7 +48,7 @@ var OncePage = function() {
             //parent.addClass('active');
             $('.sub-list-bank').find('.active1').removeClass('active1');
             optionsRadios = $(this).val();
-            
+
         });
 
         $('[data-toggle="tooltip"]').tooltip();
@@ -157,10 +157,10 @@ var OncePage = function() {
             //Logo
             var logo = $('.cf-logo').find('img').attr('src');
             //Tên khách hàng
-            var cus_name = $('input[name="cus[name]"]').val();
-            var cus_email = $('input[name="cus[email]"]').val();
-            var cus_phone = $('input[name="cus[phone]"]').val();
-            var cus_address = $('textarea[name="cus[address]"]').val();
+            var cus_name = $('input[name="name"]').val();
+            var cus_email = $('input[name="email"]').val();
+            var cus_phone = $('input[name="phone"]').val();
+            var cus_address = $('textarea[name="address"]').val();
             //Form - method
             var data_form = $('#onePageSubmit').serializeArray();
             var method_pay = '';
@@ -265,9 +265,9 @@ var OncePage = function() {
         }
         var logo = $('.cf-logo img').attr('src');
         var link = $('#link_home').val();
-        var name_cus = $("input[name='cus[name]']").val();
-        var phone = $("input[name='cus[phone]']").val();
-        var mail = $("input[name='cus[email]']").val();
+        var name_cus = $("input[name='name']").val();
+        var phone = $("input[name='phone']").val();
+        var mail = $("input[name='email']").val();
         var time = new Date();
         // var day= time.getDay();
         // alert(time);
@@ -295,7 +295,7 @@ var OncePage = function() {
         } else {
             districtId = $("#districtId option:selected").text();
         }
-        var address = $("textarea[name='cus[address]']").val() + ' - ' + districtId + ' - ' + cityId;
+        var address = $("textarea[name='address']").val() + ' - ' + districtId + ' - ' + cityId;
         var address_arrs = address.split('-');
         var address_ok = '';
         $.each(address_arrs, function(k, v) {
@@ -674,7 +674,7 @@ var OncePage = function() {
             } else {
                 handleRefeshFeeShip();
             }
-           
+
         });
     };
     var handleRefeshFeeShip = function() {
@@ -686,12 +686,12 @@ var OncePage = function() {
         } else {
             $('#methodShipping').html('<p class="text-danger">' + lang_PleaseDelivery + '</p>');
         }
-        
+
     };
     var getDistric = function() {
         var home_url = $('base').attr('href');
         var lang = $('base').attr('lang');
-        
+
         $('.BNC_cityId').change(function() {
             var district = $(this).parents('.BNC_address_genral').find('.BNC_districtId');
             var provinceid = $(this).val();
@@ -701,7 +701,7 @@ var OncePage = function() {
                 }else{
                     district.html('<option value="" selected>Quận/Huyện</option>');
                 }
-                
+
                 district.prop('disabled', true);
                 return false;
             }
@@ -720,14 +720,14 @@ var OncePage = function() {
                     }else{
                         var html = '<option value="">Quận/Huyện</option>';
                     }
-                    
+
                     $.each(res, function(k, v) {
                         html += '<option name="' + v.name + '" value="' + v.districtid + '">' + v.name + '</option>';
                     });
                     district.html(html);
 
                     district.prop("disabled", false);
-                    
+
                 },
                 error: function(error) {
                     //console.log(error);
@@ -806,8 +806,8 @@ var OncePage = function() {
                 //refeshTax();
                 $("#BNC_product_list .content").load(home_url + '/payment-oncepage.html #BNC_product_list > .content > *');
                     refeshTax();
-                
-            
+
+
             },
             error: function(error) {
                 console.log(error);
@@ -915,236 +915,7 @@ var OncePage = function() {
             return;
         });
     }
-    var handlerValidate = function() {
-        //check dieu khoan
-        var okDk = true;
-        // $('input[name="ok"]').on('ifChecked', function(event, res) {
-        //     var tmp_check = $(this).val();
-        //     if (tmp_check == 1) {
-        //         okDk = true;
-        //     } else {
-        //         okDk = false;
-        //     }
-        // });
-        var form2 = $('#onePageSubmit');
-        $('body').on('click', '.submitOrder', function() {
-            if (okDk == false) {
-                $('input[name="ok"]').focus();
-                return false;
-            }
-            if (addressPay != 0) {
-                //Xu ly ko validate
-                var addressPaySelected = $('input[name="addressPay"][value="' + addressPay + '"]');
-                var message_default = ' Bạn hãy sửa lại địa chỉ trong tài khoản hoặc lựa chọn "Địa chỉ khác"';
-                var cus = [];
-                cus['name'] = addressPaySelected.attr('data-name');
-                if (cus['name'] == false) {
-                    toastr.error('Tên không được bỏ trống !' + message_default);
-                    return false;
-                }
-                cus['email'] = addressPaySelected.attr('data-email');
-                if (cus['email'] == false) {
-                    toastr.error('Email không được bỏ trống !' + message_default);
-                    return false;
-                }
 
-                cus['phone'] = addressPaySelected.attr('data-phone');
-                if (cus['phone'] == false) {
-                    toastr.error('Số điện thoại không được bỏ trống !' + message_default);
-                    return false;
-                }
-                cus['cityId'] = addressPaySelected.attr('data-province');
-                if (cus['cityId'] == false) {
-                    toastr.error('Thành phố không được bỏ trống !' + message_default);
-                    return false;
-                }
-
-                cus['cityname'] = addressPaySelected.attr('data-province');
-                if (cus['cityname'] == false) {
-                    toastr.error('Thành phố không được bỏ trống !' + message_default);
-                    return false;
-                }
-
-                cus['districtId'] = addressPaySelected.attr('data-district');
-                if (cus['districtId'] == false) {
-                    toastr.error('Quận/huyện không được bỏ trống !' + message_default);
-                    return false;
-                }
-                cus['districtname'] = addressPaySelected.attr('data-district');
-                if (cus['districtname'] == false) {
-                    toastr.error('Quận/huyện không được bỏ trống !' + message_default);
-                    return false;
-                }
-                cus['address'] = addressPaySelected.attr('data-address');
-                if (cus['address'] == false) {
-                    toastr.error('Địa chỉ không được bỏ trống !' + message_default);
-                    return false;
-                }
-                cus['comment'] = $('textarea[name="cus[comment]"]');
-                var coupon = $('input[name="coupon"]').val();
-                var point_pay = $('input[name="point_pay"]').val();
-                //optionsRadios
-                var dataString = {
-                    'cus': cus,
-                    'coupon': coupon,
-                    'point_pay': point_pay,
-                };
-                
-                $.ajax({
-                    url: $('base').attr('href') + '/payment-oncepage-OrderSubmit' + $('base').attr('extention'),
-                    type: 'POST',
-                    dataType: 'json',
-                    data: dataString,
-                })
-                    .success(function(res) {
-                        if (res.status == false) {
-                            toastr.error(res.message);
-                            return false;
-                        } else {
-                            //html
-                            if (res.html != undefined && res.html != false) {
-                                $('.cf-main').html(res.html);
-                            } else {
-                                window.location.href = res.url_redirect;
-                            }
-                        }
-                    });
-                return false;
-            }
-        });
-        var error2 = $('.alert-danger', form2);
-        var success2 = $('.alert-success', form2);
-        form2.validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block help-block-error help-block-error2', // default input error message class
-            focusInvalid: true, // do not focus the last invalid input
-            ignore: "", // validate all fields including form hidden input
-            rules: {
-                'cus[phone]': {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 14,
-                    number: true
-                },
-                'cus[name]': {
-                    required: true,
-                    minlength: 3,
-                    maxlength: 30,
-                },
-                'cus[email]': {
-                    required: true,
-                    minlength: 3,
-                    email: true
-                },
-                'cus[cityId]': {
-                    required: true,
-                },
-                'cus[districtId]': {
-                    required: true,
-                },
-                'cus[address]': {
-                    required: true,
-                    minlength: 3,
-                }
-            },
-            messages: { // custom messages for radio buttons and checkboxes
-                'cus[email]': {
-                    required: "Vui lòng điền chính xác email.",
-                    email: "Địa chỉ email nhập dạng có @",
-                    minlength: "Địa chỉ email phải từ 3 kí tự trở lên.",
-                },
-                'cus[name]': {
-                    required: "Vui lòng điền họ tên.",
-                    minlength: "Họ tên phải từ 3 kí tự trở lên.",
-                    maxlength: "Họ tên phải từ 30 kí tự trở xuống.",
-                },
-                'cus[phone]': {
-                    required: "Vui lòng điền số điện thoại"
-                },
-                'cus[cityId]': {
-                    required: "Vui lòng chọn thành phố",
-                },
-                'cus[districtId]': {
-                    required: "Vui lòng chọn quận"
-                },
-                'cus[address]': {
-                    required: "Vui lòng nhập địa chỉ nhận hàng"
-                }
-            },
-            invalidHandler: function(event, validator) { //display error alert on form submit
-                success2.hide();
-                error2.show();
-            },
-            // errorPlacement: function(error, element) { // render error placement for each input type
-            //     var icon = $(element).parent('.input-icon').children('i');
-            //     icon.removeClass('fa-check').addClass("glyphicon glyphicon-warning-sign");
-            //     icon.attr("data-original-title", error.text()).tooltip({
-            //         'container': 'body'
-            //     });
-            // },
-            highlight: function(element) { // hightlight error inputs
-                $(element).closest('.form-group').removeClass("has-success").addClass('has-error'); // set error class to the control group
-            },
-            unhighlight: function(element) { // revert the change done by hightlight
-                $(element).closest('.form-group').removeClass('has-error');
-                $(element).closest('.form-group').find('span').removeClass('help-block-error2');
-            },
-            success: function(label, element) {
-                var icon = $(element).parent('.input-icon').children('i');
-                $(element).closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
-                icon.removeClass("glyphicon glyphicon-warning-sign").addClass("glyphicon glyphicon-ok");
-            },
-            submitHandler: function(form) {
-                success2.show();
-                error2.hide();
-                //Xu ly send don hang
-                var data_form = $(form).serialize();
-                //Kiem tra banks id
-                var banks_id = $('.banksOptions.active1').attr('data-bank-id');
-                console.log(banks_id);
-                if (banks_id != undefined ) {
-                    var data_form = data_form + '&bank_id=' + banks_id;
-                }
-                $.ajax({
-                    url: $('base').attr('href') + '/payment-oncepage-OrderSubmit' + $('base').attr('extention'),
-                    type: 'POST',
-                    dataType: 'json',
-                    data: data_form,
-                })
-                    .success(function(res) {
-                        if (res.status == false) {
-                            toastr.error(res.message);
-                            return false;
-                        } else {
-                            //html
-                            if (res.html != undefined && res.html != false) {
-                                $('.cf-main').html(res.html);
-                            } else {
-                                window.location.href = res.url_redirect;
-                            }
-                        }
-                    });
-            }
-        });
-    };
-    // var slimScroll = function() {
-    //     $("#address-Scroll").slimScroll({
-    //         // width: '327px',
-    //         height: '150px',
-    //         size: '2px',
-    //         // position: 'right',
-    //         color: '#333',
-    //         //alwaysVisible: true,
-    //         //distance: '20px',
-    //         //start: $('#child_image_element'),
-    //         railVisible: true,
-    //         railColor: '#fff',
-    //         //railOpacity: 0.3,
-    //         wheelStep: 3,
-    //         //allowPageScroll: false,
-    //         //disableFadeOut: false
-    //     });
-    // };
     var handleCheckCoupon = function() {
         $('body').on('click', '.check_coupon', function(event) {
             event.preventDefault();
@@ -1248,7 +1019,7 @@ var OncePage = function() {
                 if (res.status == true) {
                     refeshTax();
                 }
-               
+
 
             });
         });
@@ -1293,15 +1064,14 @@ var OncePage = function() {
             //             //console.log(error);
             //         }
             //     });
-            // } 
+            // }
     };
-   
+
     return {
         init: function() {
             handleOnload();
             handleCheckCoupon();
             handleCheckPoint();
-            handlerValidate();
             //setPrint();
             // slimScroll();
             getDistric();
@@ -1357,9 +1127,9 @@ var OncePage = function() {
 }();
 $(function() {
     OncePage.init();
-    //$('.submitPrint').text('');  
-   
-    
+    //$('.submitPrint').text('');
+
+
 });
 function numberFormat(number, decimals, dec_point, thousands_sep) {
         number = (number + '').replace(/[^0-9]/g, '');
@@ -1382,4 +1152,4 @@ function numberFormat(number, decimals, dec_point, thousands_sep) {
             s[1] += new Array(prec - s[1].length + 1).join('0');
         }
         return s.join(dec);
-}  
+}

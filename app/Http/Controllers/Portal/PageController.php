@@ -126,6 +126,20 @@ class PageController extends BasePortalController
         return redirect()->back();
     }
 
+    public function buyNow(Request $req, $id)
+    {
+        $product = $this->product->getInfoById($id);
+
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $number_product = isset($req->choose) ? $req->choose : 1;
+        $cart = new Cart($oldCart);
+        for ($i = 1; $i <= $number_product; $i++) {
+            $cart->add($product, $id);
+        }
+        $req->session()->put('cart', $cart);
+        return redirect()->route('portal.checkout.index');
+    }
+
     public function removeCartItem(Request $request)
     {
         $id = $request->product_id;
@@ -144,5 +158,20 @@ class PageController extends BasePortalController
         $product = Product::where('name', 'like', '%' . $req->s . '%')
             ->paginate(8);
         return view('page.timkiem', compact('product'));
+    }
+
+    public function introduce()
+    {
+        return view('page.includes.introduce');
+    }
+
+    public function contact()
+    {
+        return view('page.includes.contact');
+    }
+
+    public function posts()
+    {
+
     }
 }

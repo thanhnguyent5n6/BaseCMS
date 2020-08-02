@@ -22,6 +22,7 @@ class Tenant extends BaseModel
         'hotline_2',
         'address',
         'email',
+        'introduce',
         'status',
         'is_deleted',
         'created_by',

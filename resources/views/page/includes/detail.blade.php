@@ -3,14 +3,19 @@
     {{ @$product->name }}
 @endsection
 @section('page_style')
+
+@endsection
+@section('page_content')
     <style>
         .owl-carousel .owl-item {
             float: none !important;
             display: inline !important;
         }
+        .owl-carousel .owl-item {
+            float: none !important;
+            display: inline !important;
+        }
     </style>
-@endsection
-@section('page_content')
     <section class="v2_bnc_inside_page">
         <div class="v2_bnc_products_view_details">
             <div class="v2_bnc_products_body">
@@ -176,9 +181,9 @@
                                             <span class="glyphicon glyphicon-shopping-cart"></span> Mua ngay</a>--}}
                                         <a href="{{ route('portal.add_to_cart',$product->id) }}" class="btn-buy" id="add-cart" data-price-float="10100000.00.00" data-name="{{ @$product->name }}" data-product="1712481">
                                             <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                        {{--<a href="https://giahung.vn/payment-oncepage.html" id="payment" class="btn-buynow">
+                                        <a href="{{ route('portal.by_now',$product->id) }}" id="payment" class="btn-buynow">
                                             <button class="add-cart btn-buy quick-buy-custom" data-product="1712481"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Mua ngay</button>
-                                        </a>--}}
+                                        </a>
                                         <div class="clearfix"></div>
 
                                         <!-- Like share facebook,google,twitter -->

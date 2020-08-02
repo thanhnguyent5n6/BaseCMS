@@ -20,7 +20,7 @@
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
-        window.fbAsyncInit = function () {
+        window.fbAsyncInit = function () {https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/adv/2018/12/09/03/47/1544369329_32.png?v=4
             FB.init({
                 xfbml: true,
                 version: 'v3.3'
@@ -178,7 +178,7 @@
                     <div class="v2_bnc_language hidden">
                         <div class="v2_bnc_language_drop">Ngôn ngữ <i class="fa fa-angle-down"></i></div>
                         <ul>
-                            <input type="hidden" id="langRedirectUrl" value="http://giahung.vn/"/>
+                            <input type="hidden" id="langRedirectUrl" value="{{ route('portal.index') }}"/>
                         </ul>
                     </div>
                     <!-- End Language -->
@@ -222,7 +222,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="https://giahung.vn" rel="nofollow" class="v2_bnc_logo" title='{{ @$tenant_info->name }}'>
+                        <a href="{{ route('portal.index') }}" rel="nofollow" class="v2_bnc_logo" title='{{ @$tenant_info->name }}'>
                             <img src="{{ asset('/portal/img/logo.jpg') }}"
                                  width="190" height="80" class="img-responsive" alt='{{ @$tenant_info->name }}'/>
                         </a>
@@ -230,9 +230,41 @@
                     <!-- End Logo -->
                 </div>
                 <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
-                    <img clas="img-responsive"
-                         src="https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/adv/2018/12/09/03/47/1544369329_32.png?v=4"
-                         alt="" class="img-responsive"/>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->phone }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->phone }}</a>
+                                    </p>
+                                <p style="font-weight: 600">Tư vấn bán hàng</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->hotline_1 }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->hotline_1 }}</a>
+                                    </p>
+                                <p style="font-weight: 600">Tư vấn kỹ thuật</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->hotline_2 }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->hotline_2 }}</a>
+                                    </p>
+                                <p style="font-weight: 600">Tư vấn bảo hành</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="font-weight: bold; margin: 0px;">{{ @$tenant_info->name }}</p>
+                                <p style="font-weight: 600">Mở cửa 9:00 - 21:00</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -397,7 +429,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('body').data('home_url', 'https://giahung.vn');
+        $('body').data('home_url', '{{ route('portal.index') }}');
         //$('body').data('page_url', '');
         $('body').data('extension', '.html');
         Product.init();

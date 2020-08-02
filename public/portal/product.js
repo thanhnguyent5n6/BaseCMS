@@ -462,22 +462,7 @@
                     return false;
                 });
             }
-            var paymentCart = function() {
-                $('body').on('click', '#payment', function(event) {
-                    event.preventDefault();
-                    var href = $(this).attr('href');
-                    href = href.replace('payment.html', 'payment-oncepage.html');
-                    var url_ajax = $('body').data('home_url') + '/product-ajaxCart-ajaxSaveCart' + $('body').data('extension');
-                    $.post(url_ajax, '', function(response) {
-                        location.href = href;
-                        //console.log(response);
-                        // console.log(123);
-                    });
-                    // console.log(url_ajax);
-                    // console.log(href);
-                    // return false;
-                });
-            }
+
             var paymentCart2 = function() {
                 $('body').on('click', '#payment2', function(event) {
                     event.preventDefault();
@@ -693,7 +678,6 @@
                     //ajaxCategoryTab();
                     selectShop(); // cart
                     miniCart(); // cart mini
-                    paymentCart();
                     more_shop();
                     select_size();
                     sizeProduct();

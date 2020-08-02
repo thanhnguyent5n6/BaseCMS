@@ -7,6 +7,7 @@ Route::get('/', function(){
 
 Route::get('/index','Portal\PageController@index')->name('portal.index');
 Route::get('add-to-cart/{id}','Portal\PageController@postAddToCart')->name('portal.add_to_cart');
+Route::get('by-now/{id}','Portal\PageController@buyNow')->name('portal.by_now');
 
 Route::get('product/{slug}','Portal\ProductController@detail')->name('portal.product.detail');
 
@@ -14,12 +15,14 @@ Route::get('category/{slug}','Portal\PageController@loadByCategory')->name('port
 Route::post('load-product-in-category','Portal\PageController@loadProductByCategory')->name('portal.load_product_by_category');
 
 
-
 Route::post('/load-cart','Portal\PageController@loadCart')->name('portal.load_cart');
 Route::post('/remove-cart-item','Portal\PageController@removeCartItem')->name('portal.remove_cart_item');
 
 Route::get('/checkout','Portal\CheckoutController@getCheckout')->name('portal.checkout.index');
 Route::post('post-checkout','Portal\CheckoutController@postCheckout')->name('portal.post.checkout');
+
+Route::get('/introduce','Portal\PageController@introduce')->name('portal.introduce');
+Route::get('/contact','Portal\PageController@contact')->name('portal.contact');
 
 /*Route::get('/', function () {
     return view('index');
