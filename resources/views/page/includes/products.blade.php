@@ -1,6 +1,6 @@
 @extends('layouts.portal.master')
 @section('page_title')
-    {{ @$category_info->name }}
+    Sản phẩm - {{ @$tenant_info->name }}
 @endsection
 @section('page_style')
     <style>
@@ -27,8 +27,7 @@
             <div class="container">
                 <ul class="breadcrumb">
                     <li><a href="{{ route('portal.index') }}">Trang chủ</a></li>
-                    {{--                    <li><a href="https://giahung.vn/trang-san-pham.html">Sản Phẩm</a></li>--}}
-                    <li><a href="javascript:;">{{ @$category_info->name }}</a></li>
+                    <li><a href="javascript:;">Sản Phẩm</a></li>
                 </ul>
             </div>
         </div>
@@ -162,37 +161,37 @@
                                                 <div class="owl-wrapper"
                                                      style="width: 5860px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(-293px, 0px, 0px); transform-origin: 439.5px center; perspective-origin: 439.5px center;">
                                                     @foreach($product_news as $product_new)
-                                                    <div class="owl-item" style="width: 293px;">
-                                                        <li class="col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="v2_bnc_pr_item">
-                                                                <div
-                                                                    class="col-xs-12 col-sm-12 col-md-5 col-lg-5 no-padding">
-                                                                    <figure class="v2_bnc_block_item_img">
-                                                                        <a href="{{ route('portal.product.detail',$product_new->slug) }}"
-                                                                           title="{!! @$product_new->name !!}"><img
-                                                                                alt="{!! @$product_new->name !!}"
-                                                                                src="{{ @$product_new->thumbnail }}"
-                                                                                class="img-responsive"></a>
-                                                                    </figure>
+                                                        <div class="owl-item" style="width: 293px;">
+                                                            <li class="col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="v2_bnc_pr_item">
+                                                                    <div
+                                                                        class="col-xs-12 col-sm-12 col-md-5 col-lg-5 no-padding">
+                                                                        <figure class="v2_bnc_block_item_img">
+                                                                            <a href="{{ route('portal.product.detail',$product_new->slug) }}"
+                                                                               title="{!! @$product_new->name !!}"><img
+                                                                                    alt="{!! @$product_new->name !!}"
+                                                                                    src="{{ @$product_new->thumbnail }}"
+                                                                                    class="img-responsive"></a>
+                                                                        </figure>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                                                        <figcaption class="v2_bnc_pr_item_boxdetails">
+                                                                            <!-- Products Name -->
+                                                                            <h3 class="v2_bnc_pr_item_name no-top-space"><a
+                                                                                    href="{{ route('portal.product.detail',$product_new->slug) }}"
+                                                                                    title="{!! @$product_new->name !!}">{!! @$product_new->name !!}</a>
+                                                                            </h3>
+                                                                            <!-- End Products Name -->
+                                                                            <!-- Price -->
+                                                                            <div class="v2_bnc_pr_item_price_main">
+                                                                                <p class="v2_bnc_pr_item_price">{{ number_format(@$product_new->price) }} đ</p>
+                                                                            </div>
+                                                                            <!-- End Price -->
+                                                                        </figcaption>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                                                    <figcaption class="v2_bnc_pr_item_boxdetails">
-                                                                        <!-- Products Name -->
-                                                                        <h3 class="v2_bnc_pr_item_name no-top-space"><a
-                                                                                href="{{ route('portal.product.detail',$product_new->slug) }}"
-                                                                                title="{!! @$product_new->name !!}">{!! @$product_new->name !!}</a>
-                                                                        </h3>
-                                                                        <!-- End Products Name -->
-                                                                        <!-- Price -->
-                                                                        <div class="v2_bnc_pr_item_price_main">
-                                                                            <p class="v2_bnc_pr_item_price">{{ number_format(@$product_new->price) }} đ</p>
-                                                                        </div>
-                                                                        <!-- End Price -->
-                                                                    </figcaption>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </div>
+                                                            </li>
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -264,7 +263,7 @@
                                 <div class="row margin-top-20">
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                         <div class="v2_bnc_title_page">
-                                            <h1 class="no-top-space">{{ @$category_info->name }}</h1>
+                                            <h1 class="no-top-space">Danh sách sản phẩm</h1>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -312,32 +311,26 @@
 
         $(document).ready(function () {
             ValidateNumber.validateInputMoney();
-            $('body').data('home_url', '{{ route('portal.index') }}');
-            //$('body').data('page_url', '');
-            $('body').data('extension', '.html');
-            Product.init();
-            WebCommon.init();
-            // alert("-Golbal aler- "+$('body').data('home_url'));
-
-            loadDataItems();
+            loadDataItems(1);
         });
 
-        function loadDataItems()
+        function loadDataItems(page = 1)
         {
-            let category_id = '{{ $category_info->id }}';
             let sort_filter = $("#sort_filter").find('option:selected').val();
             let txt_search = $("#txt_search").val();
             let from_price = $("#from_price").val();
             let to_price = $("#to_price").val();
+            let key_words = "{{@$key_words}}";
             $.ajax({
                 type: "POST",
-                url: '{{ route('portal.load_product_by_category') }}',
+                url: '{{ route('portal.load_product_page') }}',
                 data: {
-                    category_id: category_id,
                     sort_filter: sort_filter,
                     txt_search: txt_search,
                     from_price: from_price,
                     to_price: to_price,
+                    page: page,
+                    key_words: key_words
                 },
                 success: function (response) {
                     $("#data-items").html(response);

@@ -170,8 +170,10 @@ class PageController extends BasePortalController
         return view('page.includes.contact');
     }
 
-    public function posts()
+    public function globalSearch(Request $request)
     {
-
+        $txt_search = $request->txt_search ?? '';
+        $route = route('portal.product.index',['key_words' => $txt_search]);
+        return $route;
     }
 }

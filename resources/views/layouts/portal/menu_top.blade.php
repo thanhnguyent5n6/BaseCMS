@@ -24,7 +24,7 @@
                                     Giới thiệu</a>
                             </li>
                             <li class="parent" class="">
-                                <a class="v2_menu_first_link" href="javascript:;">
+                                <a class="v2_menu_first_link" href="{{ route('portal.product.index') }}">
                                     Sản phẩm</a>
                                 <ul class="v2_menu_top_sub">
                                     @foreach($categories as $category)

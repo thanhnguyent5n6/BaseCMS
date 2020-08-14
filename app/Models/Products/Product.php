@@ -181,10 +181,22 @@ class Product extends BaseModel
         return $query->get();
     }
 
+    public function getAllProducts($txt_search = "", $from_price = 0, $to_price = 0, $key_words = '')
+    {
+        $query = $this->where('is_deleted', NO_DELETED);
+        if(isset($key_words) && !empty($key_words))
+            $query = $query->where('name','like','%'.$key_words.'%')->orWhere('price','like','%'.$key_words.'%');
+        if(isset($txt_search) && !empty($txt_search))
+            $query = $query->where('name','like',"%".$txt_search."%");
+        if(!empty($from_price) && !empty($to_price) && $from_price < $to_price)
+            $query = $query->whereBetween('price', [$from_price, $to_price]);
+        return $query->get();
+    }
+
     public function getProductNews()
     {
         return $this->where('is_deleted', NO_DELETED)->where('status', ACTIVE)
             ->orderBy('id', 'desc')
-            ->limit(3)->get();
+            ->limit(20)->get();
     }
 }

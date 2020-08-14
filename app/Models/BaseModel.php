@@ -72,7 +72,7 @@ class BaseModel extends Model
 
     public function updateByID($id, array $options = [])
     {
-        $options['updated_by'] = Auth::user()->id;
+        $options['updated_by'] = @Auth::user()->id;
         $data = $this->where('id', $id)->update($options);
         if(!empty($data))
             return $this->getInfoById($id);

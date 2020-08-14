@@ -23,7 +23,28 @@
         });
     }
 
+    function searchGlobal() {
+        let txt_search = $("#BNC_txt_search").val();
+
+        $.ajax({
+            type: "POST",
+            url: '{{ route('portal.global_search') }}',
+            data: {
+                txt_search: txt_search,
+            },
+            success: function (response) {
+                window.location.href = response;
+            }
+        });
+    }
+
     $(document).ready(function() {
         loadCart();
+
+        $('#BNC_txt_search').keypress(function(event) {
+            if (event.which == 13) {
+                searchGlobal();
+            }
+        });
     });
 </script>

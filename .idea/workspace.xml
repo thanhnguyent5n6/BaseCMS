@@ -11,22 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f5ebd2a-a25a-4a32-8527-bac7ebb83eea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/page/posts/datatable.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/page/posts/detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/page/posts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BaseCMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BaseCMS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/includes/products.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/portal/91637/statics/css/mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/91637/statics/css/mobile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/script.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/webcommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/webcommon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/includes/portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/portal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,24 +147,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/page/posts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/page/includes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\includes" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\posts" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin" />
+      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers\Admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\includes" />
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page" />
       <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers" />
       <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Products" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\posts" />
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers\Admin" />
-      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\portal" />
     </key>
   </component>
   <component name="RunManager">
@@ -213,7 +209,11 @@
       <workItem from="1595002706343" duration="4869000" />
       <workItem from="1596340100059" duration="10369000" />
       <workItem from="1596376716896" duration="3470000" />
-      <workItem from="1596382971558" duration="3660000" />
+      <workItem from="1596382971558" duration="4240000" />
+      <workItem from="1596467511400" duration="3612000" />
+      <workItem from="1596959171806" duration="2005000" />
+      <workItem from="1596986361377" duration="1505000" />
+      <workItem from="1597419543023" duration="957000" />
     </task>
     <servers />
   </component>
@@ -257,21 +257,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1593535423610" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1596378513121">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1597419948858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1596378513121" />
-    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1596384182458">
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1597419948858" />
+    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1597420012871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596384182458" />
+    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597420012871" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1596378921126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596378921126" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596386135039">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596986892004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596386135039" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596986892004" />
   </component>
 </project>

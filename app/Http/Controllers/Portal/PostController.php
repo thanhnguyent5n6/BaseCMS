@@ -33,7 +33,8 @@ class PostController extends BasePortalController
     {
         $product_news = $this->product->getProductNews();
         $post = $this->post->getFirstInfo(['slug' => $slug]);
-        $this->post->updateByID($post->id,['views' => $post->views+1]);
+        $post->views = $post->views+1;
+        $post->save();
         return view('page.posts.detail', compact('post','product_news'));
     }
 }

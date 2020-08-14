@@ -9,6 +9,8 @@ Route::get('/index','Portal\PageController@index')->name('portal.index');
 Route::get('add-to-cart/{id}','Portal\PageController@postAddToCart')->name('portal.add_to_cart');
 Route::get('by-now/{id}','Portal\PageController@buyNow')->name('portal.by_now');
 
+Route::get('products','Portal\ProductController@index')->name('portal.product.index');
+Route::post('load-products','Portal\ProductController@loadProducts')->name('portal.load_product_page');
 Route::get('product/{slug}','Portal\ProductController@detail')->name('portal.product.detail');
 
 Route::get('category/{slug}','Portal\PageController@loadByCategory')->name('portal.load_by_category');
@@ -23,6 +25,8 @@ Route::post('post-checkout','Portal\CheckoutController@postCheckout')->name('por
 
 Route::get('/introduce','Portal\PageController@introduce')->name('portal.introduce');
 Route::get('/contact','Portal\PageController@contact')->name('portal.contact');
+
+Route::post('/global-search','Portal\PageController@globalSearch')->name('portal.global_search');
 
 Route::group(['prefix' => 'post'], function() {
     Route::get('/','Portal\PostController@index')->name('portal.post');
