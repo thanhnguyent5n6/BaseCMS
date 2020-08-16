@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Models\Products\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests;
 use App\User;
-use App\Models\Product;
 use App\Models\Bill;
 use App\Models\News;
 use App\Models\Category;
@@ -21,7 +21,7 @@ class AdminController extends BaseController
     public function index()
     {
         $user = User::all();
-        $sale = Product::where('promotion_price','<>','0')->get();
+        $sale = Product::where('price','<>','0')->get();
         $order = Bill::all();
         $total = BillDetail::all();
         $tong = 0;
@@ -179,7 +179,7 @@ class AdminController extends BaseController
     // change status bill to deploying
     public function changeStatusBill(Request $req)
     {
-        $status = $req->status;        
+        $status = $req->status;
         $id = $req->check_bill;
         $bill = new Bill();
         foreach($id as $key => $value)
@@ -187,7 +187,7 @@ class AdminController extends BaseController
             $elementBill = $bill->select('id','status')->where('id','=',$value)->first();
             $elementBill->status = $status;
             $elementBill->save();
-        } 
+        }
         return $id;
     }
     // get view deploying function
@@ -276,7 +276,7 @@ class AdminController extends BaseController
         $data = $req->all();
         $title = $data['title'];
         $content = $data['content'];
-        
+
         if($req->hasfile('img'))
             {
                 // lay ten anh
@@ -339,6 +339,6 @@ class AdminController extends BaseController
         DB::Table('slide')->where('id',$id)->delete();
         return redirect()->back();
     }
-    
+
 }
 

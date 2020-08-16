@@ -23,6 +23,12 @@ class OptionType extends BaseModel
 
     public function items()
     {
-        return $this->hasMany(OptionItem::class,'option_type_id','id')->where('is_deleted', NO_DELETED);
+        return $this->hasMany(OptionItem::class, 'option_type_id', 'id')->where('is_deleted', NO_DELETED);
+    }
+
+    public function getProductOption()
+    {
+        $option_type = $this->getFirstInfo(['code' => 'product_options']);
+        return OptionItem::where('option_type_id', $option_type->id)->where('is_deleted', NO_DELETED)->get();
     }
 }

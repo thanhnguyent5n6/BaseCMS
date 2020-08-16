@@ -4,8 +4,14 @@ Route::get('admin', function(){
     return redirect()->route('admin.index');
 });
 
+Route::group(['prefix' => 'file'], function() {
+    Route::post('/upload','FileController@upload')->name('file.upload');
+});
+
 Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
+
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+
     Route::group(['prefix' => 'users'], function() {
         Route::get('/','Admin\UserController@index')->name('admin.user.index');
     });
@@ -30,104 +36,31 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::post('/destroy', 'Admin\ProductController@destroy')->name('admin.products.destroy');
     });
 
+    Route::group(['prefix' => 'posts'], function() {
+        Route::get('/', 'Admin\PostController@index')->name('admin.posts.index');
+        Route::get('/create', 'Admin\PostController@create')->name('admin.posts.create');
+        Route::post('/store', 'Admin\PostController@store')->name('admin.posts.store');
+        Route::get('/show/{id}', 'Admin\PostController@show')->name('admin.posts.show');
+        Route::get('/edit/{id}', 'Admin\PostController@edit')->name('admin.posts.edit');
+        Route::post('/update', 'Admin\PostController@update')->name('admin.posts.update');
+        Route::post('/destroy', 'Admin\PostController@destroy')->name('admin.posts.destroy');
+    });
 
-    Route::post('register', 'AdminAuth\AuthController@register');
+    Route::group(['prefix' => 'bills'], function() {
+        Route::get('/', 'Admin\BillController@index')->name('admin.bill.index');
+        Route::post('/load', 'Admin\BillController@load')->name('admin.bill.load');
+        Route::get('/detail/{id}', 'Admin\BillController@detail')->name('admin.bill.detail');
+        Route::post('/change-status', 'Admin\BillController@changeStatus')->name('admin.bill.change_status');
+        Route::post('/destroy', 'Admin\BillController@destroy')->name('admin.bill.destroy');
+    });
 
-    Route::get('interface',[
-        'as'=>'quan-li',
-        'uses'=>'AdminController@getInterface',
-    ]);
-    Route::get('product',[
-        'as'=>'ql-sp',
-        'uses'=>'AdminController@getProduct',
-    ]);
+    Route::group(['prefix' => 'setting'], function() {
+        Route::get('/introduce', 'Admin\SettingController@introduce')->name('admin.setting.introduce');
+        Route::get('/edit-introduct', 'Admin\SettingController@editIntroduce')->name('admin.setting.edit_introduce');
+        Route::post('/update-introduct', 'Admin\SettingController@updateIntroduce')->name('admin.setting.update_introduce');
+    });
 
-    Route::get('product/{id}','AdminController@getProductByCategory');
 
-    Route::get('product-type/{id}',[
-        'as'=>'sp-theo-loai',
-        'uses'=>"AdminController@getProductType",
-    ]);
-    Route::get('delete-product/{id}',[
-        'as'=>'xoa-sp',
-        'uses'=>'AdminController@getDelProduct',
-    ]);
-    Route::get('edit-product/{id}',[
-        'as'=>'sua-sp',
-        'uses'=>'AdminController@getEditProduct',
-    ]);
-    Route::post('edit-product/{id}',[
-        'as'=>'sua-sp',
-        'uses'=>'AdminController@postEditProduct',
-    ]);
-    Route::get('category',[
-        'as'=>'danh-muc-sp',
-        'uses'=>'AdminController@getCategory'
-    ]);
-    Route::get('add-product',[
-        'as'=>'them-sp',
-        'uses'=>'AdminController@getAddProduct',
-    ]);
-    Route::post('add-product',[
-        'as'=>'them-sp',
-        'uses'=>'AdminController@postAddProduct',
-    ]);
-    Route::get('search-product',[
-        'as'=>'tim-kiem-sp',
-        'uses'=>'AdminController@getSearchProduct',
-    ]);
-    // -------------- Danh muc san pham --------------------
-    Route::get('edit-category/{id}',[
-        'as'=>'sua-danh-muc',
-        'uses'=>'AdminController@getEditCategory'
-    ]);
-    Route::post('edit-category/{id}',[
-        'as'=>'sua-danh-muc',
-        'uses'=>'AdminController@postEditCategory'
-    ]);
-    Route::get('edit-category',[
-        'as'=>'them-danh-muc',
-        'uses'=>'AdminController@getAddCategory'
-    ]);
-    Route::post('edit-category',[
-        'as'=>'them-danh-muc',
-        'uses'=>'AdminController@postAddCategory'
-    ]);
-    Route::get('delete-category/{id}',[
-        'as'=>'xoa-danh-muc',
-        'uses'=>'AdminController@getDelCategory'
-    ]);
-    // -------------- Đơn hàng --------------------
-    Route::get('bill',[
-        'as'=>'don-hang',
-        'uses'=>'AdminController@getBill',
-    ]);
-    Route::get('delete-bill/{id}',[
-        'as'=>'xoa-don-hang',
-        'uses'=>'AdminController@getDelBill',
-    ]);
-    Route::get('bill_detail/{id}',[
-        'as'=>'chi-tiet-don-hang',
-        'uses'=>'AdminController@getBillDetail',
-    ]);
-    Route::post('change-bill/{status}','AdminController@changeStatusBill');
-
-    Route::get('bill-deploying',[
-        'as'=>'dang-giao-hang',
-        'uses'=>'AdminController@getBillDeploying',
-    ]);
-    Route::get('bill-success',[
-        'as'=>'thanh-cong',
-        'uses'=>'AdminController@getBillSuccess',
-    ]);
-    Route::get('bill-false',[
-        'as'=>'tra-lai',
-        'uses'=>'AdminController@getBillFalse',
-    ]);
-    Route::get('bill-destroy',[
-        'as'=>'xoa-don-hang',
-        'uses'=>'AdminController@getBillDestroy',
-    ]);
     // -------------- Tin tức --------------------
     Route::get('news',[
         'as'=>'tin-tuc',

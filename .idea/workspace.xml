@@ -11,34 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f5ebd2a-a25a-4a32-8527-bac7ebb83eea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Options/OptionItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Options/OptionType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Products/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Products/ProductImage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Products/ProductOption.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Supplier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/script.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/commons/crud.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BaseCMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BaseCMS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/includes/products.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/script.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_fatlab/master/admin_master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_fatlab/master/admin_master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/metronics/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/metronics/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/metronics/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/metronics/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/includes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/webcommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/webcommon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/includes/portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/portal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +133,8 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
     </include_path>
   </component>
   <component name="ProjectId" id="1dddkcwT0fTrMlxJnZzMQ3FY3Nc" />
@@ -160,18 +147,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/Products" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/page/includes" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Products" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Products" />
-      <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Options" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\includes" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\posts" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
       <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin" />
+      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers\Admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\admin\settings\introduce" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page\includes" />
+      <recent name="E:\xampp\htdocs\BaseCMS\resources\views\page" />
+      <recent name="E:\xampp\htdocs\BaseCMS\app\Http\Controllers" />
+      <recent name="E:\xampp\htdocs\BaseCMS\app\Models\Products" />
     </key>
   </component>
   <component name="RunManager">
@@ -193,6 +186,34 @@
       <workItem from="1592759052683" duration="2181000" />
       <workItem from="1592835338633" duration="12344000" />
       <workItem from="1592917631659" duration="3440000" />
+      <workItem from="1593004647569" duration="7160000" />
+      <workItem from="1593094867665" duration="10955000" />
+      <workItem from="1593175814230" duration="15772000" />
+      <workItem from="1593270466592" duration="6107000" />
+      <workItem from="1593330011108" duration="2685000" />
+      <workItem from="1593341502562" duration="4331000" />
+      <workItem from="1593360462901" duration="1772000" />
+      <workItem from="1593444546167" duration="4096000" />
+      <workItem from="1593535229191" duration="1343000" />
+      <workItem from="1593703947029" duration="3848000" />
+      <workItem from="1594306852368" duration="5969000" />
+      <workItem from="1594473186429" duration="13256000" />
+      <workItem from="1594527430421" duration="1232000" />
+      <workItem from="1594537783535" duration="11804000" />
+      <workItem from="1594656973651" duration="1214000" />
+      <workItem from="1594746883696" duration="1418000" />
+      <workItem from="1594825058769" duration="124000" />
+      <workItem from="1594825452618" duration="9639000" />
+      <workItem from="1594912498356" duration="12184000" />
+      <workItem from="1594990326773" duration="6081000" />
+      <workItem from="1595002706343" duration="4869000" />
+      <workItem from="1596340100059" duration="10369000" />
+      <workItem from="1596376716896" duration="3470000" />
+      <workItem from="1596382971558" duration="4240000" />
+      <workItem from="1596467511400" duration="3612000" />
+      <workItem from="1596959171806" duration="2005000" />
+      <workItem from="1596986361377" duration="1505000" />
+      <workItem from="1597419543023" duration="957000" />
     </task>
     <servers />
   </component>
@@ -212,37 +233,45 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592845858708">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596385564890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592845858708" />
-    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1592843614607">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596385564890" />
+    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1593275604161">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1920.1040@0.0.1920.1040" timestamp="1592843614607" />
-    <state x="739" y="243" key="NewPhpClassDialog" timestamp="1592918345888">
+    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1920.1040@0.0.1920.1040" timestamp="1593275604161" />
+    <state x="739" y="243" key="NewPhpClassDialog" timestamp="1596377092104">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592918345888" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1592837336093">
+    <state x="739" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596377092104" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1596383560405">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592837336093" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1592917653363">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596383560405" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1594543659392">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592917653363" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1592926328640">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594543659392" />
+    <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1593535423610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1592926328640" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1592760171204">
+    <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1593535423610" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1597419948858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592760171204" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592926267385">
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1597419948858" />
+    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1597420012871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592926267385" />
+    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597420012871" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1596378921126">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596378921126" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596986892004">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596986892004" />
   </component>
 </project>

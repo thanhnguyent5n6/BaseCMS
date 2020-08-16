@@ -1,136 +1,179 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Portal;
 
-
-
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\BasePortalController;
 use App\Libs\Apriori;
 use App\Libs\ProductSuggestion;
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Products\Product;
 use App\Slide;
-use App\Product;
-use App\ProductType;
-use App\Cart;
-use Session;
-use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Requests;
-use Hash;
-use Auth;
-use DB;
-class PageController extends Controller
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth;
+use Illuminate\Support\Facades\DB;
+
+class PageController extends BasePortalController
 {
-    public function getIndex()
+    protected $slide;
+
+    public function __construct()
     {
+        parent::__construct();
+        $this->slide = new Slide;
+    }
 
-        $apriori_lib = new Apriori(40, 2);
+    public function index()
+    {
+        $slides = $this->slide->getAll();
+        $products = $this->product->getAll();
+        $products = $products->groupBy('category_id');
 
-    	$slide = Slide::all();
-    	$new_product = Product::where('new','=','1')->paginate(8);
-    	$sp_km = Product::where('promotion_price','<>','0')->paginate(8);
+        return view('page.index', compact('slides', 'products','cart'));
+    }
 
-        $data_suggestion = $apriori_lib->getProductSuggestion();
+    public function loadCart()
+    {
+        return view('page.includes.cart');
+    }
 
-        if(count($data_suggestion) > 0) {
-            $new_product_1 = $new_product;
-            $sp_km_1 = $sp_km;
-            $new_product = $data_suggestion;
-            $sp_km = $data_suggestion;
-            $new_product_id = $new_product->pluck('id')->toArray();
-            $sp_km_id = $sp_km->pluck('id')->toArray();
+    public function loadByCategory($slug)
+    {
+        $category_info = $this->category->getFirstInfo(['slug' => $slug]);
+        $product_news = $this->product->getProductNews();
+        return view('page.includes.category', compact('category_info','product_news'));
+    }
 
-            foreach($new_product_1 as $product) {
-                if(!in_array($product->id, $new_product_id)) {
-                    $new_product->push($product);
-                }
-            }
-            foreach($sp_km_1 as $product) {
-                if(!in_array($product->id, $sp_km_id)) {
-                    $sp_km->push($product);
-                }
-            }
+    public function loadProductByCategory(Request $request)
+    {
+        $category_id = $request->category_id ?? 0;
+        $sort_filter = $request->sort_filter ?? 0;
+        $txt_search = $request->txt_search ?? 0;
+        $from_price = $request->from_price ?? 0;
+        $to_price = $request->to_price ?? 0;
+
+        $category = $this->category->getInfoById($category_id);
+        $category_ids = [$category->id];
+        if($category->parent_id == 0) {
+            $sub_categories = $this->category->getChilds($category->id);
+            if(count($sub_categories) > 0)
+                $category_ids = array_merge($category_ids, $sub_categories->pluck('id')->toArray());
         }
 
-    	return view('page.trangchu',compact('slide','new_product','sp_km'));
+        $products = $this->product->getProductByCategoryIds($category_ids, $txt_search, $from_price, $to_price);
+        switch ($sort_filter) {
+            case "early":
+                $products = $products->sortBy('created_at');
+                break;
+            case "best_selling":
+                $products = $products->sortByDesc('selling');
+                break;
+            case "view":
+                $products = $products->sortByDesc('views');
+                break;
+            case "hight_to_low":
+                $products = $products->sortByDesc('price');
+                break;
+            case "low_to_hight":
+                $products = $products->sortBy('price');
+                break;
+            case "a_z":
+                $products = $products->sortBy('name');
+                break;
+            case "z_a":
+                $products = $products->sortByDesc('name');
+                break;
+            default:
+                $products = $products->sortByDesc('created_at');
+        }
+        return view('page.includes.product_in_category', compact('products'));
     }
 
-    public function getProductType($type)
-    {
-    	$sp_theoloai = Product::where('id_type','=',$type)->orderBy('unit_price','desc')->paginate(6);
-    	$sp_khac = Product::where('id_type','<>',$type)->paginate(3);
-    	$loai = ProductType::all();
-    	$loai_sp = ProductType::where('id','=',$type)->first();
-    	return view('page.loai_sp',compact('sp_theoloai','sp_khac','loai','loai_sp'));
-    }
     public function getAbout()
     {
-    	return view('page.gioithieu');
+        return view('page.gioithieu');
     }
+
     public function getContacts()
     {
-    	return view('page.lienhe');
+        return view('page.lienhe');
     }
-    public function getProductDetail($id)
-    {
-        $apriori_lib = new Apriori(40, 2);
-    	$sp = Product::where('id','=',$id)->first();
-    	$sp_tuongtu = Product::where('id_type','=',$sp->id_type)->paginate(3);
-        $sp_km = DB::table('products')->orderBy('promotion_price','desc')->paginate(4);
-        $sp_moi = DB::table('products')->orderBy('created_at','desc')->paginate(4);
 
-        $data_suggestion = $apriori_lib->getProductSuggestion();
-        if(count($data_suggestion) > 0) {
-            $new_product_1 = $sp_moi;
-            $sp_moi = $data_suggestion;
-            $sp_moi_id = $sp_moi->pluck('id')->toArray();
+    public function getAddToCart(Request $req, $id)
+    {
+        $product = $this->product->getInfoById($id);
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $req->session()->put('cart', $cart);
+        return redirect()->back();
+    }
 
-            foreach($new_product_1 as $product) {
-                if(!in_array($product->id, $sp_moi_id)) {
-                    $sp_moi->push($product);
-                }
-            }
+    public function postAddToCart(Request $req, $id)
+    {
+        $product = $this->product->getInfoById($id);
+
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $number_product = isset($req->choose) ? $req->choose : 1;
+        $cart = new Cart($oldCart);
+        for ($i = 1; $i <= $number_product; $i++) {
+            $cart->add($product, $id);
         }
-    	return view('page.chitietsanpham',compact('sp','sp_tuongtu','sp_km','sp_moi'));
+        $req->session()->put('cart', $cart);
+        return redirect()->back();
     }
-    public function getAddToCart(Request $req,$id)
+
+    public function buyNow(Request $req, $id)
     {
-    	$product = Product::find($id);
-    	$oldCart = Session('cart')?Session::get('cart'):null;
-    	$cart =  new Cart($oldCart);
-    	$cart->add($product,$id);
-    	$req->session()->put('cart',$cart);	
-    	return redirect()->back(); 
-    }
-    public function postAddToCart(Request $req,$id)
-    {
-        $product = Product::find($id);
-        $oldCart = Session('cart')?Session::get('cart'):null;
-        $number_product = isset($req->choose)?$req->choose:1;
-        $cart =  new Cart($oldCart);
-        for($i=1;$i<=$number_product;$i++)
-        {
-           $cart->add($product,$id);
+        $product = $this->product->getInfoById($id);
+
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $number_product = isset($req->choose) ? $req->choose : 1;
+        $cart = new Cart($oldCart);
+        for ($i = 1; $i <= $number_product; $i++) {
+            $cart->add($product, $id);
         }
-        $req->session()->put('cart',$cart); 
-        return redirect()->back(); 
+        $req->session()->put('cart', $cart);
+        return redirect()->route('portal.checkout.index');
     }
-    public function getDelItemCart($id)
+
+    public function removeCartItem(Request $request)
     {
-        $oldCart = Session::has('cart')?Session::get('cart'):null;
+        $id = $request->product_id;
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
-        if(count($cart->items)>0)
-        {
-            Session::put('cart',$cart);
-        }
-        else
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else
             Session::forget('cart');
         return redirect()->back();
     }
 
     public function getSearch(Request $req)
     {
-        $product = Product::where('name','like','%'.$req->s.'%')
+        $product = Product::where('name', 'like', '%' . $req->s . '%')
             ->paginate(8);
-        return view('page.timkiem',compact('product'));
+        return view('page.timkiem', compact('product'));
+    }
+
+    public function introduce()
+    {
+        return view('page.includes.introduce');
+    }
+
+    public function contact()
+    {
+        return view('page.includes.contact');
+    }
+
+    public function globalSearch(Request $request)
+    {
+        $txt_search = $request->txt_search ?? '';
+        $route = route('portal.product.index',['key_words' => $txt_search]);
+        return $route;
     }
 }

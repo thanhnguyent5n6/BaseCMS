@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 
-class Slide extends Model
+class Slide extends BaseModel
 {
-    //
     protected $table = "slides";
 }
