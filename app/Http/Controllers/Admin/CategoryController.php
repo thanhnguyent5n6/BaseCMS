@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class CategoryController extends BaseController
 {
-    private $model;
-
     public function __construct()
     {
         $this->model = new Category();
@@ -51,7 +49,7 @@ class CategoryController extends BaseController
             ]);
         $data = $request->all();
         $parameters = $this->model->getParameters($data);
-        $parameters['code'] = $this->model->getCodeUnique("category_");
+        $parameters['code'] = $this->model->getCodeUnique("category");
 
         $data_item = $this->model->createData($parameters);
         if (!empty($data_item)) {

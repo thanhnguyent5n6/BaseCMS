@@ -5,7 +5,7 @@ namespace App\Models;
 
 class Supplier extends BaseModel
 {
-    protected $table = "option_items";
+    protected $table = "suppliers";
 
     protected $fillable = [
         'code',

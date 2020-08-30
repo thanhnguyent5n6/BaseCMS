@@ -31,14 +31,14 @@
                 pagination: true,
 
                 search: {
-                    input: $('#generalSearch'),
+                    input: $('#kt_datatable_search_query')
                 },
 
                 // columns definition
                 columns: [
                     {
                         field: 'id',
-                        title: '#',
+                        title: '',
                         sortable: false,
                         width: 20,
                         type: 'number',
@@ -48,6 +48,7 @@
                     {
                         field: 'stt',
                         title: 'STT',
+                        width: 40,
                     }, {
                         field: 'code',
                         title: 'Mã sản phẩm',
@@ -75,15 +76,21 @@
                         // callback function support for column rendering
                         template: function(row) {
                             var status = {
-                                0: {'title': 'Khóa', 'class': ' kt-badge--danger'},
-                                1: {'title': 'Hoạt động', 'class': ' kt-badge--success'}
+                                0: {
+                                    'title': 'Khóa',
+                                    'class': ' label-light-danger'
+                                },
+                                1: {
+                                    'title': 'Hoạt động',
+                                    'class': ' label-light-success'
+                                },
                             };
-                            return '<span class="kt-badge ' + status[row.status].class + ' kt-badge--inline kt-badge--pill">' + status[row.status].title + '</span>';
+                            return '<span class="label font-weight-bold label-lg ' + status[row.status].class + ' label-inline">' + status[row.status].title + '</span>';
                         },
                     },
                     {
                         field: 'Actions',
-                        title: 'Actions',
+                        title: 'Chỉnh sửa',
                         sortable: false,
                         width: 110,
                         overflow: 'visible',
@@ -150,6 +157,4 @@
     jQuery(document).ready(function() {
         ProductDatatable.init();
     });
-
-
 </script>

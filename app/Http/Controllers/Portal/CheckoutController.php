@@ -3,57 +3,74 @@
 
 namespace App\Http\Controllers\Portal;
 
-
-use App\Bill;
-use App\BillDetail;
-use App\Customer;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Controllers\BasePortalController;
+use App\Http\Requests\CheckOutRequest;
+use App\Models\Bill;
+use App\Models\BillDetail;
+use App\Models\Customer;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class CheckoutController extends Controller
+class CheckoutController extends BasePortalController
 {
-    public function getCheckout()
+    private $bill;
+    private $customer;
+    public function __construct()
     {
-        return view('page.dathang');
+        parent::__construct();
+        $this->bill = new Bill();
+        $this->customer = new Customer();
     }
 
-    public function postCheckout(Request $req)
+    public function getCheckout()
     {
-        $cart = Session::get('cart');
+        return view('page.includes.checkout');
+    }
 
-        $code = "bill_".rand();
+    public function postCheckout(CheckoutRequest $request)
+    {
+        DB::beginTransaction();
+        try {
+            $cart = Session::get('cart');
+            $customer = new Customer();
+            $customer->name = $request->name;
+            $customer->email = $request->email;
+            $customer->phone_number = $request->phone;
+            $customer->address = $request->address;
+            $customer->note = $request->comment;
+            $customer->save();
 
-        $customer = new Customer;
-        $customer->name = $req->name;
-        $customer->gender = $req->gender;
-        $customer->email = $req->email;
-        $customer->address = $req->address;
-        $customer->phone_number = $req->phone;
-        $customer->note = $req->notes;
-        $customer->save();
-
-        $bill = new Bill;
-        $bill->id_customer = $customer->id;
-        $bill->code = $code;
-        $bill->date_order = date('Y-m-d');
-        $bill->total = $cart->totalPrice;
-        $bill->payment = $req->payment_method;
-        $bill->note = $req->notes;
-        $bill->save();
+            $bill = new Bill;
+            $bill->customer_id = $customer->id;
+            $bill->code = $this->bill->getCodeUnique("bill");
+            $bill->date_order = Carbon::now();
+            $bill->total = $cart->totalPrice;
+            $bill->payment = $request->payment_method;
+            $bill->note = $request->notes;
+            $bill->save();
 
 
-        foreach ($cart->items as $key => $value) {
-            $bill_detail = new BillDetail;
-            $bill_detail->id_bill = $bill->id;
-            $bill_detail->id_product = $key;
-            $bill_detail->quantity = $value['qty'];
-            $bill_detail->unit_price = ($value['price'] / $value['qty']);
-            $bill_detail->save();
+            foreach ($cart->items as $key => $value) {
+                $bill_detail = new BillDetail();
+                $bill_detail->id_bill = $bill->id;
+                $bill_detail->id_product = $key;
+                $bill_detail->quantity = $value['qty'];
+                $bill_detail->unit_price = ($value['price'] / $value['qty']);
+                $bill_detail->save();
+
+                $product = $this->product->getInfoById($value['item']->id);
+                $this->product->updateByID($product->id,['selling' => $product->selling+1]);
+            }
+            Session::forget('cart');
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return redirect()->back()->withErrors('Tạo hóa đơn thất bại');
         }
-        Session::forget('cart');
-        return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
 
+        Session::flash('success', 'Tạo hóa đơn thành công');
+        return redirect()->back();
     }
 
     private function getCode() {
