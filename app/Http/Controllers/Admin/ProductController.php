@@ -60,7 +60,7 @@ class ProductController extends BaseController
                 'price.min' => 'Giá sản phẩm lớn hơn 0đ',
             ]);
         $data = $request->all();
-        $parameters = $this->model->getParameters($data);
+        $parameters = $this->model->getParameters($data, true);
         $parameters['code'] = $this->model->getCodeUnique("product");
 
         $data_item = $this->model->createProduct($parameters);

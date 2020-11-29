@@ -97,12 +97,13 @@ class Product extends BaseModel
         return array('status' => 0);
     }
 
-    public function getParameters($data)
+    public function getParameters($data, $is_update = false)
     {
         $parameters = $this->initParameters();
         $parameters['category_id'] = $data['category_id'] ?? 0;
         $parameters['supplier_id'] = $data['supplier_id'] ?? 0;
-        $parameters['slug'] = $this->createSlug($data['name']);
+        if($is_update)
+            $parameters['slug'] = $this->createSlug($data['name']);
         $parameters['name'] = $data['name'] ?? '';
         $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
         $parameters['content'] = isset($data['content']) ? html_entity_decode($data['content']) : '';
