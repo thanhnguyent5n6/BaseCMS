@@ -6,7 +6,6 @@ use App\Libs\CommonLib;
 use App\Models\BaseModel;
 use App\Models\Category;
 use App\Models\Image;
-use App\Models\ProductImage;
 use App\Traits\Code;
 use App\Traits\Slug;
 use Illuminate\Support\Facades\DB;
