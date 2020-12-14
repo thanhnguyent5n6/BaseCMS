@@ -117,6 +117,7 @@ class Product extends BaseModel
 
     public function createProduct($parameters)
     {
+
         $image = new Image();
         $image_ids = [];
         if(isset($parameters['image_ids'])) {

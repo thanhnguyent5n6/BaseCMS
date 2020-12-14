@@ -12,6 +12,7 @@ use App\Models\Products\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends BaseController
 {
@@ -39,6 +40,7 @@ class ProductController extends BaseController
 
     public function create()
     {
+
         $is_update = false;
         $categories = $this->category->getAll()->keyBy('id');
         $suppliers = $this->supplier->getAll();
