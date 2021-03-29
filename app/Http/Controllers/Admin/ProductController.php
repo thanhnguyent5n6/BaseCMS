@@ -32,7 +32,7 @@ class ProductController extends BaseController
 
     public function index()
     {
-        $products = $this->model->getAll();
+        $products = $this->model->getAllProducts();
         $categories = $this->category->getAll();
         $data_items = $this->getDataItems($products);
         return view('admin.products.index', compact('data_items','categories'));
