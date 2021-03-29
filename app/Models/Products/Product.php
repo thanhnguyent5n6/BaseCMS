@@ -6,7 +6,6 @@ use App\Libs\CommonLib;
 use App\Models\BaseModel;
 use App\Models\Category;
 use App\Models\Image;
-use App\Models\ProductImage;
 use App\Traits\Code;
 use App\Traits\Slug;
 use Illuminate\Support\Facades\DB;
@@ -97,12 +96,13 @@ class Product extends BaseModel
         return array('status' => 0);
     }
 
-    public function getParameters($data)
+    public function getParameters($data, $is_update = false)
     {
         $parameters = $this->initParameters();
         $parameters['category_id'] = $data['category_id'] ?? 0;
         $parameters['supplier_id'] = $data['supplier_id'] ?? 0;
-        $parameters['slug'] = $this->createSlug($data['name']);
+        if($is_update)
+            $parameters['slug'] = $this->createSlug($data['name']);
         $parameters['name'] = $data['name'] ?? '';
         $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
         $parameters['content'] = isset($data['content']) ? html_entity_decode($data['content']) : '';
@@ -117,6 +117,7 @@ class Product extends BaseModel
 
     public function createProduct($parameters)
     {
+
         $image = new Image();
         $image_ids = [];
         if(isset($parameters['image_ids'])) {

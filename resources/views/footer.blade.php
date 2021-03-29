@@ -59,7 +59,7 @@
 	</div> <!-- #footer -->
 	<div class="copyright">
 		<div class="container">
-			<p class="pull-left">©2014 Coppyright NguyenNT</p>
+			<p class="pull-left">©2014 Coppyright Minhthanhaudio</p>
 			<!-- <p class="pull-right pay-options">
 				<a href="#"><img src="source/assets/dest/images/pay/master.jpg" alt="" /></a>
 				<a href="#"><img src="source/assets/dest/images/pay/pay.jpg" alt="" /></a>

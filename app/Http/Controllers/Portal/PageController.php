@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers\Portal;
 
-use App\Http\Controllers\BaseController;
 use App\Http\Controllers\BasePortalController;
-use App\Libs\Apriori;
-use App\Libs\ProductSuggestion;
 use App\Models\Cart;
-use App\Models\Category;
 use App\Models\Products\Product;
-use App\Slide;
+use App\Models\Slide;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PageController extends BasePortalController
 {
@@ -23,7 +16,7 @@ class PageController extends BasePortalController
     public function __construct()
     {
         parent::__construct();
-        $this->slide = new Slide;
+        $this->slide = new Slide();
     }
 
     public function index()
