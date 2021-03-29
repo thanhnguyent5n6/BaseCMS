@@ -180,12 +180,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             @endif
-                            @if(Session::has('success'))
+
+                            @if(\Illuminate\Support\Facades\Session::has('success'))
                                 <div class="alert alert-custom alert-outline-success fade show mb-5" role="alert">
                                     <div class="alert-icon">
                                         <i class="flaticon-warning"></i>
                                     </div>
-                                    <div class="alert-text">{{ Session::get('success') }}</div>
+                                    <div class="alert-text">{{ \Illuminate\Support\Facades\Session::get('success') }}</div>
                                     <div class="alert-close">
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">
@@ -211,7 +212,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Copyright-->
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted font-weight-bold mr-2">2020©</span>
-                        <a href="javascript:;" target="_blank" class="text-dark-75 text-hover-primary">NguyenNT</a>
+                        <a href="javascript:;" target="_blank" class="text-dark-75 text-hover-primary">Minhthanhaudio</a>
                     </div>
                     <!--end::Copyright-->
                     <!--begin::Nav-->

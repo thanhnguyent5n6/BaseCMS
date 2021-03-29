@@ -17,31 +17,6 @@
     <meta property="og:site_name" content="MINH THÀNH AUDIO"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>
-        window.fbAsyncInit = function () {https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/adv/2018/12/09/03/47/1544369329_32.png?v=4
-            FB.init({
-                xfbml: true,
-                version: 'v3.3'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat"
-         attribution=setup_tool
-         page_id="400728673383770">
-    </div>
-
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111291465-4"></script>
@@ -58,7 +33,7 @@
     </script>
 
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
+    {{--<script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -68,7 +43,7 @@
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
-    </script>
+    </script>--}}
     <!--End of Tawk.to Script-->
     <!-- End Include Header Meta-->
 
@@ -146,22 +121,6 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0" nonce="ANEHeNPX"></script>
-
-<!-- Include popup so sanh -->
-<!-- So sánh sánh sản phẩm -->
-<div id="f-compare" status="closed">
-    <div class="f-compare-title"><i></i><span>So sánh sản phẩm</span></div>
-    <div class="f-compare-body">
-        <ul class="f-compare-ul no-margin no-padding">
-
-        </ul>
-        <div class="f-compare-info"><span id="compare-notify"></span></div>
-        <div class="f-compare-button" style="display: none;"><a href="/product-compare.html">So sánh </a></div>
-    </div>
-</div>
-<!-- End So sánh sánh sản phẩm --><!-- End include popup so sanh-->
 
 <!-- Full Code -->
 <!-- Copyright -->
@@ -277,6 +236,10 @@
 
         background-position: center top;
         background-attachment: fixed;
+    }
+    .fb_dialog {
+        position: static;
+        Left:30px;
     }
 </style>
 <!-- End Header -->
@@ -491,6 +454,34 @@
 
     gtag("config", "UA-124328798-1");
 </script>
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="2601941599835500"
+     theme_color="#0084ff"
+     logged_in_greeting="Chào bạn. Tôi có thể giúp gì cho bạn"
+     logged_out_greeting="Chào bạn. Tôi có thể giúp gì cho bạn">
+</div>
+
 @include('page.includes.page_script')
 </body>
 </html>

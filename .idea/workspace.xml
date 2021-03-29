@@ -11,19 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f5ebd2a-a25a-4a32-8527-bac7ebb83eea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/page/includes/products.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Products/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/portal/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/portal/webcommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/webcommon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal/menu_top.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/includes/page_script.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/includes/portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/includes/portal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/products/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/upload/products/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,9 +139,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/page/includes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -173,6 +166,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -214,11 +208,17 @@
       <workItem from="1596959171806" duration="2005000" />
       <workItem from="1596986361377" duration="1505000" />
       <workItem from="1597419543023" duration="957000" />
+      <workItem from="1609046677280" duration="1469000" />
+      <workItem from="1609051205561" duration="970000" />
+      <workItem from="1609052698755" duration="2329000" />
+      <workItem from="1610460670370" duration="318000" />
+      <workItem from="1611591265802" duration="1192000" />
+      <workItem from="1617032333411" duration="517000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -233,45 +233,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596385564890">
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609051232899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596385564890" />
-    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1593275604161">
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1609051232899" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1609048764345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="779" y="220" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1920.1040@0.0.1920.1040" timestamp="1593275604161" />
-    <state x="739" y="243" key="NewPhpClassDialog" timestamp="1596377092104">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1609048764345" />
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1611591454581">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596377092104" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1596383560405">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1611591454581" />
+    <state x="666" y="253" width="587" height="534" key="find.popup" timestamp="1610460711297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596383560405" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1594543659392">
+    <state x="666" y="253" width="587" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610460711297" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611591448643">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594543659392" />
-    <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1593535423610">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1593535423610" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1597419948858">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1597419948858" />
-    <state x="667" y="253" width="795" height="624" key="find.popup" timestamp="1597420012871">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="667" y="253" width="795" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597420012871" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1596378921126">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596378921126" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596986892004">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596986892004" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611591448643" />
   </component>
 </project>

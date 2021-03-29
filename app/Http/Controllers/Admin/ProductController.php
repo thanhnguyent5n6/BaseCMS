@@ -12,6 +12,7 @@ use App\Models\Products\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends BaseController
 {
@@ -31,7 +32,7 @@ class ProductController extends BaseController
 
     public function index()
     {
-        $products = $this->model->getAll();
+        $products = $this->model->getAllProducts();
         $categories = $this->category->getAll();
         $data_items = $this->getDataItems($products);
         return view('admin.products.index', compact('data_items','categories'));
@@ -39,6 +40,7 @@ class ProductController extends BaseController
 
     public function create()
     {
+
         $is_update = false;
         $categories = $this->category->getAll()->keyBy('id');
         $suppliers = $this->supplier->getAll();
@@ -54,13 +56,13 @@ class ProductController extends BaseController
                 'price' => 'required|min:0',
             ],
             [
-                'name.required' => 'Vui lòng nhập tên danh mục',
-                'name.max' => 'Tên danh mục không quá 255 ký tự',
+                'name.required' => 'Vui lòng nhập tên sản phẩm',
+                'name.max' => 'Tên sản phẩm không quá 255 ký tự',
                 'price.required' => 'Bạn chưa nhập giá',
                 'price.min' => 'Giá sản phẩm lớn hơn 0đ',
             ]);
         $data = $request->all();
-        $parameters = $this->model->getParameters($data);
+        $parameters = $this->model->getParameters($data, true);
         $parameters['code'] = $this->model->getCodeUnique("product");
 
         $data_item = $this->model->createProduct($parameters);
@@ -95,7 +97,7 @@ class ProductController extends BaseController
         $id = $data['id'] ?? 0;
         $data_item = $this->model->getInfoById($id);
         if (empty($data_item))
-            return redirect()->back()->withErrors('Không tìm thấy danh mục');
+            return redirect()->back()->withErrors('Không tìm thấy sản phẩm');
         $this->validate($request,
             [
                 'name' => 'required|max:255',
@@ -103,8 +105,8 @@ class ProductController extends BaseController
                 'description' => 'max:1000',
             ],
             [
-                'name.required' => 'Vui lòng nhập tên danh mục',
-                'name.max' => 'Tên danh mục không quá 255 ký tự',
+                'name.required' => 'Vui lòng nhập tên sản phẩm',
+                'name.max' => 'Tên sản phẩm không quá 255 ký tự',
                 'icon.max' => 'Icon không quá 50 ký tự',
                 'description.max' => 'Mô tả không quá 1000 ký tự',
             ]);
@@ -112,10 +114,10 @@ class ProductController extends BaseController
         $parameters = $this->model->getParameters($data);
         $data_item = $this->model->updateProduct($id, $parameters);
         if (!empty($data_item)) {
-            Session::flash('success', 'Cập nhật danh mục thành công');
+            Session::flash('success', 'Cập nhật sản phẩm thành công');
             return redirect()->back();
         }
-        return redirect()->back()->withErrors('Cập nhật danh mục thất bại');
+        return redirect()->back()->withErrors('Cập nhật sản phẩm thất bại');
     }
 
     public function destroy(Request $request)
@@ -125,7 +127,7 @@ class ProductController extends BaseController
         foreach($ids as $id) {
             $this->model->softDelete($id);
         }
-        return $this->Success('Xóa danh mục thành công');
+        return $this->Success('Xóa sản phẩm thành công');
     }
 
     /**
