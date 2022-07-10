@@ -27,7 +27,6 @@
             <div class="container">
                 <ul class="breadcrumb">
                     <li><a href="{{ route('portal.index') }}">Trang chủ</a></li>
-                    {{--                    <li><a href="https://giahung.vn/trang-san-pham.html">Sản Phẩm</a></li>--}}
                     <li><a href="javascript:;">{{ @$category_info->name }}</a></li>
                 </ul>
             </div>

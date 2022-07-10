@@ -7,6 +7,7 @@ use App\Libs\CommonLib;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class BaseModel extends Model
 {
@@ -93,5 +94,48 @@ class BaseModel extends Model
 
     public function getUpdatedAtDisplayAttribute(){
         return CommonLib::getDisplayDate($this->updated_at,DISPLAY_DATE_FORMAT);
+    }
+
+    public function getCodeUnique($prefix)
+    {
+        $code = $prefix."_".mt_rand(MIN_CODE, MAX_CODE);
+        $check_code = $this->where('code',$code)->first();
+
+        if(isset($check_code) && !$check_code($code))
+            return $this->createCode($prefix);
+
+        return $code;
+    }
+
+    public function createSlug($title, $id = 0)
+    {
+        // Normalize the title
+        $slug = $slug = Str::slug($title, '-');
+
+        // Get any that could possibly be related.
+        // This cuts the queries down by doing it once.
+        $allSlugs = $this->getRelatedSlugs($slug, $id);
+
+        // If we haven't used it before then we are all good.
+        if (! $allSlugs->contains('slug', $slug)){
+            return $slug;
+        }
+
+        // Just append numbers like a savage until we find not used.
+        for ($i = 1; $i <= 10; $i++) {
+            $newSlug = $slug.'-'.$i;
+            if (! $allSlugs->contains('slug', $newSlug)) {
+                return $newSlug;
+            }
+        }
+
+        throw new \Exception('Can not create a unique slug');
+    }
+
+    private function getRelatedSlugs($slug, $id = 0)
+    {
+        return $this->select('slug')->where('slug', 'like', $slug.'%')
+            ->where('id', '<>', $id)
+            ->get();
     }
 }

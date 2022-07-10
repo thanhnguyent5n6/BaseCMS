@@ -4,13 +4,10 @@ namespace App\Models;
 
 use App\Libs\CommonLib;
 use App\Models\Products\Product;
-use App\Traits\Code;
 use Illuminate\Database\Eloquent\Model;
 
 class Bill extends BaseModel
 {
-    use Code;
-
     protected $table = "bills";
 
     public function bill_details()

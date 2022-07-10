@@ -4,13 +4,9 @@ namespace App\Models;
 
 use App\Libs\CommonLib;
 use App\Models\Products\Product;
-use App\Traits\Code;
-use App\Traits\Slug;
 
 class Category extends BaseModel
 {
-    use Code;
-    use Slug;
 
     protected $table = "categories";
 

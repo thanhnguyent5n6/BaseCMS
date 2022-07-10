@@ -5,7 +5,7 @@ Route::get('/', function(){
     return redirect()->route('portal.index');
 });
 
-Route::get('/index','Portal\PageController@index')->name('portal.index');
+Route::get('/','Portal\PageController@index')->name('portal.index');
 Route::get('add-to-cart/{id}','Portal\PageController@postAddToCart')->name('portal.add_to_cart');
 Route::get('by-now/{id}','Portal\PageController@buyNow')->name('portal.by_now');
 
@@ -23,10 +23,10 @@ Route::post('/remove-cart-item','Portal\PageController@removeCartItem')->name('p
 Route::get('/checkout','Portal\CheckoutController@getCheckout')->name('portal.checkout.index');
 Route::post('post-checkout','Portal\CheckoutController@postCheckout')->name('portal.post.checkout');
 
-Route::get('/introduce','Portal\PageController@introduce')->name('portal.introduce');
-Route::get('/contact','Portal\PageController@contact')->name('portal.contact');
+Route::get('/gioi-thieu','Portal\PageController@introduce')->name('portal.introduce');
+Route::get('/lien-he','Portal\PageController@contact')->name('portal.contact');
 
-Route::post('/global-search','Portal\PageController@globalSearch')->name('portal.global_search');
+Route::post('/tim-kiem','Portal\PageController@globalSearch')->name('portal.global_search');
 
 Route::group(['prefix' => 'post'], function() {
     Route::get('/','Portal\PostController@index')->name('portal.post');

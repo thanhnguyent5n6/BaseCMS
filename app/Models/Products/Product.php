@@ -6,14 +6,10 @@ use App\Libs\CommonLib;
 use App\Models\BaseModel;
 use App\Models\Category;
 use App\Models\Image;
-use App\Traits\Code;
-use App\Traits\Slug;
 use Illuminate\Support\Facades\DB;
 
 class Product extends BaseModel
 {
-    use Code;
-    use Slug;
 
     protected $table = "products";
 

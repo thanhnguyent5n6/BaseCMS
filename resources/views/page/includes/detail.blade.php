@@ -27,7 +27,7 @@
                         <ul class="breadcrumb">
                             <li><a href="{{ route('portal.index') }}">Trang chủ</a></li>
 {{--                            <li><a href="https://giahung.vn/trang-san-pham.html">Sản Phẩm</a></li>--}}
-                            <li><a href="https://giahung.vn/game-net-sever-cu">{{ $product->category->name }}</a></li>
+                            <li><a href="/danh-muc/{{ $product->category->slug }}">{{ $product->category->name }}</a></li>
                             <li><a href="javascript:;">{{ $product->name }}</a></li>
                         </ul>
                     </div>

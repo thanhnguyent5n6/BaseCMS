@@ -25,7 +25,7 @@ class PageController extends BasePortalController
         $products = $this->product->getAll();
         $products = $products->groupBy('category_id');
 
-        return view('page.index', compact('slides', 'products','cart'));
+        return view('page.index', compact('slides', 'products'));
     }
 
     public function loadCart()

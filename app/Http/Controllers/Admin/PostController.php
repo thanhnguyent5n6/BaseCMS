@@ -20,7 +20,7 @@ class PostController extends BaseController
     {
         $posts = $this->model->getAll();
         $data_items = $this->getDataItems($posts);
-        return view('admin.posts.index', compact('data_items','categories'));
+        return view('admin.posts.index', compact('data_items'));
     }
 
     public function create()

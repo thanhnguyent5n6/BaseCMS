@@ -4,13 +4,10 @@
 namespace App\Models;
 
 
-use App\Traits\Code;
 
 class Tenant extends BaseModel
 {
     protected $table = "tenants";
-
-    use Code;
 
     protected $fillable = [
         'code',

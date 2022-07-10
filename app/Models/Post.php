@@ -3,15 +3,10 @@
 namespace App\Models;
 
 use App\Libs\CommonLib;
-use App\Traits\Code;
-use App\Traits\Slug;
 
 class Post extends BaseModel
 {
     protected $table = "posts";
-
-    use Code;
-    use Slug;
 
     protected $fillable = [
         'code',

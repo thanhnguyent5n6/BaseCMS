@@ -4,13 +4,9 @@
 namespace App\Models;
 
 
-use App\Traits\Code;
-use App\Traits\Slug;
 
 class Image extends BaseModel
 {
-    use Code;
-    use Slug;
 
     protected $table = "images";
 
