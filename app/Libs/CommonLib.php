@@ -90,4 +90,12 @@ class CommonLib
         $status = self::billStatus();
         return $status[$status_index];
     }
+
+    public static function productStatus()
+    {
+        return array(
+            PRODUCT_STATUS_IN_STOCK => 'Còn hàng',
+            PRODUCT_STATUS_OUT_STOCK => 'Hết hàng',
+        );
+    }
 }

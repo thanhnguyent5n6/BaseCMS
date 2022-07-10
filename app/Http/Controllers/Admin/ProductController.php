@@ -145,12 +145,14 @@ class ProductController extends BaseController
             $data->name = @$product->name;
             $data->description = @$product->description_display;
             $data->content = @$product->content_display;
-            $data->unit_price = @number_format($product->unit_price);
+            $data->unit_price = @number_format($product->price);
             $data->sales = !empty($product->sales) ? $product->sales."%" : "0%";
             $data->avatar = @$product->avatar;
             $data->unit = @$product->unit;
             $data->status = @$product->status;
             $data->status_display = @$product->status_display;
+            $data->is_new_display = @$product->is_new_display;
+            $data->warranty_policy = @$product->warranty_policy;
             return $data;
         })->toJson();
         return $data_items;

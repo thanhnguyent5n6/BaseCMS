@@ -60,6 +60,15 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::post('/update-introduct', 'Admin\SettingController@updateIntroduce')->name('admin.setting.update_introduce');
     });
 
+    Route::group(['prefix' => 'suppliers'], function() {
+        Route::get('/', 'Admin\SupplierController@index')->name('admin.supplier.index');
+        Route::get('/create', 'Admin\SupplierController@create')->name('admin.supplier.create');
+        Route::post('/store', 'Admin\SupplierController@store')->name('admin.supplier.store');
+        Route::get('/show/{id}', 'Admin\SupplierController@show')->name('admin.supplier.show');
+        Route::get('/edit/{id}', 'Admin\SupplierController@edit')->name('admin.supplier.edit');
+        Route::post('/update', 'Admin\SupplierController@update')->name('admin.supplier.update');
+        Route::post('/destroy', 'Admin\SupplierController@destroy')->name('admin.supplier.destroy');
+    });
 
     // -------------- Tin tức --------------------
     Route::get('news',[

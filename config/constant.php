@@ -35,3 +35,6 @@ define('DISPLAY_JS_DATETIME_FORMAT', 'H﻿﻿ dd/mm/yyyy');//Format dung trong d
 define('DISPLAY_SHORT_TIME_FORMAT', 'd/m/Y H:i');
 define('DISPLAY_JS_TIME_FORMAT', 'H:i');//Format dung trong timepicker javascript
 define('DISPLAY_JS_TIME_SECOND_FORMAT', 'H:i:s');//Format dung trong timepicker javascript
+
+define('PRODUCT_STATUS_IN_STOCK', 1);
+define('PRODUCT_STATUS_OUT_STOCK', 2);

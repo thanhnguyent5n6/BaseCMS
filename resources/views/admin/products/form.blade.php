@@ -121,6 +121,14 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="example-search-input" class="col-2 col-form-label">Chế độ bảo hành:</label>
+                        <div class="col-10">
+                            <input required class="form-control" type="text" value="{{ @$data_item->warranty_policy }}"
+                                   name="warranty_policy">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="example-url-input" class="col-2 col-form-label">Giá niêm yết:</label>
                         <div class="col-2">
                             <div class="input-group">
@@ -147,11 +155,25 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="example-url-input" class="col-2 col-form-label">Đơn vị:</label>
+                        {{--<label for="example-url-input" class="col-2 col-form-label">Đơn vị:</label>
                         <div class="col-2">
                             <div class="input-group">
                                 <input placeholder="Nhập đơn vị..." class="form-control" type="text"
                                        value="{{ @$data_item->unit }}" name="unit">
+                            </div>
+                        </div>--}}
+
+                        <label for="example-url-input" class="col-2 col-form-label">Tình trạng:</label>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <select name="is_new" class="form-control select2">
+                                    @foreach(\App\Libs\CommonLib::productStatus() as $productStatus => $statusDisplay)
+                                        <option
+                                                @if($is_update && isset($data_item->is_new) && $data_item->is_new == $productStatus) selected
+                                                @endif
+                                                value="{{ $productStatus }}">{{ $statusDisplay }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

@@ -2,7 +2,7 @@
     'use strict';
     // Class definition
 
-    var ProductDatatable = function() {
+    var SupplierDatatable = function() {
         // Private functions
 
         // demo initializer
@@ -31,14 +31,14 @@
                 pagination: true,
 
                 search: {
-                    input: $('#kt_datatable_search_query')
+                    input: $('#kt_datatable_search_query'),
                 },
 
                 // columns definition
                 columns: [
                     {
                         field: 'id',
-                        title: '',
+                        title: '#',
                         sortable: false,
                         width: 20,
                         type: 'number',
@@ -48,30 +48,16 @@
                     {
                         field: 'stt',
                         title: 'STT',
-                        width: 40,
                     }, {
                         field: 'code',
-                        title: 'Mã sản phẩm',
+                        title: 'Mã nhà cung cấp',
                     }, {
                         field: 'name',
-                        title: 'Tên sản phẩm',
-                    },
-                    {
-                        field: 'unit_price',
-                        title: 'Giá gốc',
-                    },
-                    {
-                        field: 'sales',
-                        title: 'Khuyến mãi',
-                    },
-                    {
-                        field: 'is_new_display',
-                        title: 'Tình trạng',
-                    },{
-                        field: 'warranty_policy',
-                        title: 'Bảo hành',
-                    },
-                    {
+                        title: 'Tên nhà cung cấp',
+                    }, {
+                        field: 'priority',
+                        title: 'Thứ tự',
+                    }, {
                         field: 'status',
                         title: 'Trạng thái',
                         // callback function support for column rendering
@@ -97,7 +83,7 @@
                         overflow: 'visible',
                         autoHide: false,
                         template: function(row) {
-                            let urlEdit = "{{ route('admin.products.edit',['id' => 'txt_edit_id']) }}";
+                            let urlEdit = "{{ route('admin.supplier.edit',['id' => 'txt_edit_id']) }}";
                             var url = urlEdit.replace('txt_edit_id', row.id);
                             return `
 						<a href="`+url+`" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Cập nhật">
@@ -124,12 +110,12 @@
                 });
 
                 if(ids.length == 0) {
-                    alert("Bạn chưa chọn danh mục!");
+                    alert("Bạn chưa chọn nhà cung cấp!");
                     return false;
                 }
 
-                if(confirm('Bạn có chắc muốn xóa '+ids.length+' danh mục này?')) {
-                    let urlDelete = `{{ route('admin.products.destroy') }}`;
+                if(confirm('Bạn có chắc muốn xóa '+ids.length+' nhà cung cấp này?')) {
+                    let urlDelete = `{{ route('admin.supplier.destroy') }}`;
                     $.ajax({
                         url: urlDelete,
                         type: "POST",
@@ -156,6 +142,8 @@
     }();
 
     jQuery(document).ready(function() {
-        ProductDatatable.init();
+        SupplierDatatable.init();
     });
+
+
 </script>

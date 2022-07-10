@@ -167,7 +167,7 @@
 
                                                 <li class="key">Nhà cung cấp: </li>
                                                 <li class="value">
-                                                    {{ @$product->supplier->name }}
+                                                    {{ !empty($product->supplier->name) ? $product->supplier->name : "(Chưa có thông tin)" }}
                                                 </li>
                                                 <li class="clearfix"></li>
 
