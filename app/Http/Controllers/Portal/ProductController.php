@@ -60,7 +60,7 @@ class ProductController extends BasePortalController
 
     public function detail($slug)
     {
-        $product = $this->product->getFirstInfo(['slug' => $slug]);
+        $product = $this->product->where('slug', 'like', $slug)->where('is_deleted', NO_DELETED)->with(['category', 'images', 'supplier'])->first();
         $this->product->updateByID($product->id,['views' => $product->views+1]);
         return view('page.includes.detail', compact('product'));
     }

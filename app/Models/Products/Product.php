@@ -6,6 +6,7 @@ use App\Libs\CommonLib;
 use App\Models\BaseModel;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 
 class Product extends BaseModel
@@ -38,6 +39,11 @@ class Product extends BaseModel
     public function category()
     {
     	return $this->belongsTo(Category::class,'category_id','id')->where('is_deleted', NO_DELETED);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class,'supplier_id','id')->where('is_deleted', NO_DELETED);
     }
 
     public function product_image()
