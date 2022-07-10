@@ -70,6 +70,16 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::post('/destroy', 'Admin\SupplierController@destroy')->name('admin.supplier.destroy');
     });
 
+    Route::group(['prefix' => 'slides'], function() {
+        Route::get('/', 'Admin\SlideController@index')->name('admin.slide.index');
+        Route::get('/create', 'Admin\SlideController@create')->name('admin.slide.create');
+        Route::post('/store', 'Admin\SlideController@store')->name('admin.slide.store');
+        Route::get('/show/{id}', 'Admin\SlideController@show')->name('admin.slide.show');
+        Route::get('/edit/{id}', 'Admin\SlideController@edit')->name('admin.slide.edit');
+        Route::post('/update', 'Admin\SlideController@update')->name('admin.slide.update');
+        Route::post('/destroy', 'Admin\SlideController@destroy')->name('admin.slide.destroy');
+    });
+
     // -------------- Tin tức --------------------
     Route::get('news',[
         'as'=>'tin-tuc',

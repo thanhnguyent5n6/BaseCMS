@@ -51,11 +51,8 @@
                     <div class="slideshow_block_top">
                         <div class="owl_carousel_1_item">
                             @foreach($slides as $slide)
-                                <img src="{{ asset($slide->url) }}"
-                                     alt="" class="img-responsive">
-                                <img
-                                    src="https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/slide/2018/05/05/04/56/1525495495_1505373912_artboard-1.jpg?v=4"
-                                    alt="" class="img-responsive">
+                                <img src="{{ asset($slide->image->url) }}"
+                                     alt="{{ $slide->name }}" class="img-responsive">
                             @endforeach
                             {{--<img src="https://cdn-img-v2.webbnc.net/uploadv2/web/81/8186/slide/2018/05/05/04/56/1525495495_1505373912_artboard-1.jpg?v=4"
                                  alt="" class="img-responsive">
