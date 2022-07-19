@@ -58,6 +58,10 @@ Route::group(array('prefix'=>'admin','middleware'=>'auth'),function(){
         Route::get('/introduce', 'Admin\SettingController@introduce')->name('admin.setting.introduce');
         Route::get('/edit-introduct', 'Admin\SettingController@editIntroduce')->name('admin.setting.edit_introduce');
         Route::post('/update-introduct', 'Admin\SettingController@updateIntroduce')->name('admin.setting.update_introduce');
+
+        Route::get('/tenant', 'Admin\SettingController@tenant')->name('admin.setting.tenant');
+        Route::get('/edit-tenant', 'Admin\SettingController@editTenant')->name('admin.setting.edit_tenant');
+        Route::post('/update-tenant', 'Admin\SettingController@updateTenant')->name('admin.setting.update_tenant');
     });
 
     Route::group(['prefix' => 'suppliers'], function() {

@@ -35,7 +35,7 @@
         <div class="v2_bnc_pr_item_boxdetails">
             <!-- Products Name -->
             <h3 class="v2_bnc_pr_item_name"><a
-                    href="#"
+                    href="{{ route('portal.product.detail',$product->slug) }}"
                     title="{!! @$product->name !!}">
                     {!! @$product->name !!}
                 </a></h3>

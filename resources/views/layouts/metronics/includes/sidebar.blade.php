@@ -118,10 +118,13 @@
                 <div class="menu-submenu">
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
-                        <li class="menu-item menu-item-parent" aria-haspopup="true">
-												<span class="menu-link">
-													<span class="menu-text">Sản phẩm</span>
-												</span>
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="{{ route('admin.setting.tenant') }}" class="menu-link menu-toggle">
+                                <i class="menu-bullet menu-bullet-line">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quản lý thông tin Page</span>
+                            </a>
                         </li>
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="{{ route('admin.setting.introduce') }}" class="menu-link menu-toggle">

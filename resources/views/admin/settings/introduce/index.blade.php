@@ -1,11 +1,11 @@
 @extends('layouts.metronics.master')
 @section('page_title')
-    Quản lý trang giới thiệu
+    Quản lý thông tin Page
 @stop
 @section('bread_crumb')
     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
         <li class="breadcrumb-item">
-            <a href="{{ route('admin.setting.introduce') }}" class="text-muted">Quản lý trang giới thiệu</a>
+            <a href="{{ route('admin.setting.tenant') }}" class="text-muted">Quản lý thông tin Page</a>
         </li>
     </ul>
 @stop
@@ -16,7 +16,7 @@
     <div class="card card-custom gutter-b">
         <div class="card-header">
             <div class="card-title">
-                <h3 class="card-label">Quản lý trang giới thiệu</h3>
+                <h3 class="card-label">Quản lý thông tin Page</h3>
             </div>
             <div class="card-toolbar">
 

@@ -160,9 +160,9 @@
                     <div class="v2_bnc_login_register">
                         <div class="v2_bnc_login_account">
                             <ul class="v2_bnc_login_bar">
-                                <li><a href="/user-login.html" rel="nofollow"><i class="fa fa-user"></i> Đăng nhập</a>
+                                <li><a href="javascript:;" rel="nofollow"><i class="fa fa-user"></i> Đăng nhập</a>
                                 </li>
-                                <li><a href="/user-regis.html" rel="nofollow"><i class="fa fa-user-plus"></i> Đăng
+                                <li><a href="javascript:;" rel="nofollow"><i class="fa fa-user-plus"></i> Đăng
                                         ký</a>
                                 </li>
                             </ul>

@@ -19,22 +19,42 @@ class SettingController extends BaseController
 
     public function introduce()
     {
-        $tenant_info = $this->model->getInfoById(1);
+        $tenant_info = $this->model->getInfoById(TENANT_ID);
         return view('admin.settings.introduce.index', compact('tenant_info'));
     }
 
     public function editIntroduce()
     {
-        $tenant_info = $this->model->getInfoById(1);
+        $tenant_info = $this->model->getInfoById(TENANT_ID);
         return view('admin.settings.introduce.form', compact('tenant_info'));
     }
 
     public function updateIntroduce(Request $request)
     {
         $introduce = $request->introduce ? htmlentities($request->introduce) : "";
-        $this->model->updateByID(1,['introduce' => $introduce]);
+        $this->model->updateByID(TENANT_ID,['introduce' => $introduce]);
         Session::flash('success', 'Cập nhật thành công');
         return redirect()->route('admin.setting.introduce');
+    }
+
+    public function tenant()
+    {
+        $data_item = $this->model->getInfoById(TENANT_ID);
+        return view('admin.settings.tenant.index', compact('data_item'));
+    }
+
+    public function editTenant()
+    {
+        $data_item = $this->model->getInfoById(TENANT_ID);
+        return view('admin.settings.tenant.form', compact('data_item'));
+    }
+
+    public function updateTenant(Request $request)
+    {
+        $introduce = $request->introduce ? htmlentities($request->introduce) : "";
+        $this->model->updateByID(TENANT_ID,['introduce' => $introduce]);
+        Session::flash('success', 'Cập nhật thành công');
+        return redirect()->route('admin.setting.tenant');
     }
 
 }

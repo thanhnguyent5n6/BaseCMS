@@ -1,5 +1,7 @@
 <?php
 
+define('TENANT_ID', 1);
+
 define('NO_DELETED', 0);
 define('DELETED', 1);
 define('NO_ACTIVE', 0);

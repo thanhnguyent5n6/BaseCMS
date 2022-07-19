@@ -1,7 +1,6 @@
 @extends('layouts.metronics.master')
 @section('page_title')
     @if($is_update) Cập nhật bài viết @else Thêm mới bài viết @endif
-
 @stop
 @section('bread_crumb')
     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
