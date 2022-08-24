@@ -38,32 +38,32 @@ class Product extends BaseModel
 
     public function category()
     {
-    	return $this->belongsTo(Category::class,'category_id','id')->where('is_deleted', NO_DELETED);
+        return $this->belongsTo(Category::class, 'category_id', 'id')->where('is_deleted', NO_DELETED);
     }
 
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class,'supplier_id','id')->where('is_deleted', NO_DELETED);
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'id')->where('is_deleted', NO_DELETED);
     }
 
     public function product_image()
     {
-        return $this->hasMany(ProductImage::class,'product_id','id');
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 
     public function images()
     {
-        return $this->belongsToMany(Image::class,'product_image','product_id','image_id');
+        return $this->belongsToMany(Image::class, 'product_image', 'product_id', 'image_id');
     }
 
     public function bill_detail()
     {
-    	return $this->hasMany('Appp\BillDetail','id_product','id');
+        return $this->hasMany('Appp\BillDetail', 'id_product', 'id');
     }
 
     public function getStatusDisplayAttribute()
     {
-        if($this->is_active == NO_ACTIVE) {
+        if ($this->is_active == NO_ACTIVE) {
             return "Khóa";
         }
         return "Hoạt động";
@@ -71,7 +71,7 @@ class Product extends BaseModel
 
     public function getDescriptionDisplayAttribute()
     {
-        if(!empty($this->description)) {
+        if (!empty($this->description)) {
             return html_entity_decode($this->description);
         }
         return "";
@@ -79,7 +79,7 @@ class Product extends BaseModel
 
     public function getContentDisplayAttribute()
     {
-        if(!empty($this->content)) {
+        if (!empty($this->content)) {
             return html_entity_decode($this->content);
         }
         return "";
@@ -87,10 +87,10 @@ class Product extends BaseModel
 
     public function getIsNewDisplayAttribute()
     {
-        if($this->is_new ==  0) {
-            return 'Hàng cũ';
+        if ($this->is_new == PRODUCT_STATUS_OUT_STOCK) {
+            return 'Hết hàng';
         }
-        return 'Hàng mới';
+        return 'Còn hàng';
     }
 
     public function initParameters()
@@ -103,7 +103,7 @@ class Product extends BaseModel
         $parameters = $this->initParameters();
         $parameters['category_id'] = $data['category_id'] ?? 0;
         $parameters['supplier_id'] = $data['supplier_id'] ?? 0;
-        if($is_update)
+        if ($is_update)
             $parameters['slug'] = $this->createSlug($data['name']);
         $parameters['name'] = $data['name'] ?? '';
         $parameters['description'] = isset($data['description']) ? html_entity_decode($data['description']) : '';
@@ -113,6 +113,8 @@ class Product extends BaseModel
         $parameters['thumbnail'] = isset($data['thumbnail']) ? $data['thumbnail'] : '';
         $parameters['unit'] = isset($data['unit']) ? $data['unit'] : 0;
         $parameters['status'] = isset($data['status']) ? 1 : 0;
+        $parameters['warranty_policy'] = isset($data['warranty_policy']) ? $data['warranty_policy'] : "";
+        $parameters['is_new'] = isset($data['is_new']) ? $data['is_new'] : 0;
         $parameters['image_ids'] = isset($data['image_id']) ? $data['image_id'] : [];
         return $parameters;
     }
@@ -122,7 +124,7 @@ class Product extends BaseModel
 
         $image = new Image();
         $image_ids = [];
-        if(isset($parameters['image_ids'])) {
+        if (isset($parameters['image_ids'])) {
             $image_ids = $parameters['image_ids'];
             unset($parameters['image_ids']);
         }
@@ -130,11 +132,11 @@ class Product extends BaseModel
         DB::beginTransaction();
         try {
             $result = $this->createData($parameters);
-            if(count($image_ids) > 0) {
+            if (count($image_ids) > 0) {
                 $result->images()->attach($image_ids);
                 $image->uploaded($image_ids);
             }
-            foreach($image_ids as $img_id) {
+            foreach ($image_ids as $img_id) {
                 $image->updateByID($img_id, ['status' => IMG_SAVED]);
             }
             DB::commit();
@@ -149,37 +151,33 @@ class Product extends BaseModel
         $image = new Image();
         $image_ids = [];
         $img_delete = [];
-        if(isset($parameters['image_ids'])) {
+        if (isset($parameters['image_ids'])) {
             $image_ids = $parameters['image_ids'];
             unset($parameters['image_ids']);
         }
 
-        DB::beginTransaction();
-        try {
-            $result = $this->updateByID($id, $parameters);
-            $old_product_img = $result->product_image->pluck('image_id')->toArray();
+        $result = $this->updateByID($id, $parameters);
+        $old_product_img = $result->product_image->pluck('image_id')->toArray();
 
-            list($image_ids, $img_deletes) = CommonLib::getFileAttachDetach($image_ids, $old_product_img);
+        list($image_ids, $img_deletes) = CommonLib::getFileAttachDetach($image_ids, $old_product_img);
 
-            $result->images()->attach($image_ids);
-            $result->images()->detach($img_deletes);
-            $image->uploaded($image_ids);
-            foreach($image_ids as $img_id) {
-                $image->updateByID($img_id, ['status' => IMG_SAVED]);
-            }
-            DB::commit();
-        } catch (\Exception $exception) {
-            DB::rollBack();
+        $result->images()->attach($image_ids);
+        $result->images()->detach($img_deletes);
+        $image->uploaded($image_ids);
+        foreach ($image_ids as $img_id) {
+            $image->updateByID($img_id, ['status' => IMG_SAVED]);
         }
+        DB::commit();
+
         return $result;
     }
 
     public function getProductByCategoryIds($category_ids = [], $txt_search = "", $from_price = 0, $to_price = 0)
     {
         $query = $this->whereIn('category_id', $category_ids)->where('is_deleted', NO_DELETED)->where('status', ACTIVE);
-        if(isset($txt_search) && !empty($txt_search))
-            $query = $query->where('name','like',"%".$txt_search."%");
-        if(!empty($from_price) && !empty($to_price) && $from_price < $to_price)
+        if (isset($txt_search) && !empty($txt_search))
+            $query = $query->where('name', 'like', "%" . $txt_search . "%");
+        if (!empty($from_price) && !empty($to_price) && $from_price < $to_price)
             $query = $query->whereBetween('price', [$from_price, $to_price]);
         return $query->get();
     }
@@ -187,11 +185,11 @@ class Product extends BaseModel
     public function getAllProducts($txt_search = "", $from_price = 0, $to_price = 0, $key_words = '')
     {
         $query = $this->where('is_deleted', NO_DELETED);
-        if(isset($key_words) && !empty($key_words))
-            $query = $query->where('name','like','%'.$key_words.'%')->orWhere('price','like','%'.$key_words.'%');
-        if(isset($txt_search) && !empty($txt_search))
-            $query = $query->where('name','like',"%".$txt_search."%");
-        if(!empty($from_price) && !empty($to_price) && $from_price < $to_price)
+        if (isset($key_words) && !empty($key_words))
+            $query = $query->where('name', 'like', '%' . $key_words . '%')->orWhere('price', 'like', '%' . $key_words . '%');
+        if (isset($txt_search) && !empty($txt_search))
+            $query = $query->where('name', 'like', "%" . $txt_search . "%");
+        if (!empty($from_price) && !empty($to_price) && $from_price < $to_price)
             $query = $query->whereBetween('price', [$from_price, $to_price]);
         return $query->get();
     }

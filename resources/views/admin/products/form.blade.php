@@ -235,6 +235,7 @@
 @stop
 
 @section('page_js')
+
     <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     <!--begin::Page Scripts(used by this page)-->
     @include('admin.products.script_file_upload')
