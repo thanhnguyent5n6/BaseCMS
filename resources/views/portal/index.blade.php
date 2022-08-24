@@ -99,8 +99,8 @@
                                                             @foreach($category['child'] as $category_child)
                                                                 <ul class="v2_bnc_home_catepr_tabul nav-tabs">
                                                                     <li>
-                                                                        <a href="/may-tinh-cu-van-phong" data-ajax="1"
-                                                                           data-url="https://giahung.vn/may-tinh-cu-van-phong"
+                                                                        <a href="#" data-ajax="1"
+                                                                           data-url="#"
                                                                            data-id="292821" data-block="292820"
                                                                            class="active">{!! @$category_child['name'] !!}</a>
                                                                     </li>
@@ -147,8 +147,6 @@
                                     HomeProductCategory.init();
                                 });
                             </script>
-                            <script type="text/javascript"
-                                    src="https://giahung.vn/modules/product/themes/resource/js/productrater.js"></script>
                             <!-- End Products Categories -->
                             <div class="clearfix"></div>
                             <!-- Slide Products Brand -->

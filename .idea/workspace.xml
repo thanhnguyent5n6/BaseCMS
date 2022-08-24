@@ -11,10 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f5ebd2a-a25a-4a32-8527-bac7ebb83eea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Products/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/ckeditor/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/commons/common_js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/commons/common_js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/public/assets_6/vendors/general/handlebars/node_modules/" />
@@ -132,8 +129,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/products/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="258" column="14" selection-start-line="258" selection-start-column="14" selection-end-line="258" selection-end-column="14" />
+            <state relative-caret-position="300">
+              <caret line="242" column="12" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/portal/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="554">
+              <caret line="150" column="42" selection-start-line="150" selection-start-column="41" selection-end-line="150" selection-end-column="110" />
             </state>
           </provider>
         </entry>
@@ -201,7 +207,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/backend/ckeditor/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -214,7 +220,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Category</find>
       <find>admin.slide.index</find>
       <find>name</find>
       <find>image_id</find>
@@ -242,8 +247,9 @@
       <find>warranty_policy</find>
       <find>CKEDITOR.editorConfig</find>
       <find>CKEDITOR.plugins.</find>
-      <find>is_new</find>
       <find>function initCkeditor(textarea_name)</find>
+      <find>giahung.vn</find>
+      <find>is_new</find>
     </findStrings>
     <replaceStrings>
       <replace>asset('/assets</replace>
@@ -269,7 +275,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/metronics/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/page/includes/category.blade.php" />
         <option value="$PROJECT_DIR$/app/Libs/CommonLib.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/products/form.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/products/script.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/suppliers/index.blade.php" />
@@ -301,6 +306,8 @@
         <option value="$PROJECT_DIR$/app/Models/Products/Product.php" />
         <option value="$PROJECT_DIR$/resources/views/commons/common_js.blade.php" />
         <option value="$PROJECT_DIR$/public/backend/ckeditor/config.js" />
+        <option value="$PROJECT_DIR$/resources/views/admin/products/form.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/portal/index.blade.php" />
       </list>
     </option>
   </component>
@@ -644,12 +651,12 @@
       <workItem from="1657440650562" duration="10527000" />
       <workItem from="1658244099792" duration="331000" />
       <workItem from="1659872082795" duration="1161000" />
-      <workItem from="1661354400855" duration="1400000" />
+      <workItem from="1661354400855" duration="2194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13625000" />
+    <option name="totallyTimeSpent" value="14419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -921,13 +928,6 @@
     <entry file="file://$PROJECT_DIR$/resources/views/admin/index.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/portal/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/metronics/includes/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -1056,13 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/products/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="258" column="14" selection-start-line="258" selection-start-column="14" selection-end-line="258" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/framework/views/076bba1c5640e71c67be531691a1c7a4c34972c1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1081,6 +1074,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/products/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="242" column="12" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/portal/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="150" column="42" selection-start-line="150" selection-start-column="41" selection-end-line="150" selection-end-column="110" />
         </state>
       </provider>
     </entry>
