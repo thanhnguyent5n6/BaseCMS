@@ -284,20 +284,7 @@
                 <script type="text/javascript">
                     // var urlNow=document.URL;
                 </script>
-                <!-- <script src="https://giahung.vn/themes/91637/statics/plugins/pjax/jquery.cookie.js"></script>
-                <script src="https://giahung.vn/themes/91637/statics/plugins/pjax/jquery.pjax.js"></script>
-                <link rel="stylesheet" type="text/css" href="https://giahung.vn/themes/91637/statics/plugins/magnific-popup/magnific-popup.css"/>
-                <script src="https://giahung.vn/themes/91637/statics/plugins/magnific-popup/jquery.magnific-popup.js"></script>
-                <script type="text/javascript" src="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/js/productFast.js"></script> -->
 
-                <!--Like Product-->
-                <!-- <link rel="stylesheet" type="text/css" href="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/css/likeproduct.css"/>
-                <script src="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/js/likeproduct.js"></script>
-
-                <link rel="stylesheet" type="text/css" href="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/css/toastr.css"/>
-                <script src="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/js/toastr.js"></script>
-                <script type="text/javascript" src="https://cdn-gd-v2.webbnc.net/modules/product/themes/resource/js/productFillter.js"></script> -->
-                <!--End Like Product-->
 
                 <!-- End Products Related -->
             </div>
