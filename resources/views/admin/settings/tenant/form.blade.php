@@ -8,11 +8,11 @@
             <li class="breadcrumb-item">
                 <a href="{{ route('admin.setting.tenant') }}" class="text-muted">Quản lý thông tin Page</a>
             </li>
+            <li class="breadcrumb-item">
+                <a href="javascript:;" class="text-muted"><a href="javascript:;" class="kt-subheader__breadcrumbs-link">
+                        Cập nhật </a></a>
+            </li>
         </ul>
-        <li class="breadcrumb-item">
-            <a href="javascript:;" class="text-muted"><a href="javascript:;" class="kt-subheader__breadcrumbs-link">
-                    Cập nhật </a></a>
-        </li>
     </ul>
 @stop
 @section('page_css')
