@@ -35,6 +35,25 @@
             <!--end: Search Form-->
             <!--begin: Datatable-->
             <div id="data-items">
+
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn bán hàng:</label>
+                    <div class="col-2">
+                        <input type="text" class="form-control"
+                               placeholder="" value="{{ $data_item->phone }}" readonly="">
+                    </div>
+                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn bảo hành:</label>
+                    <div class="col-2">
+                        <input type="text" class="form-control"
+                               placeholder="" value="{{ $data_item->hotline_1 }}" readonly="">
+                    </div>
+                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn kỹ thuật:</label>
+                    <div class="col-2">
+                        <input type="text" class="form-control"
+                               placeholder="" value="{{ $data_item->hotline_2 }}" readonly="">
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="example-number-input" class="col-2 col-form-label">Logo</label>
                     <div class="col-10">
@@ -48,7 +67,9 @@
                         </div>--}}
                         <div id="holder" style="margin-top:15px;max-height:100px;">
                             @if(isset($data_item->logo) && !empty($data_item->logo))
-                                    <img src="{{ @$data_item->logo }}" alt="Logo page">
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <img src="{{ asset($data_item->logo) }}" style="width: 100%;" alt="Logo page">
+                                </div>
                             @else
                                 (Chưa thiết lập)
                             @endif
@@ -56,23 +77,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn bán hàng:</label>
-                    <div class="col-2">
-                        <input type="text" class="form-control"
-                               placeholder="" value="{{ $data_item->phone }}">
-                    </div>
-                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn bảo hành:</label>
-                    <div class="col-2">
-                        <input type="text" class="form-control"
-                               placeholder="" value="{{ $data_item->hotline_1 }}">
-                    </div>
-                    <label for="example-number-input" class="col-2 col-form-label">SĐT tư vấn kỹ thuật:</label>
-                    <div class="col-2">
-                        <input type="text" class="form-control"
-                               placeholder="" value="{{ $data_item->hotline_2 }}">
-                    </div>
-                </div>
+
             </div>
             <!--end: Datatable-->
         </div>

@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use App\Libs\CommonLib;
+use App\Models\Products\Product;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,23 @@ class BaseModel extends Model
     public function getAll($relations = [])
     {
         return $this->getData($relations);
+    }
+
+    public function getDataIndex($relations = [])
+    {
+        $categories = Category::where('status', ACTIVE)->where('is_deleted', NO_DELETED)->get();
+        $products = Product::whereIn('category_id', $categories->pluck('id')->toArray())
+            ->where('is_deleted', NO_DELETED)
+            ->get();
+        $products = $products->groupBy('category_id');
+        $result = [];
+        foreach($categories as $category) {
+            if(empty($products[$category->id]))
+                continue;
+
+            $result[$category->id] = $products[$category->id]->sortBy('created_at')->take(10);
+        }
+        return collect ($result);
     }
 
     public function getDataItems($parameters = [], $relations = [])

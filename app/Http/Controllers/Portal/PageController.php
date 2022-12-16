@@ -22,8 +22,7 @@ class PageController extends BasePortalController
     public function index()
     {
         $slides = $this->slide->getAll();
-        $products = $this->product->getAll();
-        $products = $products->groupBy('category_id');
+        $products = $this->product->getDataIndex();
 
         return view('page.index', compact('slides', 'products'));
     }

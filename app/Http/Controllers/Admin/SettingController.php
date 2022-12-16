@@ -32,7 +32,7 @@ class SettingController extends BaseController
     public function updateIntroduce(Request $request)
     {
         $introduce = $request->introduce ? htmlentities($request->introduce) : "";
-        $this->model->updateByID(TENANT_ID,['introduce' => $introduce]);
+        $this->model->updateByID(TENANT_ID, ['introduce' => $introduce]);
         Session::flash('success', 'Cập nhật thành công');
         return redirect()->route('admin.setting.introduce');
     }
@@ -51,8 +51,14 @@ class SettingController extends BaseController
 
     public function updateTenant(Request $request)
     {
-        $introduce = $request->introduce ? htmlentities($request->introduce) : "";
-        $this->model->updateByID(TENANT_ID,['introduce' => $introduce]);
+        $data = $request->all();
+        $parameter = [
+            'logo' => $data['logo'] ?? "",
+            'phone' => $data['phone'] ?? "",
+            'hotline_1' => $data['hotline_1'] ?? "",
+            'hotline_2' => $data['hotline_2'] ?? "",
+        ];
+        $this->model->updateByID(TENANT_ID, $parameter);
         Session::flash('success', 'Cập nhật thành công');
         return redirect()->route('admin.setting.tenant');
     }

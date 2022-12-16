@@ -1,6 +1,6 @@
 /*===== Edit By PVN For Desktop =====*/
     body {
-        font-family:'font-main';
+        font-family:'Arial';
     }
     a,img{
         color:#000;
@@ -2191,7 +2191,7 @@
         margin-right: 20px;
     }
     .v2_bnc_home_catepr_title {
-        background: #ff0000;
+        background: #005baa;
         border-bottom: 1px solid #ccc;
         float: left;
         width: 100%;
@@ -2388,7 +2388,7 @@
         margin-top: 0;
     }
     .v2_bnc_pr_item_img {
-        height: 250px;
+        height: 180px;
         border: 1px solid #eee;
     }
     .v2_bnc_pr_item_short_info {

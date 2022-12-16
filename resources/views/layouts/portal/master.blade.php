@@ -180,6 +180,53 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <!-- Logo -->
+                    <div>
+                        <a href="{{ route('portal.index') }}" rel="nofollow" class="v2_bnc_logo" title='{{ @$tenant_info->name }}'>
+                            <img @if(isset($tenant_info->logo) && !empty($tenant_info->logo)) src="{{ asset($tenant_info->logo) }}" @else src="{{ asset('/portal/img/logo.jpg') }}" @endif
+                                 width="190" height="80" class="img-responsive" alt='{{ @$tenant_info->name }}'/>
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->phone }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->phone }}</a>
+                                </p>
+                                <p style="font-weight: 600">Tư vấn bán hàng</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->hotline_1 }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->hotline_1 }}</a>
+                                </p>
+                                <p style="font-weight: 600">Tư vấn kỹ thuật</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="color: #ff3333; font-weight: 600; margin: 0px;">
+                                    <a style="color: #ff3333; font-weight: 600; margin: 0px;" href="tel:{{ $tenant_info->hotline_2 }}"><i class="fa fa-phone"></i>
+                                        {{ $tenant_info->hotline_2 }}</a>
+                                </p>
+                                <p style="font-weight: 600">Tư vấn bảo hành</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="margin: 30px 0px;">
+                                <p style="font-weight: bold; margin: 0px;">{{ @$tenant_info->name }}</p>
+                                <p style="font-weight: 600">Mở cửa 9:00 - 21:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <!-- Logo -->
                     <div id="logo">
                         <a href="{{ route('portal.index') }}" rel="nofollow" class="v2_bnc_logo" title='{{ @$tenant_info->name }}'>
                             <img src="{{ asset('/portal/img/logo.jpg') }}"
@@ -224,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>

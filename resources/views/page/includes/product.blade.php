@@ -49,7 +49,7 @@
             <!-- End Price -->
 
             <!-- Buy -->
-            <div class="v2_bnc_pr_item_buy">
+            {{--<div class="v2_bnc_pr_item_buy">
                 <a href="{{ route('portal.add_to_cart',$product->id) }}"
                    title="Đặt Mua"
                    class="BNC-add-cart v2_bnc_pr_item_action_buy"
@@ -62,7 +62,7 @@
                    data-total-quantity="100"><i
                         class="icon-basket icons"></i>
                     Thêm vào giỏ hàng</a>
-            </div>
+            </div>--}}
             <!-- End Buy -->
         </div>
     </div>
